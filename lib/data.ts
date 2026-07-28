@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "[Ton Nom]",
   role: "Développeur web freelance",
-  email: "ton-email@exemple.fr",
+  email: "charles.girardin1@gmail.com",
   tagline: "Je conçois des sites web qui convertissent.",
 };
 

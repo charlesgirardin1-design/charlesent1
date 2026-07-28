@@ -14,11 +14,15 @@ export function Presentation() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="relative"
         >
-          <div className="aspect-square rounded-[2rem] bg-gradient-to-br from-accent-blue/30 via-accent-violet/20 to-accent-cyan/20 p-[2px]">
+          <motion.div
+            animate={{ y: [0, -14, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="aspect-square rounded-[2rem] bg-gradient-to-br from-accent-blue/30 via-accent-violet/20 to-accent-cyan/20 p-[2px]"
+          >
             <div className="w-full h-full rounded-[calc(2rem-2px)] bg-surface flex items-center justify-center">
               <span className="font-mono text-6xl font-bold text-white/20">TN</span>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         <div>
