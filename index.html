@@ -81,7 +81,6 @@
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 20px;
-    --radius-pill: 999px;
     --container-width: 1180px;
     --header-h: 72px;
     --ease: cubic-bezier(.22,.9,.35,1);
@@ -224,7 +223,7 @@
     font-family: var(--font-text);
     font-weight: 600;
     font-size: .95rem;
-    border-radius: var(--radius-pill);
+    border-radius: var(--radius-sm);
     border: 1.5px solid transparent;
     text-decoration:none;
     transition: transform .2s var(--ease), box-shadow .25s var(--ease), background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
@@ -623,7 +622,7 @@
     opacity: .5;
     will-change: transform;
   }
-  :root[data-theme="dark"] .hero-visual .blob{ opacity:.55; }
+  :root[data-theme="dark"] .hero-visual .blob{ opacity:.35; }
   .hero-visual .blob.b1{
     width:65%; height:65%; top:0; left:5%;
     background: radial-gradient(circle, var(--color-accent), transparent 70%);
@@ -634,11 +633,6 @@
     background: radial-gradient(circle, var(--color-accent-2), transparent 70%);
     animation: float-b 11s ease-in-out infinite;
   }
-  .hero-visual .blob.b3{
-    width:42%; height:42%; top:32%; left:28%;
-    background: radial-gradient(circle, #22D3A8, transparent 70%);
-    animation: float-b 13s ease-in-out infinite reverse;
-  }
   @keyframes float-a{
     0%,100%{ transform: translate(0,0) scale(1); }
     50%{ transform: translate(6%,8%) scale(1.08); }
@@ -647,65 +641,39 @@
     0%,100%{ transform: translate(0,0) scale(1); }
     50%{ transform: translate(-8%,-6%) scale(1.1); }
   }
-
-  /* Cartes flottantes (citation + stat) au-dessus des blobs du hero */
-  .hero-visual .floating-card{
+  .hero-visual .card-mock{
     position:absolute;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
-    padding: 1.1rem 1.3rem;
+    padding: 1rem;
   }
-  .hero-visual .card-quote{
-    top: 10%; left: 0; width: 66%;
-    font-family: var(--font-display);
-    font-size: .95rem;
-    line-height: 1.45;
-    color: var(--color-text);
+  .hero-visual .card-mock.c1{ top: 8%; left: 6%; width: 62%; }
+  .hero-visual .card-mock.c1 .bar{ height:8px; border-radius:4px; background: var(--color-bg-alt); margin-bottom:8px; }
+  .hero-visual .card-mock.c1 .bar:nth-child(1){ width:70%; background: var(--color-accent); height:12px; }
+  .hero-visual .card-mock.c1 .bar:nth-child(2){ width:100%; }
+  .hero-visual .card-mock.c1 .bar:nth-child(3){ width:80%; }
+  .hero-visual .card-mock.c2{
+    bottom: 10%; right: 4%; width: 54%;
+    display:flex; align-items:center; gap:.6rem;
   }
-  .hero-visual .card-quote::before{ content:"“"; color: var(--color-accent); font-size:1.4rem; line-height:0; }
-  .hero-visual .card-stat{
-    bottom: 12%; right: 2%;
-    display:flex; align-items:center; gap:.8rem;
-    animation: float-a 8s ease-in-out infinite reverse;
-  }
-  .hero-visual .card-stat .stat-icon{
-    width:40px; height:40px; border-radius:50%;
+  .hero-visual .card-mock.c2 .dot-icon{
+    width:34px; height:34px; border-radius:50%;
     background: var(--color-accent-light);
-    color: var(--color-accent);
     display:flex; align-items:center; justify-content:center;
+    color: var(--color-accent); font-weight:700; font-family: var(--font-display);
     flex-shrink:0;
   }
-  .hero-visual .card-stat .stat-icon svg{ width:20px; height:20px; }
-  .hero-visual .card-stat strong{
-    display:block; font-family: var(--font-mono); font-size:1.3rem; color: var(--color-text);
+  .hero-visual .card-mock.c2 .txt .bar{ height:6px; width:70px; }
+  .hero-visual .card-mock.c3{
+    top: 46%; left: -4%; width: 40%;
+    padding: .75rem;
+    display:flex; align-items:center; gap:.5rem;
+    animation: float-a 7s ease-in-out infinite reverse;
   }
-  .hero-visual .card-stat span{ font-size:.78rem; color: var(--color-text-muted); white-space:nowrap; }
-
-  /* Badges numérotés des prestations, dans le texte du hero */
-  .hero-tags{ display:flex; flex-wrap:wrap; gap:.6rem; margin: 1.6rem 0 0; }
-  .hero-tags li{
-    display:flex; align-items:center; gap:.55rem;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    padding: .45rem .95rem .45rem .45rem;
-    border-radius: var(--radius-pill);
-    font-size: .85rem;
-    font-weight:600;
-    color: var(--color-text);
-  }
-  .hero-tags .tag-num{
-    font-family: var(--font-mono);
-    font-size:.7rem;
-    font-weight:700;
-    color: var(--color-accent);
-    background: var(--color-accent-light);
-    border-radius: var(--radius-pill);
-    width:22px; height:22px;
-    display:flex; align-items:center; justify-content:center;
-    flex-shrink:0;
-  }
+  .hero-visual .card-mock.c3 svg{ color: var(--color-accent); width:20px; height:20px; flex-shrink:0; }
+  .hero-visual .card-mock.c3 span{ font-size:.72rem; font-weight:600; }
 
   @media (min-width: 1024px){
     .hero .container{ grid-template-columns: 1.05fr .95fr; }
@@ -1132,13 +1100,6 @@
         <p class="subtitle">Développeur freelance, j'accompagne indépendants et TPE dans la création
         de sites vitrines et e-commerce clairs, rapides et taillés pour transformer vos visiteurs en clients.</p>
 
-        <ul class="hero-tags" aria-label="Prestations">
-          <li><span class="tag-num">01</span> Sites vitrines</li>
-          <li><span class="tag-num">02</span> E-commerce</li>
-          <li><span class="tag-num">03</span> Photographie</li>
-          <li><span class="tag-num">04</span> SEO technique</li>
-        </ul>
-
         <div class="hero-ctas">
           <a href="#contact" class="btn btn-primary" data-magnetic>Discutons de votre projet</a>
           <a href="#portfolio" class="btn btn-outline">Voir mes projets</a>
@@ -1164,14 +1125,21 @@
         <div class="hero-parallax">
           <div class="blob b1"></div>
           <div class="blob b2"></div>
-          <div class="blob b3"></div>
-          <div class="floating-card card-quote">Un site rapide se sent avant même de se voir.</div>
-          <div class="floating-card card-stat">
-            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
-            <div>
-              <strong><span data-count-to="48" data-suffix="h">0h</span></strong>
-              <span>Délai de réponse devis</span>
+          <div class="card-mock c1">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+          <div class="card-mock c2">
+            <div class="dot-icon">%</div>
+            <div class="txt">
+              <div class="bar"></div>
+              <div class="bar" style="width:45px;"></div>
             </div>
+          </div>
+          <div class="card-mock c3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Livré à temps</span>
           </div>
         </div>
       </div>
