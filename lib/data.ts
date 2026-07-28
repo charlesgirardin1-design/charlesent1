@@ -123,7 +123,7 @@ export const faqs = [
   {
     question: "Combien de temps faut-il pour livrer un site ?",
     answer:
-      "Comptez généralement 2 à 4 semaines pour un site vitrine et 4 à 8 semaines pour un e-commerce, selon la complexité et la rapidité des retours sur les maquettes. Le délai précis est toujours indiqué dans le devis.",
+      "Comptez généralement 2 à 3 semaines pour un site vitrine et 4 à 5 semaines pour un e-commerce, selon la complexité et la rapidité des retours sur les maquettes. Le délai précis est toujours indiqué dans le devis.",
   },
   {
     question: "Que se passe-t-il après la mise en ligne ?",
