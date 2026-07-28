@@ -99,7 +99,6 @@ export const processSteps = [
 export const stats = [
   { value: 48, suffix: "h", label: "Délai de réponse devis" },
   { value: 100, suffix: "%", label: "Sites responsives & accessibles" },
-  { value: 2, suffix: "", label: "Casquettes : dev & photo" },
 ];
 
 export const testimonials = [
@@ -135,11 +134,6 @@ export const faqs = [
     question: "Le référencement (SEO) est-il inclus ?",
     answer:
       "Une optimisation SEO de base (structure, balises, vitesse de chargement, compatibilité mobile) est incluse dans chaque projet. Un accompagnement SEO plus poussé peut être ajouté en option.",
-  },
-  {
-    question: "Puis-je modifier le site moi-même ensuite ?",
-    answer:
-      "Oui. Une courte formation à la prise en main est incluse à la livraison, et le site est construit avec des outils simples à mettre à jour au quotidien.",
   },
   {
     question: "Comment se passe le paiement ?",

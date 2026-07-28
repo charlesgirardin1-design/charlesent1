@@ -7,7 +7,7 @@ import { stats } from "@/lib/data";
 export function Stats() {
   return (
     <section className="relative py-24 border-y border-surface-border">
-      <div className="mx-auto max-w-6xl px-6 grid grid-cols-1 sm:grid-cols-3 gap-10">
+      <div className="mx-auto max-w-6xl px-6 grid grid-cols-1 sm:grid-cols-2 gap-10">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}
