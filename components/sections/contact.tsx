@@ -123,16 +123,27 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="rounded-2xl border border-surface-border bg-surface p-8 space-y-6 h-fit"
           >
-            {infoItems.map((item) => (
-              <div key={item.label} className="flex gap-4">
-                <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+            {infoItems.map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
+                className="flex gap-4"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: -4 }}
+                  transition={{ duration: 0.25 }}
+                  className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0"
+                >
                   <item.icon className="w-4 h-4 text-accent-blue" />
-                </div>
+                </motion.div>
                 <div>
                   <p className="text-sm text-white/50">{item.label}</p>
                   <p className="font-medium">{item.value}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
