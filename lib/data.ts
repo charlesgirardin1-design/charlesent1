@@ -45,6 +45,7 @@ export const projects: {
   categoryLabel: string;
   url: string;
   gradient: string;
+  monogram: string;
 }[] = [
   {
     title: "Daniel Bain",
@@ -52,6 +53,7 @@ export const projects: {
     categoryLabel: "Site vitrine",
     url: "http://danielbain.fr/",
     gradient: "from-blue-500 via-indigo-500 to-violet-600",
+    monogram: "DB",
   },
   {
     title: "Adebat",
@@ -59,13 +61,15 @@ export const projects: {
     categoryLabel: "Site vitrine",
     url: "http://adebat.fr/",
     gradient: "from-violet-500 via-purple-500 to-fuchsia-600",
+    monogram: "A",
   },
   {
     title: "Frigomind",
     category: "app",
     categoryLabel: "Application web",
     url: "https://frigomind.vercel.app",
-    gradient: "from-cyan-500 via-blue-500 to-indigo-600",
+    gradient: "from-emerald-500 via-teal-500 to-cyan-600",
+    monogram: "FM",
   },
 ];
 

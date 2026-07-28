@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Camera, Salad } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { projects, type ProjectCategory } from "@/lib/data";
 import { cn } from "@/lib/utils";
@@ -65,10 +65,31 @@ export function Portfolio() {
               >
                 <div
                   className={cn(
-                    "absolute inset-0 bg-gradient-to-br grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100",
+                    "absolute inset-0 bg-gradient-to-br opacity-25 group-hover:opacity-40 transition-opacity duration-700",
                     project.gradient
                   )}
                 />
+                <div
+                  className="absolute inset-0 opacity-[0.05]"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+                    backgroundSize: "18px 18px",
+                  }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 scale-105 group-hover:scale-100">
+                  {project.title === "Frigomind" ? (
+                    <div className="flex items-center gap-4 text-white/20">
+                      <Camera className="w-9 h-9" strokeWidth={1.5} />
+                      <span className="text-2xl font-light">→</span>
+                      <Salad className="w-9 h-9" strokeWidth={1.5} />
+                    </div>
+                  ) : (
+                    <span className="text-7xl font-bold tracking-tighter text-white/10 select-none">
+                      {project.monogram}
+                    </span>
+                  )}
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
