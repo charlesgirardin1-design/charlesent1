@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { motion } from "framer-motion";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, MapPin, Clock, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
 import { siteConfig } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 const infoItems = [
   { icon: Mail, label: "Email", value: siteConfig.email },
@@ -14,26 +15,50 @@ const infoItems = [
   { icon: Clock, label: "Délai de réponse", value: "Sous 48h ouvrées" },
 ];
 
-export function Contact() {
-  const [status, setStatus] = useState<string | null>(null);
+type SendState = "idle" | "sending" | "success" | "error";
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+export function Contact() {
+  const [state, setState] = useState<SendState>("idle");
+  const [message, setMessage] = useState<string | null>(null);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = String(data.get("name") || "");
     const email = String(data.get("email") || "");
-    const message = String(data.get("message") || "");
+    const body = String(data.get("message") || "");
 
-    if (!name || !email || !message) {
-      setStatus("Merci de remplir tous les champs avant d'envoyer.");
+    if (!name || !email || !body) {
+      setState("error");
+      setMessage("Merci de remplir tous les champs avant d'envoyer.");
       return;
     }
 
-    const subject = encodeURIComponent(`Nouveau projet — ${name}`);
-    const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\n\nMessage :\n${message}`);
-    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
-    setStatus("Votre client mail va s'ouvrir pour finaliser l'envoi. À très vite !");
+    setState("sending");
+    setMessage(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message: body }),
+      });
+      const json = await res.json();
+
+      if (!res.ok) {
+        setState("error");
+        setMessage(json.error || "L'envoi a échoué, réessayez plus tard.");
+        return;
+      }
+
+      setState("success");
+      setMessage("Message envoyé ! Je reviens vers vous sous 48h.");
+      form.reset();
+    } catch {
+      setState("error");
+      setMessage("L'envoi a échoué, vérifiez votre connexion et réessayez.");
+    }
   }
 
   return (
@@ -100,18 +125,56 @@ export function Contact() {
                 className="w-full rounded-xl border border-surface-border bg-surface px-4 py-3 outline-none focus:border-accent-blue transition-colors resize-y"
               />
             </div>
-            {status && (
-              <motion.p
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="rounded-xl bg-accent-blue/10 border border-accent-blue/20 px-4 py-3 text-sm text-white/80"
-              >
-                {status}
-              </motion.p>
-            )}
+            <AnimatePresence mode="wait">
+              {message && (
+                <motion.p
+                  key={message}
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  className={cn(
+                    "flex items-center gap-2 rounded-xl border px-4 py-3 text-sm",
+                    state === "success" && "bg-emerald-500/10 border-emerald-500/20 text-emerald-200",
+                    state === "error" && "bg-red-500/10 border-red-500/20 text-red-200"
+                  )}
+                >
+                  {state === "success" && <CheckCircle2 className="w-4 h-4 flex-shrink-0" />}
+                  {state === "error" && <AlertCircle className="w-4 h-4 flex-shrink-0" />}
+                  {message}
+                </motion.p>
+              )}
+            </AnimatePresence>
             <Magnetic strength={0.15}>
-              <Button type="submit" size="lg" className="w-full sm:w-auto">
-                Envoyer le message
+              <Button
+                type="submit"
+                size="lg"
+                disabled={state === "sending"}
+                className="w-full sm:w-auto"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {state === "sending" ? (
+                    <motion.span
+                      key="sending"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="flex items-center gap-2"
+                    >
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Envoi en cours...
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="idle"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      Envoyer le message
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </Button>
             </Magnetic>
           </motion.form>
