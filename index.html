@@ -225,6 +225,15 @@
   .btn-outline:hover{ border-color: var(--color-accent); color: var(--color-accent); transform: translateY(-2px); }
   .btn-block{ width:100%; }
 
+  /* Micro-interaction "élastique" au clic (JS ajoute/retire .is-pressed) */
+  @keyframes btn-bounce{
+    0%{ transform: scale(1); }
+    40%{ transform: scale(.92); }
+    70%{ transform: scale(1.04); }
+    100%{ transform: scale(1); }
+  }
+  .btn.is-pressed{ animation: btn-bounce .45s cubic-bezier(.34,1.56,.64,1) both; }
+
   /* =========================================================
      BARRE DE PROGRESSION DE SCROLL
   ========================================================= */
@@ -274,7 +283,7 @@
   }
   .logo .dot{ color: var(--color-accent); }
 
-  .nav-links{ display:none; align-items:center; gap:2rem; }
+  .nav-links{ display:none; align-items:center; gap:2rem; position:relative; }
   .nav-links a{
     text-decoration:none;
     font-weight:500;
@@ -292,6 +301,19 @@
     transition: width .25s var(--ease);
   }
   .nav-links a:hover::after{ width:100%; }
+
+  /* Indicateur de section active — pilule qui glisse d'un lien à l'autre (JS) */
+  .nav-indicator{
+    position:absolute;
+    bottom:-2px; left:0;
+    height:2px;
+    width:0;
+    background: var(--color-accent);
+    opacity:0;
+    transform: translateX(0);
+    transition: transform .35s var(--ease), width .35s var(--ease), opacity .2s ease;
+    pointer-events:none;
+  }
 
   .header-actions{ display:flex; align-items:center; gap:.75rem; }
   .header-actions .btn{ display:none; }
@@ -381,6 +403,35 @@
   .reveal-delay-3{ animation-delay: .18s; transition-delay: .18s; }
   .reveal-delay-4{ animation-delay: .24s; transition-delay: .24s; }
   .reveal-delay-5{ animation-delay: .3s; transition-delay: .3s; }
+
+  /* Titres de section : révélation mot par mot (JS découpe le texte en .word > span) */
+  .split-title .word{ display:inline-block; overflow:hidden; vertical-align:top; }
+  .split-title .word span{ display:inline-block; }
+  @supports (animation-timeline: view()){
+    html:not(.js-fallback) .split-title .word span{
+      animation: word-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+  }
+  html.js-fallback .split-title .word span{ transform: translateY(110%); transition: transform .6s var(--ease); }
+  html.js-fallback .section-head.is-visible .split-title .word span{ transform: translateY(0); }
+
+  /* Cards "empilées" (méthode) : entrée en cascade avec léger scale + rotate */
+  .reveal.stack-card{ transform: translateY(50px) scale(.86) rotate(-2deg); }
+  @supports (animation-timeline: view()){
+    html:not(.js-fallback) .reveal.stack-card{
+      animation: stack-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+  }
+  @keyframes stack-in{
+    from{ opacity:0; transform: translateY(50px) scale(.86) rotate(-2deg); }
+    to{ opacity:1; transform: translateY(0) scale(1) rotate(0deg); }
+  }
+  html.js-fallback .reveal.stack-card{ transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  html.js-fallback .reveal.stack-card.is-visible{ transform: translateY(0) scale(1) rotate(0deg); }
 
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
@@ -500,6 +551,9 @@
     max-width: 460px;
     margin: 0 auto;
   }
+  /* Enveloppe indépendante de la reveal-animation, pour le parallax souris (JS) */
+  .hero-visual .hero-parallax{ position:absolute; inset:0; will-change: transform; }
+
   .hero-visual .blob{
     position:absolute;
     border-radius: 50%;
@@ -685,8 +739,27 @@
   }
   .project-card:hover{ box-shadow: var(--shadow-md); border-color: transparent; }
   .project-thumb{ aspect-ratio: 4/3; width:100%; position:relative; overflow:hidden; flex-shrink:0; }
-  .project-thumb svg{ width:100%; height:100%; display:block; transition: transform .5s var(--ease); }
+  .project-thumb svg{
+    width:100%; height:100%; display:block;
+    transition: transform .5s var(--ease);
+    clip-path: inset(0 0 0 100%);
+  }
   .project-card:hover .project-thumb svg{ transform: scale(1.06); }
+
+  /* Wipe d'entrée sur les miniatures portfolio */
+  @supports (animation-timeline: view()){
+    html:not(.js-fallback) .project-thumb svg{
+      animation: thumb-wipe .9s linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+  }
+  @keyframes thumb-wipe{
+    from{ clip-path: inset(0 0 0 100%); }
+    to{ clip-path: inset(0 0 0 0%); }
+  }
+  html.js-fallback .project-thumb svg{ transition: clip-path .9s var(--ease), transform .5s var(--ease); }
+  html.js-fallback .project-card.is-visible .project-thumb svg{ clip-path: inset(0 0 0 0%); }
   .project-body{ padding: 1.3rem 1.4rem 1.5rem; flex-grow:1; display:flex; flex-direction:column; }
   .project-body h3{ font-size:1.08rem; margin-bottom:.25rem; }
   .project-tech{ font-size:.8rem; color: var(--color-text-muted); margin-bottom: .75rem; }
@@ -865,12 +938,58 @@
     text-decoration:none;
   }
   .skip-link:focus{ left: 1rem; top: 1rem; }
+
+  /* =========================================================
+     CURSEUR PERSONNALISÉ (desktop + pointeur fin uniquement, JS gated)
+  ========================================================= */
+  html.has-custom-cursor, html.has-custom-cursor *{ cursor:none; }
+  html.has-custom-cursor input, html.has-custom-cursor textarea, html.has-custom-cursor select{ cursor:auto; }
+  #cursorDot, #cursorRing{
+    position: fixed;
+    top:0; left:0;
+    pointer-events:none;
+    z-index: 2002;
+    border-radius:50%;
+    transform: translate(-50%,-50%);
+    will-change: transform;
+    opacity:0;
+  }
+  #cursorDot{ width:8px; height:8px; background: var(--color-accent); }
+  #cursorRing{
+    width:34px; height:34px;
+    border: 1.5px solid var(--color-accent);
+    transition: width .25s var(--ease), height .25s var(--ease), opacity .25s var(--ease), background-color .25s var(--ease);
+  }
+  #cursorRing.is-active{ width:56px; height:56px; opacity:.9; background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+
+  /* =========================================================
+     ÉCRAN D'INTRO — rideau bref au premier chargement (JS gated)
+  ========================================================= */
+  #introCurtain{
+    position:fixed; inset:0; z-index:3000;
+    background: var(--color-bg);
+    display:flex; align-items:center; justify-content:center;
+    transition: transform .7s var(--ease), opacity .5s var(--ease) .15s;
+  }
+  #introCurtain .intro-mark{
+    font-family: var(--font-display); font-weight:700; font-size:1.4rem;
+    color: var(--color-text); opacity:.85;
+    display:flex; align-items:center; gap:.4rem;
+  }
+  #introCurtain .intro-mark .dot{ color: var(--color-accent); }
+  #introCurtain.is-leaving{ transform: translateY(-100%); opacity:0; pointer-events:none; }
+  @media (prefers-reduced-motion: reduce){ #introCurtain{ display:none !important; } }
 </style>
 </head>
 <body>
 
 <!-- Lien d'évitement pour navigation clavier -->
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+<!-- Écran d'intro bref (JS le retire ou le désactive selon reduced-motion) -->
+<div id="introCurtain" aria-hidden="true">
+  <span class="intro-mark">[Ton Nom]<span class="dot">.</span>dev</span>
+</div>
 
 <!-- Barre de progression de scroll (pilotée en rAF, transform uniquement) -->
 <div id="scrollProgress" aria-hidden="true"></div>
@@ -953,23 +1072,25 @@
       </div>
 
       <div class="hero-visual reveal reveal-delay-2" aria-hidden="true">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="card-mock c1">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-        <div class="card-mock c2">
-          <div class="dot-icon">%</div>
-          <div class="txt">
+        <div class="hero-parallax">
+          <div class="blob b1"></div>
+          <div class="blob b2"></div>
+          <div class="card-mock c1">
             <div class="bar"></div>
-            <div class="bar" style="width:45px;"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
           </div>
-        </div>
-        <div class="card-mock c3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Livré à temps</span>
+          <div class="card-mock c2">
+            <div class="dot-icon">%</div>
+            <div class="txt">
+              <div class="bar"></div>
+              <div class="bar" style="width:45px;"></div>
+            </div>
+          </div>
+          <div class="card-mock c3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Livré à temps</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1045,22 +1166,22 @@
       </div>
 
       <div class="process-grid">
-        <div class="process-step reveal reveal-delay-1">
+        <div class="process-step reveal stack-card reveal-delay-1">
           <div class="process-num">01</div>
           <h3>Échange</h3>
           <p>On discute de votre projet, vos objectifs et vos contraintes lors d'un appel de 30 minutes, sans engagement.</p>
         </div>
-        <div class="process-step reveal reveal-delay-2">
+        <div class="process-step reveal stack-card reveal-delay-2">
           <div class="process-num">02</div>
           <h3>Devis</h3>
           <p>Je vous envoie une proposition détaillée sous 48h : périmètre, délais et tarif clairement posés.</p>
         </div>
-        <div class="process-step reveal reveal-delay-3">
+        <div class="process-step reveal stack-card reveal-delay-3">
           <div class="process-num">03</div>
           <h3>Réalisation</h3>
           <p>Design, développement et intégration, avec des points d'étape réguliers pour valider chaque avancée.</p>
         </div>
-        <div class="process-step reveal reveal-delay-4">
+        <div class="process-step reveal stack-card reveal-delay-4">
           <div class="process-num">04</div>
           <h3>Livraison &amp; suivi</h3>
           <p>Mise en ligne, formation à la prise en main, et disponibilité pour les ajustements post-lancement.</p>
@@ -1398,6 +1519,137 @@
   var pointerFine = window.matchMedia('(pointer: fine)').matches;
 
   /* =========================================================
+     ÉCRAN D'INTRO — une seule fois par session
+  ========================================================= */
+  (function(){
+    var curtain = document.getElementById('introCurtain');
+    if (!curtain) return;
+
+    if (reduceMotion || sessionStorage.getItem('introShown')){
+      curtain.remove();
+      return;
+    }
+    sessionStorage.setItem('introShown', '1');
+    document.body.style.overflow = 'hidden';
+
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        curtain.classList.add('is-leaving');
+        curtain.addEventListener('transitionend', function(){
+          curtain.remove();
+          document.body.style.overflow = '';
+        }, { once: true });
+      }, 350);
+    });
+  })();
+
+  /* =========================================================
+     CURSEUR PERSONNALISÉ
+  ========================================================= */
+  if (pointerFine && !reduceMotion){
+    document.documentElement.classList.add('has-custom-cursor');
+    var cursorDot = document.createElement('div');
+    cursorDot.id = 'cursorDot';
+    var cursorRing = document.createElement('div');
+    cursorRing.id = 'cursorRing';
+    document.body.appendChild(cursorDot);
+    document.body.appendChild(cursorRing);
+
+    var cx = 0, cy = 0, rx = 0, ry = 0;
+    window.addEventListener('pointermove', function(e){
+      cx = e.clientX; cy = e.clientY;
+      cursorDot.style.opacity = 1;
+      cursorRing.style.opacity = cursorRing.classList.contains('is-active') ? 0.9 : 0.5;
+      cursorDot.style.transform = 'translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)';
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', function(){
+      cursorDot.style.opacity = 0;
+      cursorRing.style.opacity = 0;
+    });
+
+    (function ringLoop(){
+      rx += (cx - rx) * 0.18;
+      ry += (cy - ry) * 0.18;
+      cursorRing.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(ringLoop);
+    })();
+
+    document.querySelectorAll('a, button, [data-tilt], [data-tilt-glow], .skill-badge').forEach(function(el){
+      el.addEventListener('pointerenter', function(){ cursorRing.classList.add('is-active'); });
+      el.addEventListener('pointerleave', function(){ cursorRing.classList.remove('is-active'); });
+    });
+  }
+
+  /* =========================================================
+     INDICATEUR DE SECTION ACTIVE DANS LE MENU (scrollspy)
+  ========================================================= */
+  (function(){
+    var navContainer = document.querySelector('.nav-links');
+    if (!navContainer) return;
+    var navLinks = navContainer.querySelectorAll('a');
+    var indicator = document.createElement('span');
+    indicator.className = 'nav-indicator';
+    indicator.setAttribute('aria-hidden', 'true');
+    navContainer.appendChild(indicator);
+    var currentLink = null;
+
+    function moveIndicator(link){
+      if (!link) return;
+      currentLink = link;
+      var linkRect = link.getBoundingClientRect();
+      var navRect = navContainer.getBoundingClientRect();
+      indicator.style.opacity = 1;
+      indicator.style.width = linkRect.width + 'px';
+      indicator.style.transform = 'translateX(' + (linkRect.left - navRect.left) + 'px)';
+    }
+
+    var sections = Array.prototype.slice.call(navLinks).map(function(a){
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    if ('IntersectionObserver' in window && sections.length){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){
+            moveIndicator(navContainer.querySelector('a[href="#' + entry.target.id + '"]'));
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      sections.forEach(function(s){ obs.observe(s); });
+    }
+
+    window.addEventListener('resize', function(){ if (currentLink) moveIndicator(currentLink); });
+  })();
+
+  /* =========================================================
+     TITRES DE SECTION — découpage mot par mot pour la révélation
+  ========================================================= */
+  if (!reduceMotion){
+    document.querySelectorAll('.section-head h2').forEach(function(h2){
+      var words = h2.textContent.trim().split(/\s+/);
+      h2.innerHTML = words.map(function(w, i){
+        return '<span class="word"><span style="animation-delay:' + (i * 0.05) + 's; transition-delay:' + (i * 0.05) + 's;">' + w + '</span></span>';
+      }).join(' ');
+      h2.classList.add('split-title');
+    });
+  }
+
+  /* =========================================================
+     MICRO-INTERACTION ÉLASTIQUE SUR LES BOUTONS
+  ========================================================= */
+  if (!reduceMotion){
+    document.querySelectorAll('.btn').forEach(function(btn){
+      btn.addEventListener('pointerup', function(){
+        btn.classList.remove('is-pressed');
+        void btn.offsetWidth;
+        btn.classList.add('is-pressed');
+      });
+      btn.addEventListener('animationend', function(){ btn.classList.remove('is-pressed'); });
+    });
+  }
+
+  /* =========================================================
      THÈME CLAIR / SOMBRE
   ========================================================= */
   (function(){
@@ -1575,6 +1827,19 @@
       });
       btn.addEventListener('pointerleave', function(){ btn.style.transform = ''; });
     });
+
+    /* Parallax léger des blobs du hero, piloté par la souris */
+    var heroSection = document.querySelector('.hero');
+    var heroParallax = document.querySelector('.hero-parallax');
+    if (heroSection && heroParallax){
+      heroSection.addEventListener('pointermove', function(e){
+        var bounds = heroSection.getBoundingClientRect();
+        var px = (e.clientX - bounds.left) / bounds.width - 0.5;
+        var py = (e.clientY - bounds.top) / bounds.height - 0.5;
+        heroParallax.style.transform = 'translate(' + (px * 16).toFixed(1) + 'px,' + (py * 16).toFixed(1) + 'px)';
+      });
+      heroSection.addEventListener('pointerleave', function(){ heroParallax.style.transform = ''; });
+    }
   }
 
   /* =========================================================
