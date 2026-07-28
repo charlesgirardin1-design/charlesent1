@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { animate, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
@@ -39,8 +39,24 @@ export function Hero() {
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 60, damping: 20 });
   const sy = useSpring(my, { stiffness: 60, damping: 20 });
-  const blobX = useTransform(sx, (v) => v * 40);
-  const blobY = useTransform(sy, (v) => v * 40);
+
+  // Dérive ambiante lente, indépendante de la souris, pour garder le hero vivant
+  // même sans interaction (tactile, ou visiteur immobile).
+  const t = useMotionValue(0);
+  useEffect(() => {
+    const controls = animate(t, Math.PI * 2, {
+      duration: 26,
+      repeat: Infinity,
+      ease: "linear",
+    });
+    return () => controls.stop();
+  }, [t]);
+
+  const ambientX = useTransform(t, (v) => Math.sin(v) * 26);
+  const ambientY = useTransform(t, (v) => Math.cos(v * 0.8) * 22);
+
+  const blobX = useTransform([sx, ambientX], ([m, a]: number[]) => m * 40 + a);
+  const blobY = useTransform([sy, ambientY], ([m, a]: number[]) => m * 40 + a);
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = ref.current?.getBoundingClientRect();
