@@ -56,23 +56,26 @@
 
 <style>
   /* =========================================================
-     VARIABLES — THÈME CLAIR (par défaut)
+     VARIABLES — THÈME SOMBRE (par défaut)
+     Basculé vers le clair via data-theme="light" (JS + mémorisation
+     localStorage), et respecte prefers-color-scheme: light si
+     l'utilisateur n'a jamais choisi explicitement.
   ========================================================= */
   :root{
-    --color-bg: #FAFAF8;
-    --color-bg-alt: #F1F0EC;
-    --color-surface: #FFFFFF;
-    --color-text: #14141A;
-    --color-text-muted: #57565F;
-    --color-accent: #2F5DFF;
-    --color-accent-2: #7C9CFF;
-    --color-accent-dark: #1C3FCC;
-    --color-accent-light: #E7ECFF;
-    --color-border: #E4E2DB;
-    --color-noise-opacity: .025;
-    --shadow-sm: 0 2px 8px rgba(20,20,26,0.06);
-    --shadow-md: 0 12px 32px rgba(20,20,26,0.10);
-    --shadow-glow: 0 0 0 1px rgba(47,93,255,0.15), 0 16px 40px rgba(47,93,255,0.16);
+    --color-bg: #0B0C10;
+    --color-bg-alt: #131419;
+    --color-surface: #16171D;
+    --color-text: #F3F3F0;
+    --color-text-muted: #9C9BA6;
+    --color-accent: #5C82FF;
+    --color-accent-2: #8FA8FF;
+    --color-accent-dark: #7C9CFF;
+    --color-accent-light: #1B2242;
+    --color-border: #24252E;
+    --color-noise-opacity: .05;
+    --shadow-sm: 0 2px 10px rgba(0,0,0,0.3);
+    --shadow-md: 0 16px 40px rgba(0,0,0,0.45);
+    --shadow-glow: 0 0 0 1px rgba(92,130,255,0.25), 0 20px 50px rgba(92,130,255,0.22);
 
     --font-display: "Space Grotesk", "Helvetica Neue", sans-serif;
     --font-text: "Inter", "Helvetica Neue", sans-serif;
@@ -88,43 +91,23 @@
   }
 
   /* =========================================================
-     VARIABLES — THÈME SOMBRE
-     Basculé via data-theme="dark" (JS + mémorisation localStorage)
-     et respecte prefers-color-scheme par défaut.
+     VARIABLES — THÈME CLAIR
   ========================================================= */
-  :root[data-theme="dark"]{
-    --color-bg: #0B0C10;
-    --color-bg-alt: #131419;
-    --color-surface: #16171D;
-    --color-text: #F3F3F0;
-    --color-text-muted: #9C9BA6;
-    --color-accent: #5C82FF;
-    --color-accent-2: #8FA8FF;
-    --color-accent-dark: #7C9CFF;
-    --color-accent-light: #1B2242;
-    --color-border: #24252E;
-    --color-noise-opacity: .05;
-    --shadow-sm: 0 2px 10px rgba(0,0,0,0.3);
-    --shadow-md: 0 16px 40px rgba(0,0,0,0.45);
-    --shadow-glow: 0 0 0 1px rgba(92,130,255,0.25), 0 20px 50px rgba(92,130,255,0.22);
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --color-bg: #0B0C10;
-      --color-bg-alt: #131419;
-      --color-surface: #16171D;
-      --color-text: #F3F3F0;
-      --color-text-muted: #9C9BA6;
-      --color-accent: #5C82FF;
-      --color-accent-2: #8FA8FF;
-      --color-accent-dark: #7C9CFF;
-      --color-accent-light: #1B2242;
-      --color-border: #24252E;
-      --color-noise-opacity: .05;
-      --shadow-sm: 0 2px 10px rgba(0,0,0,0.3);
-      --shadow-md: 0 16px 40px rgba(0,0,0,0.45);
-      --shadow-glow: 0 0 0 1px rgba(92,130,255,0.25), 0 20px 50px rgba(92,130,255,0.22);
-    }
+  :root[data-theme="light"]{
+    --color-bg: #FAFAF8;
+    --color-bg-alt: #F1F0EC;
+    --color-surface: #FFFFFF;
+    --color-text: #14141A;
+    --color-text-muted: #57565F;
+    --color-accent: #2F5DFF;
+    --color-accent-2: #7C9CFF;
+    --color-accent-dark: #1C3FCC;
+    --color-accent-light: #E7ECFF;
+    --color-border: #E4E2DB;
+    --color-noise-opacity: .025;
+    --shadow-sm: 0 2px 8px rgba(20,20,26,0.06);
+    --shadow-md: 0 12px 32px rgba(20,20,26,0.10);
+    --shadow-glow: 0 0 0 1px rgba(47,93,255,0.15), 0 16px 40px rgba(47,93,255,0.16);
   }
 
   /* =========================================================
@@ -356,9 +339,9 @@
   }
   .theme-toggle:hover{ border-color: var(--color-accent); color: var(--color-accent); }
   .theme-toggle svg{ width:18px; height:18px; }
-  .theme-toggle .icon-moon{ display:none; }
-  :root[data-theme="dark"] .theme-toggle .icon-sun{ display:none; }
-  :root[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
+  .theme-toggle .icon-sun{ display:none; }
+  :root[data-theme="light"] .theme-toggle .icon-sun{ display:block; }
+  :root[data-theme="light"] .theme-toggle .icon-moon{ display:none; }
 
   .nav-toggle{
     display:flex; flex-direction:column; justify-content:center; gap:5px;
@@ -502,38 +485,6 @@
   }
 
   /* =========================================================
-     TICKER — bandeau technologies (CSS pur, compositor-friendly)
-  ========================================================= */
-  .ticker-wrap{
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    background: var(--color-bg-alt);
-    padding: 1.1rem 0;
-    overflow: hidden;
-  }
-  .ticker-track{
-    display:flex;
-    width: max-content;
-    gap: 3.5rem;
-    animation: ticker-scroll 28s linear infinite;
-    will-change: transform;
-  }
-  .ticker-track span{
-    font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: .92rem;
-    color: var(--color-text-muted);
-    display:flex; align-items:center; gap: .6rem;
-    white-space: nowrap;
-  }
-  .ticker-track span::before{ content:"◆"; color: var(--color-accent); font-size:.55rem; }
-  @keyframes ticker-scroll{
-    from{ transform: translateX(0); }
-    to{ transform: translateX(-50%); }
-  }
-  .ticker-wrap:hover .ticker-track{ animation-play-state: paused; }
-
-  /* =========================================================
      HERO
   ========================================================= */
   .hero{ padding: 4rem 0 3.5rem 0; overflow: hidden; position:relative; }
@@ -620,10 +571,10 @@
     position:absolute;
     border-radius: 50%;
     filter: blur(50px);
-    opacity: .5;
+    opacity: .55;
     will-change: transform;
   }
-  :root[data-theme="dark"] .hero-visual .blob{ opacity:.55; }
+  :root[data-theme="light"] .hero-visual .blob{ opacity:.5; }
   .hero-visual .blob.b1{
     width:65%; height:65%; top:0; left:5%;
     background: radial-gradient(circle, var(--color-accent), transparent 70%);
@@ -729,7 +680,7 @@
     width:320px; height:320px;
     border-radius:50%;
     filter: blur(80px);
-    opacity:.16;
+    opacity:.1;
     background: radial-gradient(circle, var(--color-accent), transparent 70%);
     animation: float-a 13s ease-in-out infinite;
   }
@@ -738,7 +689,7 @@
     background: radial-gradient(circle, var(--color-accent-2), transparent 70%);
     animation: float-b 16s ease-in-out infinite;
   }
-  :root[data-theme="dark"] .ambient-glow .blob{ opacity:.1; }
+  :root[data-theme="light"] .ambient-glow .blob{ opacity:.16; }
   #methode .ambient-glow .blob{ top:-10%; left:-6%; }
   #methode .ambient-glow .blob.b2{ bottom:-15%; right:-4%; }
   #tarifs .ambient-glow .blob{ top:-15%; right:-8%; }
@@ -1091,7 +1042,7 @@
     </nav>
 
     <div class="header-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Activer le thème sombre" type="button">
+      <button class="theme-toggle" id="themeToggle" aria-label="Activer le thème clair" type="button">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
@@ -1177,14 +1128,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Bandeau technologies (décoratif) -->
-  <div class="ticker-wrap" role="presentation">
-    <div class="ticker-track" aria-hidden="true">
-      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Node.js</span><span>Shopify</span><span>WordPress</span><span>SEO technique</span><span>Figma</span><span>Photographie</span>
-      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Node.js</span><span>Shopify</span><span>WordPress</span><span>SEO technique</span><span>Figma</span><span>Photographie</span>
-    </div>
-  </div>
 
   <!-- =========================================================
        SERVICES
@@ -1669,8 +1612,7 @@
     if (saved) root.setAttribute('data-theme', saved);
 
     toggle.addEventListener('click', function(){
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var current = root.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
+      var current = root.getAttribute('data-theme') || 'dark';
       var next = current === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
