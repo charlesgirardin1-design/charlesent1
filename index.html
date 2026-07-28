@@ -756,44 +756,78 @@
   }
 
   /* =========================================================
-     PROCESS
+     PROCESS — timeline verticale, ligne tracée au scroll
   ========================================================= */
-  .process-grid{
-    display:grid; gap: 2rem 1.5rem;
-    grid-template-columns: 1fr;
-    position:relative;
+  .timeline{ position:relative; max-width: 720px; }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left: 27px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: var(--color-accent);
+    transform: scaleY(0);
+    transform-origin: top;
   }
-  @media (min-width: 640px){ .process-grid{ grid-template-columns: repeat(2,1fr); } }
-  @media (min-width: 1024px){
-    .process-grid{ grid-template-columns: repeat(4,1fr); }
-    .process-grid::before{
-      content:"";
-      position:absolute;
-      top: 22px; left: 8%; right: 8%;
-      height: 1px;
-      background: repeating-linear-gradient(90deg, var(--color-border) 0 8px, transparent 8px 16px);
-      z-index:0;
+  @supports (animation-timeline: view()){
+    html:not(.js-fallback) .timeline::before{
+      animation: timeline-draw linear both;
+      animation-timeline: view();
     }
   }
-  .process-step{ position:relative; z-index:1; }
-  .process-num{
-    display:inline-flex; align-items:center; justify-content:center;
-    width:44px; height:44px;
+  @keyframes timeline-draw{
+    from{ transform: scaleY(0); }
+    to{ transform: scaleY(1); }
+  }
+  html.js-fallback .timeline::before{ transition: transform 1s var(--ease); }
+  html.js-fallback .timeline.is-visible::before{ transform: scaleY(1); }
+
+  .timeline-step{
+    position:relative;
+    z-index:1;
+    display:flex;
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+  }
+  .timeline-step:last-child{ padding-bottom:0; }
+  .timeline-num{
+    flex-shrink:0;
+    width:54px; height:54px;
+    display:flex; align-items:center; justify-content:center;
     font-family: var(--font-mono);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight:700;
     color: var(--color-accent);
     background: var(--color-bg);
-    border: 1.5px solid var(--color-accent);
+    border: 2px solid var(--color-accent);
     border-radius: 50%;
-    margin-bottom: 1.1rem;
   }
-  .process-step h3{ font-size:1.1rem; }
-  .process-step p{ color: var(--color-text-muted); font-size:.92rem; }
+  .timeline-step h3{ font-size:1.15rem; margin-bottom:.4rem; }
+  .timeline-step p{ color: var(--color-text-muted); font-size:.95rem; max-width: 50ch; }
 
   /* =========================================================
-     PORTFOLIO — bento avec projet vedette + tilt 3D
+     PORTFOLIO — filtres + bento avec projet vedette + tilt 3D
   ========================================================= */
+  .portfolio-filters{
+    display:flex; flex-wrap:wrap; gap:.6rem;
+    margin: 0 0 2.5rem;
+  }
+  .filter-btn{
+    font-family: var(--font-text);
+    font-weight:600;
+    font-size:.88rem;
+    padding: .55rem 1.1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    transition: border-color .2s ease, color .2s ease, background-color .2s ease;
+  }
+  .filter-btn:hover{ border-color: var(--color-accent); color: var(--color-accent); }
+  .filter-btn.is-active{
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
   .portfolio-grid{
     display:grid; gap: 1.25rem;
     grid-template-columns: 1fr;
@@ -812,10 +846,13 @@
     overflow:hidden;
     display:flex;
     flex-direction:column;
-    transition: box-shadow .3s var(--ease), border-color .3s var(--ease);
+    transition: opacity .35s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
     transform: perspective(900px) rotateX(var(--ry,0deg)) rotateY(var(--rx,0deg)) translateZ(0);
   }
   .project-card:hover{ box-shadow: var(--shadow-md); border-color: transparent; }
+  /* !important nécessaire : .reveal.lift-in pilote déjà `opacity` via une
+     animation CSS liée au scroll, qui l'emporterait sinon sur ce filtre. */
+  .project-card.is-filtered-out{ opacity:0 !important; pointer-events:none; }
   .project-thumb{ aspect-ratio: 4/3; width:100%; position:relative; overflow:hidden; flex-shrink:0; }
   .project-thumb svg{
     width:100%; height:100%; display:block;
@@ -1148,7 +1185,7 @@
             </div>
             <div>
               <h3>Sites vitrines</h3>
-              <p>Un site rapide, clair et responsive qui présente votre activité et inspire confiance dès les premières secondes. Optimisé SEO et pensé pour la conversion.</p>
+              <p>Un site rapide, clair et responsive qui présente votre activité et inspire confiance dès les premières secondes. Structure pensée pour guider le visiteur vers l'action (contact, devis, appel), optimisée pour le référencement local et lisible aussi bien sur mobile que sur ordinateur.</p>
               <span class="service-price">À partir de 800€</span>
             </div>
           </div>
@@ -1159,7 +1196,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           </div>
           <h3>E-commerce</h3>
-          <p>Boutique en ligne complète : catalogue produits, paiement sécurisé et tunnel d'achat fluide. Une base solide pour vendre dès le premier jour.</p>
+          <p>Boutique en ligne complète : catalogue produits, paiement sécurisé et tunnel d'achat fluide, du panier jusqu'à la confirmation de commande. Gestion des stocks et des commandes pensée pour rester simple à utiliser au quotidien, une fois le site en ligne.</p>
           <span class="service-price">À partir de 1 800€</span>
         </article>
 
@@ -1170,7 +1207,7 @@
             </div>
             <div>
               <h3>Photographie</h3>
-              <p>Shooting produit, portrait ou événementiel, retouche incluse. De quoi habiller votre site ou vos réseaux avec des visuels qui vous ressemblent.</p>
+              <p>Shooting produit, portrait ou événementiel, retouche incluse. De quoi habiller votre site ou vos réseaux avec des visuels cohérents, plutôt que des photos de banque d'images qui ne disent rien de votre activité.</p>
               <span class="service-price">À partir de 150€</span>
             </div>
           </div>
@@ -1191,26 +1228,34 @@
         <p>Un processus simple en 4 étapes, pensé pour avancer vite sans perdre en qualité.</p>
       </div>
 
-      <div class="process-grid">
-        <div class="process-step reveal stack-card reveal-delay-1">
-          <div class="process-num">01</div>
-          <h3>Échange</h3>
-          <p>On discute de votre projet, vos objectifs et vos contraintes lors d'un appel de 30 minutes, sans engagement.</p>
+      <div class="timeline reveal">
+        <div class="timeline-step reveal stack-card reveal-delay-1">
+          <span class="timeline-num">01</span>
+          <div>
+            <h3>Échange</h3>
+            <p>On discute de votre projet lors d'un appel de 30 minutes, sans engagement : votre activité, vos objectifs, votre budget et vos contraintes de délai. C'est aussi l'occasion de vérifier qu'on est sur la même longueur d'onde avant de se lancer.</p>
+          </div>
         </div>
-        <div class="process-step reveal stack-card reveal-delay-2">
-          <div class="process-num">02</div>
-          <h3>Devis</h3>
-          <p>Je vous envoie une proposition détaillée sous 48h : périmètre, délais et tarif clairement posés.</p>
+        <div class="timeline-step reveal stack-card reveal-delay-2">
+          <span class="timeline-num">02</span>
+          <div>
+            <h3>Devis</h3>
+            <p>Je vous envoie une proposition détaillée sous 48h : périmètre exact du site, technologies utilisées, délais de livraison et tarif clairement posé, sans surprise. Rien ne démarre tant que vous n'avez pas validé.</p>
+          </div>
         </div>
-        <div class="process-step reveal stack-card reveal-delay-3">
-          <div class="process-num">03</div>
-          <h3>Réalisation</h3>
-          <p>Design, développement et intégration, avec des points d'étape réguliers pour valider chaque avancée.</p>
+        <div class="timeline-step reveal stack-card reveal-delay-3">
+          <span class="timeline-num">03</span>
+          <div>
+            <h3>Réalisation</h3>
+            <p>Maquette avant tout développement pour valider la direction, puis intégration et développement par étapes. Des points réguliers vous permettent de suivre l'avancement et d'ajuster si besoin, plutôt que de découvrir le résultat à la fin.</p>
+          </div>
         </div>
-        <div class="process-step reveal stack-card reveal-delay-4">
-          <div class="process-num">04</div>
-          <h3>Livraison &amp; suivi</h3>
-          <p>Mise en ligne, formation à la prise en main, et disponibilité pour les ajustements post-lancement.</p>
+        <div class="timeline-step reveal stack-card reveal-delay-4">
+          <span class="timeline-num">04</span>
+          <div>
+            <h3>Livraison &amp; suivi</h3>
+            <p>Mise en ligne, vérifications techniques (performance, mobile, formulaires) et courte formation à la prise en main. Je reste disponible ensuite pour les ajustements et questions qui suivent le lancement.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1224,12 +1269,19 @@
       <div class="section-head reveal">
         <span class="eyebrow">Portfolio</span>
         <h2>Quelques projets récents</h2>
-        <p>Une sélection de réalisations, du site vitrine à la boutique en ligne.</p>
+        <p>Une sélection de réalisations, du site vitrine à la boutique en ligne, choisies pour montrer des besoins et des secteurs différents. Filtrez par type de projet pour ne voir que ce qui vous intéresse.</p>
+      </div>
+
+      <div class="portfolio-filters reveal" role="group" aria-label="Filtrer les projets par type">
+        <button class="filter-btn is-active" data-filter="all" type="button">Tous</button>
+        <button class="filter-btn" data-filter="vitrine" type="button">Sites vitrines</button>
+        <button class="filter-btn" data-filter="ecommerce" type="button">E-commerce</button>
+        <button class="filter-btn" data-filter="photo" type="button">Photographie</button>
       </div>
 
       <div class="portfolio-grid">
 
-        <article class="project-card reveal lift-in reveal-delay-1" data-tilt>
+        <article class="project-card reveal lift-in reveal-delay-1" data-tilt data-category="vitrine">
           <div class="project-thumb">
             <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Aperçu abstrait du projet Atelier Lumière">
               <defs>
@@ -1251,7 +1303,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal lift-in reveal-delay-2" data-tilt>
+        <article class="project-card reveal lift-in reveal-delay-2" data-tilt data-category="ecommerce">
           <div class="project-thumb">
             <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Aperçu abstrait du projet Maison Verte">
               <defs>
@@ -1273,7 +1325,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal lift-in reveal-delay-3" data-tilt>
+        <article class="project-card reveal lift-in reveal-delay-3" data-tilt data-category="photo">
           <div class="project-thumb">
             <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Aperçu abstrait du projet Studio Nomade">
               <defs>
@@ -1295,7 +1347,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal lift-in reveal-delay-4" data-tilt>
+        <article class="project-card reveal lift-in reveal-delay-4" data-tilt data-category="vitrine">
           <div class="project-thumb">
             <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Aperçu abstrait du projet Café Central">
               <defs>
@@ -1317,7 +1369,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal lift-in reveal-delay-5" data-tilt>
+        <article class="project-card reveal lift-in reveal-delay-5" data-tilt data-category="ecommerce">
           <div class="project-thumb">
             <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Aperçu abstrait du projet Nova Fitness">
               <defs>
@@ -1360,6 +1412,10 @@
         des dernières pratiques du secteur tout en gardant un vrai ancrage terrain avec mes clients indépendants.</p>
         <p>Résultat : des sites à jour techniquement, mais toujours pensés d'abord pour répondre
         à un besoin concret et générer des résultats mesurables.</p>
+        <p>Je travaille en direct avec vous, sans intermédiaire ni équipe qui dilue les échanges :
+        vous savez toujours qui fait quoi et où en est votre projet. Pas de jargon inutile non plus —
+        mon rôle est de traduire vos besoins en un site qui fonctionne, pas de vous vendre de la technologie
+        pour la technologie.</p>
 
         <ul class="skills-list" aria-label="Compétences">
           <li class="skill-badge">HTML / CSS / JS</li>
@@ -1645,6 +1701,27 @@
     });
     menu.querySelectorAll('a').forEach(function(link){ link.addEventListener('click', closeMenu); });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+  })();
+
+  /* =========================================================
+     FILTRE DE PORTFOLIO
+  ========================================================= */
+  (function(){
+    var filterButtons = document.querySelectorAll('.filter-btn');
+    var cards = document.querySelectorAll('.project-card');
+    if (!filterButtons.length) return;
+
+    filterButtons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        filterButtons.forEach(function(b){ b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        var filter = btn.getAttribute('data-filter');
+        cards.forEach(function(card){
+          var matches = filter === 'all' || card.getAttribute('data-category') === filter;
+          card.classList.toggle('is-filtered-out', !matches);
+        });
+      });
+    });
   })();
 
   /* =========================================================
