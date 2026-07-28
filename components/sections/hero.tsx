@@ -1,0 +1,156 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Magnetic } from "@/components/magnetic";
+import { siteConfig } from "@/lib/data";
+
+const titleLines = ["Je conçois", "des sites web", "qui convertissent."];
+
+function AnimatedWords({ text, delayStart = 0 }: { text: string; delayStart?: number }) {
+  const words = text.split(" ");
+  return (
+    <span className="inline-block overflow-hidden">
+      {words.map((word, i) => (
+        <span key={i} className="inline-block overflow-hidden mr-[0.28em] align-top">
+          <motion.span
+            className="inline-block"
+            initial={{ y: "110%" }}
+            animate={{ y: 0 }}
+            transition={{
+              duration: 0.9,
+              delay: delayStart + i * 0.07,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {word}
+          </motion.span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
+export function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 60, damping: 20 });
+  const sy = useSpring(my, { stiffness: 60, damping: 20 });
+  const blobX = useTransform(sx, (v) => v * 40);
+  const blobY = useTransform(sy, (v) => v * 40);
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    mx.set((e.clientX - rect.left) / rect.width - 0.5);
+    my.set((e.clientY - rect.top) / rect.height - 0.5);
+  }
+
+  return (
+    <section
+      id="top"
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+    >
+      {/* Grille discrète */}
+      <div
+        className="absolute inset-0 opacity-[0.15]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+          maskImage: "radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 90%)",
+        }}
+      />
+
+      {/* Formes abstraites floues, parallax souris */}
+      <motion.div
+        style={{ x: blobX, y: blobY }}
+        className="pointer-events-none absolute -top-32 left-[8%] w-[36rem] h-[36rem] rounded-full bg-accent-blue/25 blur-[120px]"
+      />
+      <motion.div
+        style={{ x: useTransform(blobX, (v) => v * -0.7), y: useTransform(blobY, (v) => v * -0.7) }}
+        className="pointer-events-none absolute top-[20%] right-[6%] w-[30rem] h-[30rem] rounded-full bg-accent-violet/20 blur-[120px]"
+      />
+      <motion.div
+        style={{ x: useTransform(blobX, (v) => v * 0.5), y: useTransform(blobY, (v) => v * -0.5) }}
+        className="pointer-events-none absolute bottom-[-10%] left-[35%] w-[26rem] h-[26rem] rounded-full bg-accent-cyan/15 blur-[120px]"
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-sm text-white/70 mb-8"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-blue opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-blue" />
+          </span>
+          Disponible pour de nouveaux projets
+        </motion.div>
+
+        <h1 className="font-semibold leading-[0.98] tracking-tight text-[clamp(2.8rem,8vw,6.5rem)]">
+          <div className="block"><AnimatedWords text={titleLines[0]} delayStart={0.15} /></div>
+          <div className="block"><AnimatedWords text={titleLines[1]} delayStart={0.3} /></div>
+          <div className="block text-gradient animated-gradient">
+            <AnimatedWords text={titleLines[2]} delayStart={0.45} />
+          </div>
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.75 }}
+          className="mt-8 max-w-xl text-lg text-muted"
+        >
+          {siteConfig.role}, j&apos;accompagne indépendants et TPE dans la création de
+          sites qui inspirent confiance et transforment vos visiteurs en clients.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.9 }}
+          className="mt-10 flex flex-wrap items-center gap-4"
+        >
+          <Magnetic>
+            <Button size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
+              Discutons de votre projet
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Magnetic>
+          <Magnetic strength={0.2}>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              Voir mes projets
+            </Button>
+          </Magnetic>
+        </motion.div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.4 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
+      >
+        <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ArrowDown className="w-4 h-4" />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
