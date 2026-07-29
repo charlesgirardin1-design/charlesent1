@@ -54,9 +54,7 @@ export function Portfolio() {
             {visible.map((project) => (
               <motion.a
                 key={project.title}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/realisations/${project.slug}`}
                 layout
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}

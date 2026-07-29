@@ -95,39 +95,75 @@ export const services = [
 export type ProjectCategory = "vitrine" | "app";
 
 export const projects: {
+  slug: string;
   title: string;
   category: ProjectCategory;
   categoryLabel: string;
+  sector: string;
   url: string;
   gradient: string;
   image?: string;
   logo?: string;
+  description: string;
+  features: string[];
 }[] = [
   {
+    slug: "daniel-bain",
     title: "Daniel Bain",
     category: "vitrine",
     categoryLabel: "Site vitrine",
+    sector: "Plomberie, couverture & étanchéité",
     url: "https://www.danielbain.fr/",
     gradient: "from-blue-500 via-indigo-500 to-violet-600",
     image: "/projects/danielbain-cover.jpg",
     logo: "/projects/danielbain-logo.png",
+    description:
+      "Daniel Bain est plombier-couvreur indépendant en Île-de-France, spécialisé en plomberie, couverture, étanchéité et travaux à la corde. J'ai conçu pour lui un site vitrine qui présente clairement son activité et ses domaines d'intervention, pour rassurer un client potentiel dès les premières secondes et faciliter la demande de devis.",
+    features: [
+      "Présentation claire des domaines d'intervention",
+      "Mise en avant de photos de chantier réelles",
+      "Formulaire de contact direct",
+      "Design responsive, pensé pour une consultation mobile",
+      "Structure optimisée pour le référencement local",
+    ],
   },
   {
+    slug: "adebat",
     title: "Adebat",
     category: "vitrine",
     categoryLabel: "Site vitrine",
+    sector: "Plomberie, étanchéité & chauffage",
     url: "https://www.adebat.fr/",
     gradient: "from-violet-500 via-purple-500 to-fuchsia-600",
     image: "/projects/adebat-cover.jpg",
     logo: "/projects/adebat-logo.png",
+    description:
+      "ADEBAT est une entreprise spécialisée en plomberie, étanchéité et chauffage en Île-de-France. Le site que j'ai réalisé présente l'équipe et les prestations, avec une identité visuelle reconnaissable, pour installer la confiance dès l'arrivée sur le site et donner une image professionnelle à l'entreprise.",
+    features: [
+      "Présentation de l'équipe et des prestations",
+      "Identité visuelle cohérente (logo, couleurs)",
+      "Galerie de réalisations",
+      "Formulaire de contact",
+      "Design responsive",
+    ],
   },
   {
+    slug: "frigomind",
     title: "Frigomind",
     category: "app",
     categoryLabel: "Application web",
+    sector: "Application anti-gaspillage alimentaire",
     url: "https://frigomind.vercel.app",
     gradient: "from-emerald-500 via-teal-500 to-cyan-600",
     logo: "/projects/frigomind-logo.png",
+    description:
+      "FrigoMind est une application qui permet de photographier le contenu de son frigo pour obtenir automatiquement la liste des ingrédients détectés et des idées de recettes personnalisées, dans une démarche anti-gaspillage : « moins de gaspillage, plus de plaisirs ».",
+    features: [
+      "Détection d'ingrédients à partir d'une photo",
+      "Suggestions de recettes personnalisées",
+      "Identité de marque forte et reconnaissable",
+      "Interface pensée mobile-first",
+    ],
   },
 ];
 
