@@ -80,10 +80,12 @@ export default function MentionsLegales() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Cookies</h2>
+          <h2 className="text-lg font-semibold text-white mb-3">Cookies et mesure d&apos;audience</h2>
           <p>
-            Ce site n&apos;utilise pas de cookies de suivi publicitaire ni d&apos;outils
-            d&apos;analyse tiers nécessitant un consentement préalable.
+            Ce site utilise Vercel Analytics pour mesurer la fréquentation (pages vues,
+            provenance des visites). Cet outil ne dépose aucun cookie et ne collecte aucune
+            donnée personnelle identifiable : les statistiques sont anonymes et agrégées.
+            Aucun cookie de suivi publicitaire n&apos;est utilisé sur ce site.
           </p>
         </section>
       </div>
