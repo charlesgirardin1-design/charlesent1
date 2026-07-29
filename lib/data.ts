@@ -35,6 +35,13 @@ export const services = [
       "Shooting produit, portrait ou événementiel, retouche incluse. De quoi habiller votre site et vos réseaux avec des visuels cohérents plutôt que des photos de banque d'images.",
     price: "À partir de 150€",
   },
+  {
+    number: "04",
+    title: "Suivi & mises à jour",
+    description:
+      "Après la mise en ligne, je reste disponible pour faire évoluer votre site : contenus, corrections, nouvelles fonctionnalités. Formule ponctuelle ou récurrente, ajustée à la fréquence réelle de vos demandes.",
+    price: "Tarif variable selon vos besoins",
+  },
 ];
 
 export type ProjectCategory = "vitrine" | "app";

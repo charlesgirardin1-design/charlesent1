@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, ShoppingCart, Camera } from "lucide-react";
+import { Globe, ShoppingCart, Camera, RefreshCw } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { services } from "@/lib/data";
 
-const icons = [Globe, ShoppingCart, Camera];
+const icons = [Globe, ShoppingCart, Camera, RefreshCw];
 
 export function Services() {
   return (
@@ -14,10 +14,10 @@ export function Services() {
         <SectionHeading
           eyebrow="Services"
           title="Ce que je peux faire pour vous"
-          description="Trois prestations, un seul objectif : un résultat propre, livré dans les temps."
+          description="Quatre prestations, un seul objectif : un résultat propre, livré dans les temps."
         />
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => {
             const Icon = icons[i];
             return (
