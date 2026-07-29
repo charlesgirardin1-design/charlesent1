@@ -62,7 +62,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-32 md:py-40 bg-background-alt overflow-hidden">
+    <section id="contact" className="relative py-32 md:py-40 overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{

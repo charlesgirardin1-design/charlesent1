@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/smooth-scroll";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { AmbientBackground } from "@/components/ambient-background";
 import { siteConfig } from "@/lib/data";
 
 const geistSans = Geist({
@@ -89,7 +90,10 @@ export default function RootLayout({
         <SmoothScroll>
           <ScrollProgress />
           <Navbar />
-          <main>{children}</main>
+          <main className="relative">
+            <AmbientBackground />
+            {children}
+          </main>
           <Footer />
         </SmoothScroll>
       </body>
