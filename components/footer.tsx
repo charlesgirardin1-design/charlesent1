@@ -18,7 +18,7 @@ export function Footer() {
             {siteConfig.shortName}
             <span className="text-accent-blue">.</span>dev
           </a>
-          <nav className="flex flex-wrap gap-6">
+          <nav aria-label="Navigation du pied de page" className="flex flex-wrap gap-6">
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.href}
