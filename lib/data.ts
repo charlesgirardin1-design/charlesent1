@@ -15,7 +15,7 @@ export const navLinks = [
   { label: "Réalisations", href: "/#portfolio" },
   { label: "Processus", href: "/#processus" },
   { label: "À propos", href: "/#apropos" },
-  { label: "Devis", href: "/devis" },
+  { label: "Estimation de devis", href: "/devis" },
   { label: "Contact", href: "/#contact" },
 ];
 
