@@ -6,8 +6,22 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
 import { siteConfig } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 const titleLines = ["Je conçois", "des sites web", "qui convertissent."];
+
+const bubbles = [
+  { left: "6%", size: 8, duration: 13, delay: 0, color: "bg-accent-blue/50" },
+  { left: "14%", size: 5, duration: 10, delay: 3, color: "bg-accent-cyan/50" },
+  { left: "23%", size: 11, duration: 16, delay: 1.2, color: "bg-accent-violet/40" },
+  { left: "35%", size: 6, duration: 11.5, delay: 5, color: "bg-accent-blue/40" },
+  { left: "47%", size: 4, duration: 9, delay: 2.4, color: "bg-accent-cyan/45" },
+  { left: "58%", size: 9, duration: 14.5, delay: 0.6, color: "bg-accent-violet/45" },
+  { left: "68%", size: 6, duration: 12, delay: 4.2, color: "bg-accent-blue/50" },
+  { left: "78%", size: 12, duration: 17, delay: 2, color: "bg-accent-cyan/35" },
+  { left: "88%", size: 7, duration: 13.5, delay: 1.6, color: "bg-accent-violet/40" },
+  { left: "95%", size: 5, duration: 10.5, delay: 3.8, color: "bg-accent-blue/45" },
+];
 
 function AnimatedWords({ text, delayStart = 0 }: { text: string; delayStart?: number }) {
   const words = text.split(" ");
@@ -96,6 +110,29 @@ export function Hero() {
         style={{ x: useTransform(blobX, (v) => v * 0.5), y: useTransform(blobY, (v) => v * -0.5) }}
         className="pointer-events-none absolute bottom-[-10%] left-[35%] w-[26rem] h-[26rem] rounded-full bg-accent-cyan/15 blur-[120px]"
       />
+
+      {/* Bulles qui remontent en continu dans le haut du hero */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[65%] overflow-hidden">
+        {bubbles.map((b, i) => (
+          <motion.span
+            key={i}
+            className={cn("absolute rounded-full", b.color)}
+            style={{ left: b.left, bottom: 0, width: b.size, height: b.size }}
+            animate={{
+              y: [0, -60, -380, -420],
+              x: [0, i % 2 === 0 ? 18 : -18, i % 2 === 0 ? -12 : 12, 0],
+              opacity: [0, 0.8, 0.8, 0],
+            }}
+            transition={{
+              duration: b.duration,
+              delay: b.delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+              times: [0, 0.15, 0.85, 1],
+            }}
+          />
+        ))}
+      </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
         <motion.div
