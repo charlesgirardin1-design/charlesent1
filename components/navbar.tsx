@@ -67,7 +67,7 @@ export function Navbar() {
             <span className="text-accent-blue">.</span>dev
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
               const isActive = linkHash(link.href) !== null && active === linkHash(link.href);
               return (
@@ -124,6 +124,7 @@ export function Navbar() {
               </button>
             </div>
             <motion.nav
+              aria-label="Navigation mobile"
               className="flex flex-col items-center gap-8 mt-12"
               initial="hidden"
               animate="show"
