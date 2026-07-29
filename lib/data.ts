@@ -11,40 +11,83 @@ export const siteConfig = {
 };
 
 export const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Réalisations", href: "#portfolio" },
-  { label: "Processus", href: "#processus" },
-  { label: "À propos", href: "#apropos" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Réalisations", href: "/#portfolio" },
+  { label: "Processus", href: "/#processus" },
+  { label: "À propos", href: "/#apropos" },
+  { label: "Devis", href: "/devis" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const services = [
   {
     number: "01",
+    slug: "sites-vitrines",
     title: "Sites vitrines",
     description:
       "Un site rapide, clair et responsive qui présente votre activité et inspire confiance dès les premières secondes. Structure pensée pour guider le visiteur vers l'action, optimisée pour le référencement local.",
+    longDescription:
+      "Un site vitrine, c'est souvent le premier contact entre votre activité et un client potentiel. Il doit charger vite, s'afficher parfaitement sur mobile et donner confiance en quelques secondes. Je conçois chaque site vitrine autour d'un objectif clair : transformer la visite en appel, en message ou en prise de rendez-vous. Structure épurée, contenus hiérarchisés, référencement local travaillé dès le départ.",
+    includes: [
+      "Design sur mesure, pas de thème générique",
+      "Jusqu'à 6 pages (accueil, services, à propos, contact...)",
+      "Formulaire de contact fonctionnel",
+      "Optimisation SEO de base et vitesse de chargement",
+      "Compatible mobile, tablette et desktop",
+      "Formation à la prise en main incluse",
+    ],
     price: "À partir de 800€",
   },
   {
     number: "02",
+    slug: "e-commerce",
     title: "E-commerce",
     description:
       "Boutique en ligne complète : catalogue produits, paiement sécurisé et tunnel d'achat fluide, du panier jusqu'à la confirmation de commande. Une base solide pour vendre dès le premier jour.",
+    longDescription:
+      "Vendre en ligne demande plus qu'un catalogue : un tunnel d'achat fluide, un paiement sécurisé et une gestion des stocks qui ne vous complique pas la vie. Je construis des boutiques en ligne pensées pour réduire les abandons de panier, avec une expérience d'achat simple sur mobile comme sur desktop, et une interface d'administration que vous maîtrisez rapidement.",
+    includes: [
+      "Catalogue produits avec variantes (taille, couleur...)",
+      "Paiement sécurisé (carte bancaire, autres moyens sur demande)",
+      "Tunnel d'achat optimisé pour limiter les abandons",
+      "Gestion des commandes et des stocks",
+      "Emails transactionnels (confirmation, expédition)",
+      "Formation à la gestion quotidienne de la boutique",
+    ],
     price: "À partir de 1 800€",
   },
   {
     number: "03",
+    slug: "identite-photographie",
     title: "Identité & Photographie",
     description:
       "Shooting produit, portrait ou événementiel, retouche incluse. De quoi habiller votre site et vos réseaux avec des visuels cohérents plutôt que des photos de banque d'images.",
+    longDescription:
+      "Un site bien construit avec des visuels génériques perd en crédibilité. Je propose des shootings photo (produit, portrait professionnel ou événementiel) pensés pour habiller votre site et vos réseaux avec une identité visuelle cohérente, loin des photos de banque d'images que tout le monde utilise. Retouche incluse, livraison dans des formats prêts à l'emploi pour le web.",
+    includes: [
+      "Shooting produit, portrait ou événementiel",
+      "Retouche photo incluse",
+      "Livraison en formats optimisés pour le web",
+      "Conseils de mise en scène et de direction artistique",
+      "Utilisation libre sur site et réseaux sociaux",
+    ],
     price: "À partir de 150€",
   },
   {
     number: "04",
+    slug: "suivi-maintenance",
     title: "Suivi & mises à jour",
     description:
       "Après la mise en ligne, je reste disponible pour faire évoluer votre site : contenus, corrections, nouvelles fonctionnalités. Formule ponctuelle ou récurrente, ajustée à la fréquence réelle de vos demandes.",
+    longDescription:
+      "Un site n'est jamais vraiment terminé : nouveaux contenus, corrections, ajout de fonctionnalités. Je reste disponible après la mise en ligne pour faire évoluer votre site, avec une formule ajustée à la fréquence réelle de vos demandes plutôt qu'un forfait figé qui ne correspond pas à votre usage. Ponctuel ou récurrent, vous ne payez que ce dont vous avez besoin.",
+    includes: [
+      "Corrections et ajustements post-lancement",
+      "Ajout de contenus ou de nouvelles pages",
+      "Petites évolutions fonctionnelles",
+      "Surveillance technique (sécurité, mises à jour)",
+      "Facturation à l'usage, sans engagement figé",
+    ],
     price: "Tarif variable selon vos besoins",
   },
 ];

@@ -14,7 +14,7 @@ export function Footer() {
         className="mx-auto max-w-6xl px-6"
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
-          <a href="#top" className="text-2xl font-semibold tracking-tight">
+          <a href="/" className="text-2xl font-semibold tracking-tight">
             {siteConfig.shortName}
             <span className="text-accent-blue">.</span>dev
           </a>

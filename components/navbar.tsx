@@ -8,10 +8,15 @@ import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
 import { cn } from "@/lib/utils";
 
+function linkHash(href: string) {
+  const hashIndex = href.indexOf("#");
+  return hashIndex === -1 ? null : href.slice(hashIndex);
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("#services");
+  const [active, setActive] = useState<string | null>(null);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -20,7 +25,11 @@ export function Navbar() {
 
   useEffect(() => {
     const sections = navLinks
-      .map((l) => document.querySelector(l.href))
+      .map((l) => {
+        const hashIndex = l.href.indexOf("#");
+        if (hashIndex === -1) return null;
+        return document.querySelector(l.href.slice(hashIndex));
+      })
       .filter(Boolean) as Element[];
 
     const observer = new IntersectionObserver(
@@ -53,36 +62,39 @@ export function Navbar() {
               : "bg-transparent border border-transparent"
           )}
         >
-          <a href="#top" className="font-semibold tracking-tight text-lg">
+          <a href="/" className="font-semibold tracking-tight text-lg">
             {siteConfig.shortName}
             <span className="text-accent-blue">.</span>dev
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "relative text-sm font-medium py-1 transition-colors",
-                  active === link.href ? "text-white" : "text-white/60 hover:text-white"
-                )}
-              >
-                {link.label}
-                {active === link.href && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute left-0 -bottom-0.5 h-px w-full bg-gradient-to-r from-accent-blue to-accent-cyan"
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  />
-                )}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = linkHash(link.href) !== null && active === linkHash(link.href);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "relative text-sm font-medium py-1 transition-colors",
+                    isActive ? "text-white" : "text-white/60 hover:text-white"
+                  )}
+                >
+                  {link.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute left-0 -bottom-0.5 h-px w-full bg-gradient-to-r from-accent-blue to-accent-cyan"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
           <div className="hidden md:block">
             <Magnetic strength={0.25}>
-              <Button size="sm" onClick={() => (window.location.href = "#contact")}>
+              <Button size="sm" onClick={() => (window.location.href = "/#contact")}>
                 Discutons de votre projet
               </Button>
             </Magnetic>
