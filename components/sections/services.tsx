@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, ShoppingCart, Camera, RefreshCw } from "lucide-react";
+import Link from "next/link";
+import { Globe, ShoppingCart, Camera, RefreshCw, ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { services } from "@/lib/data";
 
@@ -49,6 +50,13 @@ export function Services() {
                   <span className="inline-block font-mono text-sm text-white/50 bg-white/5 rounded-full px-3 py-1">
                     {service.price}
                   </span>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent-blue hover:gap-2.5 transition-all"
+                  >
+                    En savoir plus
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </motion.article>
             );
