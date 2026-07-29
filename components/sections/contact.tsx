@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 const infoItems = [
   { icon: Mail, label: "Email", value: siteConfig.email },
-  { icon: MapPin, label: "Zone d'intervention", value: "France entière — full remote" },
+  { icon: MapPin, label: "Zone d'intervention", value: "France entière - full remote" },
   { icon: Clock, label: "Délai de réponse", value: "Sous 48h ouvrées" },
 ];
 
