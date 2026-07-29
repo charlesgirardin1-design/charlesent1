@@ -29,7 +29,7 @@ export function Presentation() {
         <div>
           <SectionHeading
             eyebrow="À propos"
-            title="Un pied dans le terrain, un pied dans la veille techno"
+            title="La technique au service du concret"
           />
           <div className="space-y-5 text-white/70 text-lg leading-relaxed -mt-8">
             <motion.p
@@ -38,10 +38,11 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
-              Développeur web, actuellement en alternance et freelance en parallèle sous
-              le statut de micro-entreprise. Cette double casquette me permet de rester
-              au contact des dernières pratiques du secteur tout en gardant un vrai
-              ancrage terrain avec mes clients indépendants.
+              En alternance et freelance en parallèle sous le statut de
+              micro-entreprise, je navigue entre deux mondes : les pratiques les plus
+              récentes du développement web, et les besoins bien réels d&apos;indépendants
+              et de TPE sur le terrain. Cette double casquette m&apos;oblige à rester
+              exigeant des deux côtés.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -49,8 +50,9 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Résultat : des sites à jour techniquement, mais toujours pensés d&apos;abord
-              pour répondre à un besoin concret et générer des résultats mesurables.
+              Le résultat : des sites techniquement solides, mais construits d&apos;abord
+              pour répondre à un objectif business précis — pas pour cocher des cases
+              sur une liste de technologies à la mode.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -58,8 +60,9 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Je travaille en direct avec vous, sans intermédiaire qui dilue les
-              échanges : vous savez toujours qui fait quoi et où en est votre projet.
+              Vous échangez directement avec la personne qui code votre projet, du
+              premier appel jusqu&apos;à la mise en ligne. Pas de chef de projet
+              intermédiaire, pas de brief qui se perd en route.
             </motion.p>
           </div>
 
