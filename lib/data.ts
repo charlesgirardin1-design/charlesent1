@@ -45,23 +45,26 @@ export const projects: {
   categoryLabel: string;
   url: string;
   gradient: string;
-  monogram: string;
+  image?: string;
+  logo?: string;
 }[] = [
   {
     title: "Daniel Bain",
     category: "vitrine",
     categoryLabel: "Site vitrine",
-    url: "http://danielbain.fr/",
+    url: "https://www.danielbain.fr/",
     gradient: "from-blue-500 via-indigo-500 to-violet-600",
-    monogram: "DB",
+    image: "/projects/danielbain-cover.jpg",
+    logo: "/projects/danielbain-logo.png",
   },
   {
     title: "Adebat",
     category: "vitrine",
     categoryLabel: "Site vitrine",
-    url: "http://adebat.fr/",
+    url: "https://www.adebat.fr/",
     gradient: "from-violet-500 via-purple-500 to-fuchsia-600",
-    monogram: "A",
+    image: "/projects/adebat-cover.jpg",
+    logo: "/projects/adebat-logo.png",
   },
   {
     title: "Frigomind",
@@ -69,7 +72,7 @@ export const projects: {
     categoryLabel: "Application web",
     url: "https://frigomind.vercel.app",
     gradient: "from-emerald-500 via-teal-500 to-cyan-600",
-    monogram: "FM",
+    logo: "/projects/frigomind-logo.png",
   },
 ];
 
