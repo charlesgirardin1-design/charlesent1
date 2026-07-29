@@ -7,11 +7,28 @@ import { SectionHeading } from "@/components/section-heading";
 import { faqs } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <section className="relative py-32 md:py-40">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="mx-auto max-w-3xl px-6">
         <SectionHeading
           eyebrow="FAQ"

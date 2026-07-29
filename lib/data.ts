@@ -1,8 +1,13 @@
 export const siteConfig = {
-  name: "[Ton Nom]",
+  name: "Charles Girardin",
+  shortName: "Charles",
+  initials: "CG",
   role: "Développeur web freelance",
   email: "charles.girardin1@gmail.com",
-  tagline: "Je conçois des sites web qui convertissent.",
+  tagline: "Je conçois des sites web qui vous ressemblent.",
+  description:
+    "Développeur web freelance basé en France, je conçois des sites vitrines, e-commerce et applications sur mesure : rapides, soignés et pensés pour convertir vos visiteurs en clients.",
+  url: "https://charlesent1.vercel.app",
 };
 
 export const navLinks = [

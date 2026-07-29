@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/section-heading";
+import { siteConfig } from "@/lib/data";
 
 export function Presentation() {
   return (
@@ -20,7 +21,7 @@ export function Presentation() {
             className="aspect-square rounded-[2rem] bg-gradient-to-br from-accent-blue/30 via-accent-violet/20 to-accent-cyan/20 p-[2px]"
           >
             <div className="w-full h-full rounded-[calc(2rem-2px)] bg-surface flex items-center justify-center">
-              <span className="font-mono text-6xl font-bold text-white/20">TN</span>
+              <span className="font-mono text-6xl font-bold text-white/20">{siteConfig.initials}</span>
             </div>
           </motion.div>
         </motion.div>

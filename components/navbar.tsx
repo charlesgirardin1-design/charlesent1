@@ -54,7 +54,7 @@ export function Navbar() {
           )}
         >
           <a href="#top" className="font-semibold tracking-tight text-lg">
-            {siteConfig.name}
+            {siteConfig.shortName}
             <span className="text-accent-blue">.</span>dev
           </a>
 

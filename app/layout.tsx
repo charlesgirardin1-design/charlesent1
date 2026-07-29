@@ -18,26 +18,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} — ${siteConfig.role} | Sites premium & sur mesure`,
-  description:
-    "Développeur web freelance, je conçois des sites premium, rapides et pensés pour convertir. Devis gratuit sous 48h.",
-  metadataBase: new URL("https://exemple.fr"),
+  title: {
+    default: `${siteConfig.name} — ${siteConfig.role} | Sites vitrines & e-commerce sur mesure`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: [
+    "développeur web freelance",
+    "création site internet",
+    "site vitrine",
+    "site e-commerce",
+    "développeur web France",
+    "freelance web",
+  ],
+  metadataBase: new URL(siteConfig.url),
+  alternates: { canonical: "/" },
   icons: { icon: "/favicon.svg" },
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
   openGraph: {
     type: "website",
     title: `${siteConfig.name} — ${siteConfig.role}`,
-    description: siteConfig.tagline,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     locale: "fr_FR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — ${siteConfig.role}`,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: `${siteConfig.name} — ${siteConfig.role}`,
-  description:
-    "Développeur web freelance, conception de sites vitrines et applications sur mesure, rapides et pensés pour convertir.",
-  url: "https://exemple.fr/",
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: siteConfig.url,
   email: siteConfig.email,
   areaServed: "FR",
   priceRange: "150€ – 3500€",
