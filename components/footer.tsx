@@ -38,7 +38,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés. — Micro-entreprise.
           </p>
-          <a href="#mentions-legales" className="hover:text-white transition-colors">
+          <a href="/mentions-legales" className="hover:text-white transition-colors">
             Mentions légales
           </a>
         </div>
