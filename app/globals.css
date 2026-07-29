@@ -73,6 +73,18 @@ body {
   animation: gradient-shift 12s ease-in-out infinite;
 }
 
+@keyframes ambient-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, 3%) scale(1.08); }
+  66% { transform: translate(-3%, -4%) scale(0.94); }
+}
+
+.ambient-blob {
+  animation-name: ambient-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

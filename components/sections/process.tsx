@@ -14,7 +14,7 @@ export function Process() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="processus" className="relative py-32 md:py-40 bg-background-alt">
+    <section id="processus" className="relative py-32 md:py-40">
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeading
           eyebrow="Processus"

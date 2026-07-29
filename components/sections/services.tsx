@@ -9,7 +9,7 @@ const icons = [Globe, ShoppingCart, Camera, RefreshCw];
 
 export function Services() {
   return (
-    <section id="services" className="relative py-32 md:py-40 bg-background-alt">
+    <section id="services" className="relative py-32 md:py-40">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Services"

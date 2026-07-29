@@ -9,7 +9,7 @@ export function Testimonials() {
   const loop = [...testimonials, ...testimonials];
 
   return (
-    <section className="relative py-32 md:py-40 bg-background-alt overflow-hidden">
+    <section className="relative py-32 md:py-40 overflow-hidden">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Philosophie" title="Ce qui guide chaque projet" align="center" />
       </div>
