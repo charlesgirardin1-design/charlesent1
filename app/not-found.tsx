@@ -21,9 +21,23 @@ export default function NotFound() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-[clamp(3rem,10vw,7rem)] font-semibold tracking-tight leading-none text-gradient animated-gradient"
+        className="flex text-[clamp(3rem,10vw,7rem)] font-semibold tracking-tight leading-none"
       >
-        404
+        {["4", "0", "4"].map((digit, i) => (
+          <motion.span
+            key={i}
+            className="inline-block text-gradient animated-gradient"
+            animate={{ y: [0, -18, 0], rotate: [0, i % 2 === 0 ? -6 : 6, 0] }}
+            transition={{
+              duration: 2.6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.15,
+            }}
+          >
+            {digit}
+          </motion.span>
+        ))}
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 20 }}
