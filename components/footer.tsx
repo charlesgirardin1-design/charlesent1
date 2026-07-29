@@ -38,9 +38,14 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés. — Micro-entreprise.
           </p>
-          <a href="/mentions-legales" className="hover:text-white transition-colors">
-            Mentions légales
-          </a>
+          <div className="flex gap-6">
+            <a href="/mentions-legales" className="hover:text-white transition-colors">
+              Mentions légales
+            </a>
+            <a href="/cgv" className="hover:text-white transition-colors">
+              CGV
+            </a>
+          </div>
         </div>
       </motion.div>
     </footer>
