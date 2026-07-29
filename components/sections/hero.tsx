@@ -8,7 +8,7 @@ import { Magnetic } from "@/components/magnetic";
 import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
-const titleLines = ["Un site qui vend", "même quand vous", "dormez."];
+const titleLines = ["Des sites web", "qui vous", "ressemblent."];
 
 const bubbles = [
   { left: "6%", top: "15%", size: 10, duration: 15, delay: 0, color: "bg-accent-blue/50" },
