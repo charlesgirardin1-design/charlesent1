@@ -11,16 +11,18 @@ import { cn } from "@/lib/utils";
 const titleLines = ["Je conçois", "des sites web", "qui convertissent."];
 
 const bubbles = [
-  { left: "6%", size: 8, duration: 13, delay: 0, color: "bg-accent-blue/50" },
-  { left: "14%", size: 5, duration: 10, delay: 3, color: "bg-accent-cyan/50" },
-  { left: "23%", size: 11, duration: 16, delay: 1.2, color: "bg-accent-violet/40" },
-  { left: "35%", size: 6, duration: 11.5, delay: 5, color: "bg-accent-blue/40" },
-  { left: "47%", size: 4, duration: 9, delay: 2.4, color: "bg-accent-cyan/45" },
-  { left: "58%", size: 9, duration: 14.5, delay: 0.6, color: "bg-accent-violet/45" },
-  { left: "68%", size: 6, duration: 12, delay: 4.2, color: "bg-accent-blue/50" },
-  { left: "78%", size: 12, duration: 17, delay: 2, color: "bg-accent-cyan/35" },
-  { left: "88%", size: 7, duration: 13.5, delay: 1.6, color: "bg-accent-violet/40" },
-  { left: "95%", size: 5, duration: 10.5, delay: 3.8, color: "bg-accent-blue/45" },
+  { left: "6%", top: "15%", size: 10, duration: 15, delay: 0, color: "bg-accent-blue/50" },
+  { left: "14%", top: "70%", size: 6, duration: 12, delay: 3, color: "bg-accent-cyan/50" },
+  { left: "23%", top: "35%", size: 14, duration: 18, delay: 1.2, color: "bg-accent-violet/40" },
+  { left: "35%", top: "80%", size: 7, duration: 13.5, delay: 5, color: "bg-accent-blue/40" },
+  { left: "47%", top: "10%", size: 5, duration: 11, delay: 2.4, color: "bg-accent-cyan/45" },
+  { left: "58%", top: "55%", size: 12, duration: 16.5, delay: 0.6, color: "bg-accent-violet/45" },
+  { left: "68%", top: "25%", size: 7, duration: 13, delay: 4.2, color: "bg-accent-blue/50" },
+  { left: "78%", top: "68%", size: 16, duration: 19, delay: 2, color: "bg-accent-cyan/35" },
+  { left: "88%", top: "40%", size: 8, duration: 14.5, delay: 1.6, color: "bg-accent-violet/40" },
+  { left: "93%", top: "78%", size: 6, duration: 11.5, delay: 3.8, color: "bg-accent-blue/45" },
+  { left: "3%", top: "50%", size: 9, duration: 15.5, delay: 4.6, color: "bg-accent-cyan/40" },
+  { left: "52%", top: "88%", size: 13, duration: 17.5, delay: 0.9, color: "bg-accent-violet/35" },
 ];
 
 function AnimatedWords({ text, delayStart = 0 }: { text: string; delayStart?: number }) {
@@ -111,24 +113,25 @@ export function Hero() {
         className="pointer-events-none absolute bottom-[-10%] left-[35%] w-[26rem] h-[26rem] rounded-full bg-accent-cyan/15 blur-[120px]"
       />
 
-      {/* Bulles qui remontent en continu dans le haut du hero */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[65%] overflow-hidden">
+      {/* Bulles flottantes, dérive libre + pulsation de taille */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {bubbles.map((b, i) => (
           <motion.span
             key={i}
             className={cn("absolute rounded-full", b.color)}
-            style={{ left: b.left, bottom: 0, width: b.size, height: b.size }}
+            style={{ left: b.left, top: b.top, width: b.size, height: b.size }}
             animate={{
-              y: [0, -60, -380, -420],
-              x: [0, i % 2 === 0 ? 18 : -18, i % 2 === 0 ? -12 : 12, 0],
-              opacity: [0, 0.8, 0.8, 0],
+              x: [0, i % 2 === 0 ? 50 : -50, i % 3 === 0 ? -35 : 35, i % 2 === 0 ? 20 : -20, 0],
+              y: [0, i % 3 === 0 ? -60 : 60, i % 2 === 0 ? 40 : -40, i % 3 === 0 ? -25 : 25, 0],
+              scale: [0.6, 1.4, 0.8, 1.2, 0.6],
+              opacity: [0.25, 0.75, 0.4, 0.7, 0.25],
             }}
             transition={{
               duration: b.duration,
               delay: b.delay,
               repeat: Infinity,
               ease: "easeInOut",
-              times: [0, 0.15, 0.85, 1],
+              times: [0, 0.3, 0.6, 0.8, 1],
             }}
           />
         ))}
