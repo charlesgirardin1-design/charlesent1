@@ -68,12 +68,12 @@ export default function MentionsLegales() {
         <section>
           <h2 className="text-lg font-semibold text-white mb-3">Données personnelles</h2>
           <p>
-            Les informations transmises via le formulaire de contact (nom, email, message) sont
-            utilisées uniquement pour répondre à votre demande et ne sont ni revendues ni
-            partagées avec des tiers. Conformément au RGPD, vous pouvez demander l&apos;accès,
-            la rectification ou la suppression de vos données en écrivant à{" "}
-            <a href={`mailto:${siteConfig.email}`} className="text-accent-blue hover:underline">
-              {siteConfig.email}
+            Les informations transmises via les formulaires du site (contact, estimation de
+            devis) sont utilisées uniquement pour répondre à votre demande et ne sont ni
+            revendues ni partagées à des fins commerciales. Le détail des données collectées et
+            de vos droits est disponible dans la{" "}
+            <a href="/politique-de-confidentialite" className="text-accent-blue hover:underline">
+              politique de confidentialité
             </a>
             .
           </p>

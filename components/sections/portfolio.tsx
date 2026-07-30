@@ -27,13 +27,13 @@ export function Portfolio() {
           description="Une sélection de sites réalisés, filtrables par type de projet."
         />
 
-        <div className="flex flex-wrap gap-2 mb-12">
+        <div className="flex flex-wrap gap-3 mb-12">
           {filters.map((f) => (
             <button
               key={f.value}
               onClick={() => setActive(f.value)}
               className={cn(
-                "relative rounded-full px-5 py-2 text-sm font-semibold transition-colors",
+                "relative rounded-full px-5 py-3 text-sm font-semibold transition-colors",
                 active === f.value ? "text-black" : "text-white/60 hover:text-white border border-surface-border"
               )}
             >
