@@ -26,7 +26,7 @@ export function Stats() {
         <SectionHeading
           eyebrow="En chiffres"
           title="Quelques repères"
-          description="Des engagements clairs, tenus dans chaque projet — pas des éléments de langage."
+          description="Des engagements clairs, tenus dans chaque projet."
           align="center"
         />
 
