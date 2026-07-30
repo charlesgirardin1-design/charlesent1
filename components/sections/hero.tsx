@@ -179,7 +179,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.85 }}
-          className="mt-6 flex flex-wrap gap-x-6 gap-y-2"
+          className="mt-6 flex flex-col gap-y-2"
         >
           {trustPoints.map((point) => (
             <li key={point} className="flex items-center gap-2 text-sm text-white/60">
