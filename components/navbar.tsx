@@ -94,8 +94,8 @@ export function Navbar() {
 
           <div className="hidden md:block">
             <Magnetic strength={0.25}>
-              <Button size="sm" onClick={() => (window.location.href = "/#contact")}>
-                Discutons de votre projet
+              <Button size="sm" onClick={() => (window.location.href = "/devis")}>
+                Estimer mon projet
               </Button>
             </Magnetic>
           </div>

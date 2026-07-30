@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { testimonials } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 export function Testimonials() {
   const loop = [...testimonials, ...testimonials];
@@ -21,7 +22,10 @@ export function Testimonials() {
               key={i}
               whileHover={{ y: -6, borderColor: "rgba(59,130,246,0.4)" }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="w-[380px] flex-shrink-0 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8"
+              className={cn(
+                "w-[380px] flex-shrink-0 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8",
+                i >= testimonials.length && "motion-reduce:hidden"
+              )}
             >
               <motion.div whileHover={{ rotate: -8, scale: 1.1 }} transition={{ duration: 0.3 }}>
                 <Quote className="w-6 h-6 text-accent-blue mb-4" />
