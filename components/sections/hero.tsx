@@ -10,11 +10,7 @@ import { cn } from "@/lib/utils";
 
 const titleLines = ["Je conçois", "des sites web qui", "vous ressemblent."];
 
-const trustPoints = [
-  "Un seul interlocuteur, pas de chef de projet",
-  "Devis clair, sans surprise",
-  "Ajustements inclus après la mise en ligne",
-];
+const trustPoints = ["Un seul interlocuteur, pas de chef de projet"];
 
 const bubbles = [
   { left: "6%", top: "15%", size: 10, duration: 15, delay: 0, color: "bg-accent-blue/50" },
