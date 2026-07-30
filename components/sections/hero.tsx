@@ -2,13 +2,19 @@
 
 import { useEffect, useRef } from "react";
 import { animate, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
 import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const titleLines = ["Je conçois", "des sites web qui", "vous ressemblent."];
+
+const trustPoints = [
+  "Un seul interlocuteur, pas de chef de projet",
+  "Devis clair, sans surprise",
+  "Ajustements inclus après la mise en ligne",
+];
 
 const bubbles = [
   { left: "6%", top: "15%", size: 10, duration: 15, delay: 0, color: "bg-accent-blue/50" },
@@ -169,11 +175,25 @@ export function Hero() {
           sites qui inspirent confiance et transforment vos visiteurs en clients.
         </motion.p>
 
+        <motion.ul
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.85 }}
+          className="mt-6 flex flex-wrap gap-x-6 gap-y-2"
+        >
+          {trustPoints.map((point) => (
+            <li key={point} className="flex items-center gap-2 text-sm text-white/60">
+              <Check className="w-4 h-4 text-accent-blue flex-shrink-0" />
+              {point}
+            </li>
+          ))}
+        </motion.ul>
+
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9 }}
-          className="mt-10 flex flex-wrap items-center gap-4"
+          transition={{ duration: 0.7, delay: 0.95 }}
+          className="mt-8 flex flex-wrap items-center gap-4"
         >
           <Magnetic>
             <Button size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>

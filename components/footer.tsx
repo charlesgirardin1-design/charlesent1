@@ -38,12 +38,15 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés. — Micro-entreprise.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-6">
             <a href="/mentions-legales" className="hover:text-white transition-colors">
               Mentions légales
             </a>
             <a href="/cgv" className="hover:text-white transition-colors">
               CGV
+            </a>
+            <a href="/politique-de-confidentialite" className="hover:text-white transition-colors">
+              Confidentialité
             </a>
           </div>
         </div>
