@@ -40,14 +40,19 @@ export function Stats() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="relative overflow-hidden rounded-2xl border border-surface-border bg-surface p-8 text-center"
+                whileHover={{ y: -6, borderColor: "rgba(59,130,246,0.4)" }}
+                className="relative overflow-hidden rounded-2xl border border-surface-border bg-surface p-8 text-center transition-colors"
               >
                 <div
                   className={`pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full blur-[60px] ${glows[i]}`}
                 />
-                <div className="relative w-11 h-11 mx-auto rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4">
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: -6 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative w-11 h-11 mx-auto rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4"
+                >
                   <Icon className="w-5 h-5 text-accent-blue" />
-                </div>
+                </motion.div>
                 <div className="relative text-4xl font-semibold text-gradient">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
@@ -61,12 +66,17 @@ export function Stats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative overflow-hidden rounded-2xl border border-surface-border bg-surface p-8 text-center"
+            whileHover={{ y: -6, borderColor: "rgba(59,130,246,0.4)" }}
+            className="relative overflow-hidden rounded-2xl border border-surface-border bg-surface p-8 text-center transition-colors"
           >
             <div className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full blur-[60px] bg-accent-cyan/30" />
-            <div className="relative w-11 h-11 mx-auto rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4">
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: -6 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-11 h-11 mx-auto rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4"
+            >
               <Sparkles className="w-5 h-5 text-accent-blue" />
-            </div>
+            </motion.div>
             <div className="relative text-4xl font-semibold text-gradient">Sur mesure</div>
             <p className="relative mt-2 text-white/50">Aucun template, code fait main</p>
           </motion.div>

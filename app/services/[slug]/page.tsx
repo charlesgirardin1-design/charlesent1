@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { services } from "@/lib/data";
 import { ServiceHero } from "@/components/sections/service-hero";
+import { AnimatedFeatureList } from "@/components/animated-feature-list";
 import { Button } from "@/components/ui/button";
 
 export function generateStaticParams() {
@@ -52,16 +53,7 @@ export default async function ServicePage({
 
       <div className="mt-14">
         <h2 className="text-lg font-semibold mb-6">Ce qui est inclus</h2>
-        <ul className="grid sm:grid-cols-2 gap-4">
-          {service.includes.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-white/70">
-              <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-accent-blue/15 border border-accent-blue/30 flex items-center justify-center">
-                <Check className="w-3 h-3 text-accent-blue" />
-              </span>
-              {item}
-            </li>
-          ))}
-        </ul>
+        <AnimatedFeatureList items={service.includes} />
       </div>
 
       <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-4 rounded-2xl border border-surface-border bg-surface p-8">
