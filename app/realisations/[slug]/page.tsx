@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/data";
 import { ProjectHero } from "@/components/sections/project-hero";
+import { AnimatedFeatureList } from "@/components/animated-feature-list";
 import { Button } from "@/components/ui/button";
 
 export function generateStaticParams() {
@@ -61,16 +62,7 @@ export default async function ProjectPage({
 
       <div className="mt-14">
         <h2 className="text-lg font-semibold mb-6">Ce que propose le site</h2>
-        <ul className="grid sm:grid-cols-2 gap-4">
-          {project.features.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-white/70">
-              <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-accent-blue/15 border border-accent-blue/30 flex items-center justify-center">
-                <Check className="w-3 h-3 text-accent-blue" />
-              </span>
-              {item}
-            </li>
-          ))}
-        </ul>
+        <AnimatedFeatureList items={project.features} />
       </div>
 
       <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-4 rounded-2xl border border-surface-border bg-surface p-8">
