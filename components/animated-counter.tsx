@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, useInView, animate } from "framer-motion";
 
 export function AnimatedCounter({
@@ -14,10 +14,24 @@ export function AnimatedCounter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [display, setDisplay] = useState(0);
+  // Always render the real value by default (SSR, no-JS, crawlers). The
+  // count-up is a progressive-enhancement animation only — it must never be
+  // the only place the true number appears.
+  const [display, setDisplay] = useState(value);
+  const skipAnimation = useRef(false);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    // If it's already on screen at mount, don't animate from 0 — that would
+    // flash the correct number down to 0 before counting back up.
+    skipAnimation.current = alreadyVisible;
+  }, []);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || skipAnimation.current) return;
     const controls = animate(0, value, {
       duration,
       ease: [0.22, 1, 0.36, 1],
