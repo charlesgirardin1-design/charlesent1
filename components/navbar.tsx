@@ -63,8 +63,7 @@ export function Navbar() {
           )}
         >
           <a href="/" className="font-semibold tracking-tight text-lg">
-            {siteConfig.shortName}
-            <span className="text-accent-blue">.</span>dev
+            {siteConfig.name}
           </a>
 
           <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-8">

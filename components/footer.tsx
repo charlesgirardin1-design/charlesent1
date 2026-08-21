@@ -15,8 +15,7 @@ export function Footer() {
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
           <a href="/" className="text-2xl font-semibold tracking-tight">
-            {siteConfig.shortName}
-            <span className="text-accent-blue">.</span>dev
+            {siteConfig.name}
           </a>
           <nav aria-label="Navigation du pied de page" className="flex flex-wrap gap-6">
             {navLinks.map((link, i) => (
