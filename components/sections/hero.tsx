@@ -8,7 +8,7 @@ import { Magnetic } from "@/components/magnetic";
 import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
-const titleLines = ["Je conçois", "des sites web qui", "vous ressemblent."];
+const titleLines = ["Nous concevons", "des sites web", "qui convertissent."];
 
 const trustPoints = [
   "Un seul interlocuteur, pas de chef de projet",
@@ -171,7 +171,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.75 }}
           className="mt-8 max-w-xl text-lg text-muted"
         >
-          {siteConfig.role}, j&apos;accompagne indépendants et TPE dans la création de
+          {siteConfig.role}, nous accompagnons indépendants et TPE dans la création de
           sites qui inspirent confiance et transforment vos visiteurs en clients.
         </motion.p>
 
@@ -207,7 +207,7 @@ export function Hero() {
               size="lg"
               onClick={() => document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Voir mes projets
+              Voir nos projets
             </Button>
           </Magnetic>
         </motion.div>

@@ -33,7 +33,7 @@ export function FAQ() {
         <SectionHeading
           eyebrow="FAQ"
           title="Questions fréquentes"
-          description="Ce qu'on me demande le plus souvent avant de se lancer."
+          description="Ce qu'on nous demande le plus souvent avant de se lancer."
         />
 
         <div className="space-y-3">
