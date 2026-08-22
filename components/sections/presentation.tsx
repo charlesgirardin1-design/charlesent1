@@ -16,7 +16,7 @@ export function Presentation() {
         >
           <div className="aspect-square rounded-[2rem] bg-gradient-to-br from-accent-blue/30 via-accent-violet/20 to-accent-cyan/20 p-[2px]">
             <div className="w-full h-full rounded-[calc(2rem-2px)] bg-surface flex items-center justify-center">
-              <span className="font-mono text-6xl font-bold text-white/20">TN</span>
+              <span className="font-mono text-6xl font-bold text-white/20">K</span>
             </div>
           </div>
         </motion.div>
@@ -24,7 +24,7 @@ export function Presentation() {
         <div>
           <SectionHeading
             eyebrow="À propos"
-            title="Un pied dans le terrain, un pied dans la veille techno"
+            title="Une structure resserrée, une exigence d'agence"
           />
           <div className="space-y-5 text-white/70 text-lg leading-relaxed -mt-8">
             <motion.p
@@ -33,10 +33,9 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
-              Développeur web, actuellement en alternance et freelance en parallèle sous
-              le statut de micro-entreprise. Cette double casquette me permet de rester
-              au contact des dernières pratiques du secteur tout en gardant un vrai
-              ancrage terrain avec mes clients indépendants.
+              Kodarium est un studio de développement web indépendant. Notre conviction :
+              un site doit d&apos;abord servir un objectif business précis — être rapide,
+              clair, et pensé pour convertir — avant d&apos;être une vitrine technique.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -44,8 +43,9 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Résultat : des sites à jour techniquement, mais toujours pensés d&apos;abord
-              pour répondre à un besoin concret et générer des résultats mesurables.
+              Nous travaillons en direct avec vous, sans compte client ni intermédiaire
+              qui dilue les échanges : vous savez toujours qui conçoit votre projet et où
+              il en est.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -53,8 +53,9 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Je travaille en direct avec vous, sans intermédiaire qui dilue les
-              échanges : vous savez toujours qui fait quoi et où en est votre projet.
+              Cette structure resserrée nous permet de rester exigeants sur chaque
+              livraison, à jour sur les pratiques du secteur, et disponibles quand vous en
+              avez besoin.
             </motion.p>
           </div>
 

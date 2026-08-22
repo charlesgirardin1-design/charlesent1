@@ -13,7 +13,7 @@ export function Services() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Services"
-          title="Ce que je peux faire pour vous"
+          title="Ce que nous pouvons faire pour vous"
           description="Trois prestations, un seul objectif : un résultat propre, livré dans les temps."
         />
 

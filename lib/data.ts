@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "[Ton Nom]",
-  role: "Développeur web freelance",
-  email: "ton-email@exemple.fr",
-  tagline: "Je conçois des sites web qui convertissent.",
+  name: "Kodarium",
+  role: "Studio de développement web",
+  email: "contact@kodarium.fr",
+  tagline: "Nous concevons des sites web qui convertissent.",
 };
 
 export const navLinks = [
@@ -80,7 +80,7 @@ export const processSteps = [
     number: "02",
     title: "Devis",
     description:
-      "Je vous envoie une proposition détaillée sous 48h : périmètre exact, technologies, délais et tarif clairement posé, sans surprise.",
+      "Nous vous envoyons une proposition détaillée sous 48h : périmètre exact, technologies, délais et tarif clairement posé, sans surprise.",
   },
   {
     number: "03",
@@ -92,7 +92,7 @@ export const processSteps = [
     number: "04",
     title: "Livraison & suivi",
     description:
-      "Mise en ligne, vérifications techniques et courte formation à la prise en main. Je reste disponible pour les ajustements post-lancement.",
+      "Mise en ligne, vérifications techniques et courte formation à la prise en main. Nous restons disponibles pour les ajustements post-lancement.",
   },
 ];
 
@@ -129,7 +129,7 @@ export const faqs = [
   {
     question: "Que se passe-t-il après la mise en ligne ?",
     answer:
-      "Je reste disponible pour les ajustements et questions qui suivent le lancement. Des formules de maintenance (mises à jour, sauvegardes, petites modifications) peuvent aussi être mises en place si besoin.",
+      "Nous restons disponibles pour les ajustements et questions qui suivent le lancement. Des formules de maintenance (mises à jour, sauvegardes, petites modifications) peuvent aussi être mises en place si besoin.",
   },
   {
     question: "Le référencement (SEO) est-il inclus ?",

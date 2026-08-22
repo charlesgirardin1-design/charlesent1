@@ -2,9 +2,9 @@ import { LinkedinIcon, GithubIcon, InstagramIcon } from "@/components/social-ico
 import { siteConfig, navLinks } from "@/lib/data";
 
 const socials = [
-  { icon: LinkedinIcon, href: "https://linkedin.com/in/ton-profil", label: "LinkedIn" },
-  { icon: GithubIcon, href: "https://github.com/ton-profil", label: "GitHub" },
-  { icon: InstagramIcon, href: "https://instagram.com/ton-profil", label: "Instagram" },
+  { icon: LinkedinIcon, href: "https://linkedin.com/company/kodarium", label: "LinkedIn" },
+  { icon: GithubIcon, href: "https://github.com/kodarium", label: "GitHub" },
+  { icon: InstagramIcon, href: "https://instagram.com/kodarium", label: "Instagram" },
 ];
 
 export function Footer() {
@@ -40,7 +40,7 @@ export function Footer() {
         </div>
         <div className="pt-8 border-t border-surface-border flex flex-col sm:flex-row justify-between gap-3 text-sm text-white/40">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés. — Micro-entreprise.
+            © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés. — Studio indépendant, micro-entreprise.
           </p>
           <a href="#mentions-legales" className="hover:text-white transition-colors">
             Mentions légales

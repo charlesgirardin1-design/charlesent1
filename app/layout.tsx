@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: `${siteConfig.name} — ${siteConfig.role} | Sites premium & sur mesure`,
   description:
-    "Développeur web freelance, je conçois des sites premium, rapides et pensés pour convertir. Devis gratuit sous 48h.",
-  metadataBase: new URL("https://exemple.fr"),
+    "Studio de développement web, nous concevons des sites premium, rapides et pensés pour convertir. Devis gratuit sous 48h.",
+  metadataBase: new URL("https://kodarium.fr"),
   icons: { icon: "/favicon.svg" },
   openGraph: {
     type: "website",
@@ -36,12 +36,11 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: `${siteConfig.name} — ${siteConfig.role}`,
   description:
-    "Développeur web freelance, conception de sites vitrines et applications sur mesure, rapides et pensés pour convertir.",
-  url: "https://exemple.fr/",
+    "Studio de développement web indépendant, conception de sites vitrines et applications sur mesure, rapides et pensés pour convertir.",
+  url: "https://kodarium.fr/",
   email: siteConfig.email,
   areaServed: "FR",
   priceRange: "150€ – 3500€",
-  founder: { "@type": "Person", name: siteConfig.name, jobTitle: siteConfig.role },
 };
 
 export default function RootLayout({
