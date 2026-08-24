@@ -1,0 +1,29 @@
+"use client";
+
+import dynamic from "next/dynamic";
+
+const ScrollTerrain = dynamic(
+  () => import("@/components/scroll-terrain").then((m) => m.ScrollTerrain),
+  { ssr: false }
+);
+
+export function DevisHero() {
+  return (
+    <div className="relative overflow-hidden bg-background">
+      <ScrollTerrain className="absolute inset-0 z-0 bg-background" color="#8b5cf6" />
+
+      <div className="relative z-10 mx-auto max-w-2xl px-6 pt-32 pb-16 md:pt-40 md:pb-20">
+        <p className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-accent-violet mb-4">
+          Estimation de devis
+        </p>
+        <h1 className="text-[clamp(1.8rem,4vw,2.75rem)] font-semibold tracking-tight mb-4">
+          Estimez votre projet
+        </h1>
+        <p className="text-white/60 text-lg">
+          Quatre étapes rapides pour une première estimation. Le tarif définitif sera confirmé
+          dans un devis détaillé, sans engagement de votre part.
+        </p>
+      </div>
+    </div>
+  );
+}

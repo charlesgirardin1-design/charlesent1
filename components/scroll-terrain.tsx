@@ -14,7 +14,13 @@ const DEPTH = 260;
 const SEGMENTS_X = 70;
 const SEGMENTS_Z = 110;
 
-function Terrain({ scrollBoost }: { scrollBoost: React.MutableRefObject<number> }) {
+function Terrain({
+  scrollBoost,
+  color,
+}: {
+  scrollBoost: React.MutableRefObject<number>;
+  color: string;
+}) {
   const noise2D = useMemo(() => createNoise2D(), []);
   const offsetZ = useRef(0);
 
@@ -50,7 +56,7 @@ function Terrain({ scrollBoost }: { scrollBoost: React.MutableRefObject<number> 
 
   return (
     <mesh geometry={geometry} position={[0, -3.5, -20]}>
-      <meshBasicMaterial color="#4f7dff" wireframe transparent opacity={0.5} />
+      <meshBasicMaterial color={color} wireframe transparent opacity={0.5} />
     </mesh>
   );
 }
@@ -77,7 +83,13 @@ function CameraRig() {
   return null;
 }
 
-export function ScrollTerrain({ className }: { className?: string }) {
+export function ScrollTerrain({
+  className,
+  color = "#4f7dff",
+}: {
+  className?: string;
+  color?: string;
+}) {
   const scrollBoost = useRef(0);
   const lastScrollY = useRef(0);
 
@@ -101,7 +113,7 @@ export function ScrollTerrain({ className }: { className?: string }) {
       >
         <PerspectiveCamera makeDefault position={[0, 5, 12]} fov={55} near={0.1} far={160} />
         <fog attach="fog" args={["#050505", 18, 75]} />
-        <Terrain scrollBoost={scrollBoost} />
+        <Terrain scrollBoost={scrollBoost} color={color} />
         <CameraRig />
       </Canvas>
     </div>
