@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { AnimatedChars } from "@/components/animated-chars";
 import { cn } from "@/lib/utils";
 
 export function SectionHeading({
@@ -34,15 +35,9 @@ export function SectionHeading({
         <span className="h-px w-5 bg-accent-blue" />
         {eyebrow}
       </motion.span>
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-[clamp(1.8rem,4vw,2.75rem)] font-semibold tracking-tight"
-      >
-        {title}
-      </motion.h2>
+      <h2 className="text-[clamp(1.8rem,4vw,2.75rem)] font-semibold tracking-tight">
+        <AnimatedChars text={title} />
+      </h2>
       {description && (
         <motion.p
           initial={{ opacity: 0, y: 20 }}

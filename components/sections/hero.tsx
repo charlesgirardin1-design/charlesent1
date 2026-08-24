@@ -33,22 +33,30 @@ const bubbles = [
 
 function AnimatedWords({ text, delayStart = 0 }: { text: string; delayStart?: number }) {
   const words = text.split(" ");
+  let charIndex = 0;
   return (
     <span className="inline-block overflow-hidden">
-      {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden mr-[0.28em] align-top">
-          <motion.span
-            className="inline-block"
-            initial={{ y: "110%" }}
-            animate={{ y: 0 }}
-            transition={{
-              duration: 0.9,
-              delay: delayStart + i * 0.07,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            {word}
-          </motion.span>
+      {words.map((word, wi) => (
+        <span key={wi} className="inline-block mr-[0.28em] align-top">
+          {word.split("").map((ch, ci) => {
+            const idx = charIndex++;
+            return (
+              <span key={ci} className="inline-block overflow-hidden align-top">
+                <motion.span
+                  className="inline-block"
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: delayStart + idx * 0.025,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  {ch}
+                </motion.span>
+              </span>
+            );
+          })}
         </span>
       ))}
     </span>

@@ -7,6 +7,7 @@ import { ScrollProgress } from "@/components/scroll-progress";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { AmbientBackground } from "@/components/ambient-background";
+import { Preloader } from "@/components/preloader";
 import { siteConfig } from "@/lib/data";
 
 const geistSans = Geist({
@@ -87,6 +88,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <div className="noise-overlay" aria-hidden="true" />
+        <Preloader />
         <SmoothScroll>
           <ScrollProgress />
           <Navbar />
