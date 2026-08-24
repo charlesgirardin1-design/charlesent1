@@ -1,19 +1,14 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, MapPin, Clock, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
+import { GlyphGrid } from "@/components/glyph-grid";
 import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
-
-const ScrollTerrain = dynamic(
-  () => import("@/components/scroll-terrain").then((m) => m.ScrollTerrain),
-  { ssr: false }
-);
 
 const infoItems = [
   { icon: Mail, label: "Email", value: siteConfig.email },
@@ -69,7 +64,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative py-32 md:py-40 overflow-hidden bg-background">
-      <ScrollTerrain className="absolute inset-0 z-0 bg-background opacity-70" color="#22d3ee" />
+      <GlyphGrid className="absolute inset-0 z-0 rounded-none border-0 opacity-80" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <SectionHeading
