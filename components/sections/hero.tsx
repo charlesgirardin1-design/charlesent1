@@ -63,6 +63,92 @@ function AnimatedWords({ text, delayStart = 0 }: { text: string; delayStart?: nu
   );
 }
 
+const blobMorph = {
+  borderRadius: [
+    "60% 40% 30% 70% / 60% 30% 70% 40%",
+    "30% 60% 70% 40% / 50% 60% 30% 60%",
+    "50% 50% 40% 60% / 40% 50% 60% 50%",
+    "60% 40% 30% 70% / 60% 30% 70% 40%",
+  ],
+};
+
+// Vitrine glassmorphism du hero : blobs fluides qui se déforment en continu
+// (bordures organiques animées), visibles au travers de panneaux en verre
+// dépoli (backdrop-blur) qui flottent doucement au premier plan.
+function GlassShowcase() {
+  return (
+    <div className="relative hidden lg:block h-[440px]" aria-hidden="true">
+      <motion.div
+        className="absolute -top-8 -left-6 w-72 h-72 bg-accent-blue/45 blur-3xl"
+        animate={{ ...blobMorph, scale: [1, 1.12, 0.96, 1] }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-4 right-2 w-64 h-64 bg-accent-violet/40 blur-3xl"
+        animate={{ ...blobMorph, scale: [1, 0.94, 1.1, 1] }}
+        transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+      />
+      <motion.div
+        className="absolute top-1/3 right-1/4 w-40 h-40 bg-accent-cyan/35 blur-3xl"
+        animate={{ ...blobMorph, scale: [1, 1.15, 1] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+      />
+
+      <motion.div
+        initial={{ opacity: 0, y: 32, scale: 0.96 }}
+        animate={{ opacity: 1, y: [0, -12, 0], scale: 1 }}
+        transition={{
+          opacity: { duration: 0.9, delay: 0.55, ease: [0.22, 1, 0.36, 1] },
+          scale: { duration: 0.9, delay: 0.55, ease: [0.22, 1, 0.36, 1] },
+          y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.4 },
+        }}
+        className="absolute inset-x-6 top-4 rounded-3xl border border-white/15 bg-white/[0.06] backdrop-blur-2xl shadow-2xl shadow-accent-blue/10 p-6"
+      >
+        <div className="flex items-center gap-1.5 mb-5">
+          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+        </div>
+        <div className="space-y-3">
+          <div className="h-3 w-3/4 rounded-full bg-white/15" />
+          <div className="h-3 w-1/2 rounded-full bg-white/10" />
+          <div className="h-24 rounded-xl bg-gradient-to-br from-accent-blue/30 via-accent-violet/20 to-accent-cyan/20 border border-white/10" />
+          <div className="h-3 w-2/3 rounded-full bg-white/10" />
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: [0, -16, 0] }}
+        transition={{
+          opacity: { duration: 0.8, delay: 1.1 },
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.9 },
+        }}
+        className="absolute -bottom-4 -left-10 w-48 rounded-2xl border border-white/15 bg-white/[0.08] backdrop-blur-xl shadow-xl shadow-black/20 p-4"
+      >
+        <p className="text-xs text-white/50 mb-1">Taux de conversion</p>
+        <p className="text-2xl font-semibold text-gradient">+38%</p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: [0, 14, 0] }}
+        transition={{
+          opacity: { duration: 0.8, delay: 1.3 },
+          y: { duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2.2 },
+        }}
+        className="absolute -top-2 -right-6 flex items-center gap-2 rounded-2xl border border-white/15 bg-white/[0.08] backdrop-blur-xl shadow-xl shadow-black/20 px-4 py-3"
+      >
+        <span className="relative flex h-2 w-2 flex-shrink-0">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan opacity-75" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
+        </span>
+        <span className="text-xs text-white/70">Site en ligne</span>
+      </motion.div>
+    </div>
+  );
+}
+
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const mx = useMotionValue(0);
@@ -151,74 +237,78 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-sm text-white/70 mb-8"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-blue opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-blue" />
-          </span>
-          Disponible pour de nouveaux projets
-        </motion.div>
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] backdrop-blur-md px-4 py-1.5 text-sm text-white/70 mb-8 shadow-lg shadow-black/20"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-blue opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-blue" />
+            </span>
+            Disponible pour de nouveaux projets
+          </motion.div>
 
-        <h1 className="font-semibold leading-[0.98] tracking-tight text-[clamp(2.8rem,8vw,6.5rem)]">
-          <div className="block"><AnimatedWords text={titleLines[0]} delayStart={0.15} /></div>
-          <div className="block"><AnimatedWords text={titleLines[1]} delayStart={0.3} /></div>
-          <div className="block text-gradient animated-gradient">
-            <AnimatedWords text={titleLines[2]} delayStart={0.45} />
-          </div>
-        </h1>
+          <h1 className="font-semibold leading-[0.98] tracking-tight text-[clamp(2.8rem,8vw,6.5rem)]">
+            <div className="block"><AnimatedWords text={titleLines[0]} delayStart={0.15} /></div>
+            <div className="block"><AnimatedWords text={titleLines[1]} delayStart={0.3} /></div>
+            <div className="block text-gradient animated-gradient">
+              <AnimatedWords text={titleLines[2]} delayStart={0.45} />
+            </div>
+          </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.75 }}
-          className="mt-8 max-w-xl text-lg text-muted"
-        >
-          {siteConfig.role}, nous accompagnons indépendants et TPE dans la création de
-          sites qui inspirent confiance et transforment vos visiteurs en clients.
-        </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.75 }}
+            className="mt-8 max-w-xl text-lg text-muted"
+          >
+            {siteConfig.role}, nous accompagnons indépendants et TPE dans la création de
+            sites qui inspirent confiance et transforment vos visiteurs en clients.
+          </motion.p>
 
-        <motion.ul
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.85 }}
-          className="mt-6 flex flex-col gap-y-2"
-        >
-          {trustPoints.map((point) => (
-            <li key={point} className="flex items-center gap-2 text-sm text-white/60">
-              <Check className="w-4 h-4 text-accent-blue flex-shrink-0" />
-              {point}
-            </li>
-          ))}
-        </motion.ul>
+          <motion.ul
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.85 }}
+            className="mt-6 flex flex-col gap-y-2 w-fit rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md px-5 py-4 shadow-lg shadow-black/10"
+          >
+            {trustPoints.map((point) => (
+              <li key={point} className="flex items-center gap-2 text-sm text-white/60">
+                <Check className="w-4 h-4 text-accent-blue flex-shrink-0" />
+                {point}
+              </li>
+            ))}
+          </motion.ul>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.95 }}
-          className="mt-8 flex flex-wrap items-center gap-4"
-        >
-          <Magnetic>
-            <Button size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
-              Discutons de votre projet
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Magnetic>
-          <Magnetic strength={0.2}>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              Voir nos projets
-            </Button>
-          </Magnetic>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.95 }}
+            className="mt-8 flex flex-wrap items-center gap-4"
+          >
+            <Magnetic>
+              <Button size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
+                Discutons de votre projet
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                Voir nos projets
+              </Button>
+            </Magnetic>
+          </motion.div>
+        </div>
+
+        <GlassShowcase />
       </div>
 
       <motion.div
