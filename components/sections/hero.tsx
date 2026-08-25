@@ -165,10 +165,10 @@ export function Hero() {
             Disponible pour de nouveaux projets
           </motion.div>
 
-          <h1 className="font-semibold leading-[0.98] tracking-tight text-[clamp(2.1rem,8vw,6.5rem)]">
-            <div className="block"><AnimatedWords text={titleLines[0]} delayStart={0.15} /></div>
-            <div className="block"><AnimatedWords text={titleLines[1]} delayStart={0.3} /></div>
-            <div className="block text-gradient animated-gradient">
+          <h1 className="font-semibold leading-[0.98] tracking-tight text-[clamp(1.7rem,7.5vw,6.5rem)]">
+            <div className="block whitespace-nowrap"><AnimatedWords text={titleLines[0]} delayStart={0.15} /></div>
+            <div className="block whitespace-nowrap"><AnimatedWords text={titleLines[1]} delayStart={0.3} /></div>
+            <div className="block whitespace-nowrap text-gradient animated-gradient">
               <AnimatedWords text={titleLines[2]} delayStart={0.45} />
             </div>
           </h1>
