@@ -1,11 +1,11 @@
 "use client";
 
-import { GlyphGrid } from "@/components/glyph-grid";
+import { KodariumGlyphGrid } from "@/components/kodarium-glyph-grid";
 
 export function DevisHero() {
   return (
     <div className="relative overflow-hidden bg-background">
-      <GlyphGrid className="absolute inset-0 z-0 rounded-none border-0" />
+      <KodariumGlyphGrid className="absolute inset-0 z-0 rounded-none border-0" />
 
       <div className="relative z-10 mx-auto max-w-2xl px-6 pt-32 pb-16 md:pt-40 md:pb-20">
         <p className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-accent-violet mb-4">

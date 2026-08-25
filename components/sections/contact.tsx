@@ -6,7 +6,7 @@ import { Mail, MapPin, Clock, Loader2, CheckCircle2, AlertCircle } from "lucide-
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
-import { GlyphGrid } from "@/components/glyph-grid";
+import { KodariumGlyphGrid } from "@/components/kodarium-glyph-grid";
 import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -64,7 +64,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative py-32 md:py-40 overflow-hidden bg-background">
-      <GlyphGrid className="absolute inset-0 z-0 rounded-none border-0 opacity-80" />
+      <KodariumGlyphGrid className="absolute inset-0 z-0 rounded-none border-0 opacity-80" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <SectionHeading
