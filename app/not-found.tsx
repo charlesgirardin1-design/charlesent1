@@ -21,7 +21,7 @@ export default function NotFound() {
         initial={{ opacity: 0, y: 24, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full max-w-xs rounded-3xl border border-white/15 bg-white/[0.04] backdrop-blur-xl shadow-2xl shadow-accent-blue/10 p-3"
+        className="w-full max-w-xl rounded-3xl border border-white/15 bg-white/[0.04] backdrop-blur-xl shadow-2xl shadow-accent-blue/10 p-3"
       >
         <video
           src="/404-video.mp4"
@@ -29,7 +29,7 @@ export default function NotFound() {
           loop
           muted
           playsInline
-          className="w-full max-h-[45vh] rounded-2xl object-contain"
+          className="w-full max-h-[70vh] rounded-2xl object-contain"
         />
       </motion.div>
 
