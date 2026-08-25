@@ -37,9 +37,16 @@ export function Navbar() {
               : "bg-transparent border border-transparent"
           )}
         >
-          <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-lg">
-            <Image src="/logo-icon.png" alt="" width={28} height={28} className="h-7 w-7" priority unoptimized />
-            {siteConfig.name}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo-full-dark.png"
+              alt={siteConfig.name}
+              width={395}
+              height={281}
+              className="h-9 w-auto"
+              priority
+              unoptimized
+            />
           </Link>
 
           <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-8">

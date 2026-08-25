@@ -15,9 +15,15 @@ export function Footer() {
         className="mx-auto max-w-6xl px-6"
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
-          <a href="/" className="flex items-center gap-2.5 text-2xl font-semibold tracking-tight">
-            <Image src="/logo-icon.png" alt="" width={32} height={32} className="h-8 w-8" unoptimized />
-            {siteConfig.name}
+          <a href="/" className="flex items-center">
+            <Image
+              src="/logo-full-dark.png"
+              alt={siteConfig.name}
+              width={395}
+              height={281}
+              className="h-12 w-auto"
+              unoptimized
+            />
           </a>
           <nav aria-label="Navigation du pied de page" className="flex flex-wrap gap-6">
             {navLinks.map((link, i) => (
