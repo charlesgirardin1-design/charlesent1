@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/section-heading";
 import { siteConfig } from "@/lib/data";
@@ -20,8 +21,14 @@ export function Presentation() {
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="aspect-square rounded-[2rem] bg-gradient-to-br from-accent-blue/30 via-accent-violet/20 to-accent-cyan/20 p-[2px]"
           >
-            <div className="w-full h-full rounded-[calc(2rem-2px)] bg-surface flex items-center justify-center">
-              <span className="font-mono text-6xl font-bold text-white/20">{siteConfig.initials}</span>
+            <div className="w-full h-full rounded-[calc(2rem-2px)] bg-white flex items-center justify-center p-8">
+              <Image
+                src="/logo-full.png"
+                alt={siteConfig.name}
+                width={395}
+                height={281}
+                className="w-full h-auto"
+              />
             </div>
           </motion.div>
         </motion.div>
