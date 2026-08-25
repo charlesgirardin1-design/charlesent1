@@ -23,7 +23,7 @@ export default function CGV() {
           <p>
             Les présentes conditions générales de vente régissent les prestations de
             développement web, de conception de sites internet et de photographie proposées
-            par {siteConfig.name} ({siteConfig.role}, statut entrepreneur individuel /
+            par {siteConfig.name} (développeur web freelance, statut entrepreneur individuel /
             micro-entreprise), à destination de clients professionnels ou particuliers. Toute
             commande implique l&apos;acceptation sans réserve des présentes conditions.
           </p>

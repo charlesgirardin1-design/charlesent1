@@ -38,9 +38,10 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
-              Kodarium est un studio de développement web indépendant. Notre conviction :
-              un site doit d&apos;abord servir un objectif business précis — être rapide,
-              clair, et pensé pour convertir — avant d&apos;être une vitrine technique.
+              Kodarium est le studio d&apos;un développeur web freelance indépendant. Notre
+              conviction : un site doit d&apos;abord servir un objectif business précis —
+              être rapide, clair, et pensé pour convertir — avant d&apos;être une vitrine
+              technique.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

@@ -37,7 +37,7 @@ export function Footer() {
         </div>
         <div className="pt-8 border-t border-surface-border flex flex-col sm:flex-row justify-between gap-3 text-sm text-white/40">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés. — Studio indépendant, micro-entreprise.
+            © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés. — Développeur web freelance, micro-entreprise.
           </p>
           <div className="flex flex-wrap gap-6">
             <a href="/mentions-legales" className="hover:text-white transition-colors">

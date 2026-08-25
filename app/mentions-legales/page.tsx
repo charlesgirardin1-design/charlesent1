@@ -23,7 +23,7 @@ export default function MentionsLegales() {
           <p>
             {siteConfig.name} — {siteConfig.role}
             <br />
-            Statut : entrepreneur individuel (micro-entreprise)
+            Statut : développeur web freelance, entrepreneur individuel (micro-entreprise)
             <br />
             Email : {siteConfig.email}
             <br />
