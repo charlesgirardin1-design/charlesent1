@@ -1,12 +1,25 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
 
 export default function NotFound() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  function toggleSound() {
+    const video = videoRef.current;
+    if (!video) return;
+    const next = !muted;
+    video.muted = next;
+    if (!next) video.play().catch(() => {});
+    setMuted(next);
+  }
+
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-6 py-32">
       <motion.p
@@ -21,9 +34,10 @@ export default function NotFound() {
         initial={{ opacity: 0, y: 24, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full max-w-xl rounded-3xl border border-white/15 bg-white/[0.04] backdrop-blur-xl shadow-2xl shadow-accent-blue/10 p-3"
+        className="relative w-full max-w-xl rounded-3xl border border-white/15 bg-white/[0.04] backdrop-blur-xl shadow-2xl shadow-accent-blue/10 p-3"
       >
         <video
+          ref={videoRef}
           src="/404-video.mp4"
           autoPlay
           loop
@@ -31,6 +45,14 @@ export default function NotFound() {
           playsInline
           className="w-full max-h-[70vh] rounded-2xl object-contain"
         />
+        <button
+          type="button"
+          onClick={toggleSound}
+          aria-label={muted ? "Activer le son" : "Couper le son"}
+          className="absolute bottom-6 right-6 flex items-center justify-center w-10 h-10 rounded-full border border-white/15 bg-black/50 backdrop-blur-md text-white/80 hover:text-white hover:border-white/30 transition-colors"
+        >
+          {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+        </button>
       </motion.div>
 
       <motion.h1
