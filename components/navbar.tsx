@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
+import { LogoMark } from "@/components/logo-mark";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -36,7 +37,8 @@ export function Navbar() {
               : "bg-transparent border border-transparent"
           )}
         >
-          <Link href="/" className="font-semibold tracking-tight text-lg">
+          <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-lg">
+            <LogoMark className="h-7 w-7" />
             {siteConfig.name}
           </Link>
 
