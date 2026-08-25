@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { siteConfig, navLinks } from "@/lib/data";
+import { OPEN_SETTINGS_EVENT } from "@/lib/consent";
 
 export function Footer() {
   return (
@@ -58,6 +59,13 @@ export function Footer() {
             <a href="/politique-de-cookies" className="hover:text-white transition-colors">
               Cookies
             </a>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent(OPEN_SETTINGS_EVENT))}
+              className="hover:text-white transition-colors"
+            >
+              Gérer les cookies
+            </button>
           </div>
         </div>
       </motion.div>

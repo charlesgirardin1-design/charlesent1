@@ -8,6 +8,8 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { AmbientBackground } from "@/components/ambient-background";
 import { Preloader } from "@/components/preloader";
+import { CookieConsent } from "@/components/cookie-consent";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { siteConfig } from "@/lib/data";
 
 const geistSans = Geist({
@@ -98,6 +100,8 @@ export default function RootLayout({
           </main>
           <Footer />
         </SmoothScroll>
+        <CookieConsent />
+        <GoogleAnalytics />
         <Analytics />
       </body>
     </html>

@@ -84,6 +84,15 @@ export default function PolitiqueConfidentialite() {
             agrégée (pages vues, provenance des visites), sans cookie ni identifiant permettant
             de vous reconnaître individuellement.
           </p>
+          <p className="mt-3">
+            Avec votre consentement, ce site utilise également Google Analytics, qui dépose des
+            cookies de mesure d&apos;audience. Le détail de ces cookies et la gestion de votre
+            consentement sont disponibles dans la{" "}
+            <a href="/politique-de-cookies" className="text-accent-blue hover:underline">
+              politique de cookies
+            </a>
+            .
+          </p>
         </section>
 
         <section>

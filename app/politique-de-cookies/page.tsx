@@ -21,21 +21,42 @@ export default function PolitiqueCookies() {
         <section>
           <h2 className="text-lg font-semibold text-white mb-3">En résumé</h2>
           <p>
-            Ce site n&apos;utilise <strong className="text-white">aucun cookie</strong>, ni de
-            suivi publicitaire, ni de traceur nécessitant votre consentement au sens de la
-            réglementation applicable (RGPD, directive ePrivacy). Aucun bandeau de consentement
-            n&apos;est donc affiché : il n&apos;y a rien à consentir.
+            Ce site dépose un cookie de mesure d&apos;audience (Google Analytics) uniquement
+            après avoir obtenu votre consentement via le bandeau affiché lors de votre première
+            visite. Vous pouvez accepter ou refuser ce cookie, et changer d&apos;avis à tout
+            moment via le lien{" "}
+            <strong className="text-white">« Gérer les cookies »</strong> en bas de page. Sans
+            votre accord, aucun cookie de ce type n&apos;est déposé.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Mesure d&apos;audience</h2>
+          <h2 className="text-lg font-semibold text-white mb-3">Cookies de mesure d&apos;audience</h2>
           <p>
-            Ce site utilise Vercel Analytics pour mesurer la fréquentation (pages vues, provenance
-            des visites, appareil utilisé). Cet outil fonctionne sans cookie et sans identifiant
-            permettant de vous reconnaître individuellement d&apos;une visite à l&apos;autre : les
-            statistiques produites sont anonymes et agrégées. Étant exempté de consentement selon
-            les critères de la CNIL, il ne nécessite pas de bandeau cookies.
+            Avec votre consentement, ce site utilise Google Analytics pour mesurer la
+            fréquentation (pages vues, provenance des visites, appareil utilisé). Ce service
+            dépose des cookies (notamment <code className="text-white/90">_ga</code> et{" "}
+            <code className="text-white/90">_ga_*</code>) d&apos;une durée de conservation
+            maximale de 13 mois, conformément aux recommandations de la CNIL. Les données
+            collectées sont traitées par Google Ireland Limited et peuvent être transférées hors
+            de l&apos;Union européenne dans le cadre des garanties prévues par Google.
+          </p>
+          <p className="mt-3">
+            Ce site utilise également Vercel Analytics, qui fonctionne sans cookie et sans
+            identifiant permettant de vous reconnaître individuellement d&apos;une visite à
+            l&apos;autre : les statistiques produites sont anonymes et agrégées. Étant exempté de
+            consentement selon les critères de la CNIL, il ne nécessite pas de bandeau cookies.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-white mb-3">Gérer votre consentement</h2>
+          <p>
+            Lors de votre première visite, un bandeau vous permet d&apos;accepter ou de refuser
+            le dépôt du cookie Google Analytics. Votre choix est mémorisé dans votre navigateur.
+            Vous pouvez le modifier à tout moment en cliquant sur{" "}
+            <strong className="text-white">« Gérer les cookies »</strong> dans le pied de page de
+            n&apos;importe quelle page du site, ce qui réaffiche le bandeau de consentement.
           </p>
         </section>
 
@@ -52,20 +73,11 @@ export default function PolitiqueCookies() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Aucun cookie tiers</h2>
+          <h2 className="text-lg font-semibold text-white mb-3">Aucun cookie publicitaire</h2>
           <p>
-            Aucun cookie publicitaire, de réseau social ou de reciblage n&apos;est déposé sur ce
+            Aucun cookie de reciblage publicitaire ou de réseau social n&apos;est déposé sur ce
             site. Les formulaires (contact, estimation de devis) envoient vos données directement
             par email via Resend, sans dépôt de cookie côté navigateur.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Évolution de cette politique</h2>
-          <p>
-            Si ce site venait à utiliser un jour des cookies nécessitant votre consentement (outil
-            de suivi publicitaire, par exemple), un bandeau de consentement conforme serait mis en
-            place avant tout dépôt, et cette page serait mise à jour en conséquence.
           </p>
         </section>
 

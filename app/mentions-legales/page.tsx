@@ -95,8 +95,10 @@ export default function MentionsLegales() {
         <section>
           <h2 className="text-lg font-semibold text-white mb-3">Cookies et mesure d&apos;audience</h2>
           <p>
-            Ce site n&apos;utilise aucun cookie. La mesure d&apos;audience (Vercel Analytics) est
-            anonyme et ne dépose aucun traceur. Détail complet dans la{" "}
+            Ce site utilise un cookie de mesure d&apos;audience (Google Analytics) uniquement
+            après recueil de votre consentement via le bandeau prévu à cet effet. Vercel
+            Analytics, également utilisé, est anonyme et ne dépose aucun traceur. Détail complet
+            et gestion de votre consentement dans la{" "}
             <a href="/politique-de-cookies" className="text-accent-blue hover:underline">
               politique de cookies
             </a>
