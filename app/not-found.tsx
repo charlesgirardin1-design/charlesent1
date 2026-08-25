@@ -17,11 +17,27 @@ export default function NotFound() {
       >
         Erreur 404
       </motion.p>
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+        className="w-full max-w-xs rounded-3xl border border-white/15 bg-white/[0.04] backdrop-blur-xl shadow-2xl shadow-accent-blue/10 p-3"
+      >
+        <video
+          src="/404-video.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full max-h-[45vh] rounded-2xl object-contain"
+        />
+      </motion.div>
+
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="flex text-[clamp(3rem,10vw,7rem)] font-semibold tracking-tight leading-none"
+        className="mt-8 flex text-[clamp(3rem,10vw,7rem)] font-semibold tracking-tight leading-none"
       >
         {["4", "0", "4"].map((digit, i) => (
           <motion.span
