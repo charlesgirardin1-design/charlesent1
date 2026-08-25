@@ -165,7 +165,7 @@ export function Hero() {
             Disponible pour de nouveaux projets
           </motion.div>
 
-          <h1 className="font-semibold leading-[0.98] tracking-tight text-[clamp(2.8rem,8vw,6.5rem)]">
+          <h1 className="font-semibold leading-[0.98] tracking-tight text-[clamp(2.1rem,8vw,6.5rem)]">
             <div className="block"><AnimatedWords text={titleLines[0]} delayStart={0.15} /></div>
             <div className="block"><AnimatedWords text={titleLines[1]} delayStart={0.3} /></div>
             <div className="block text-gradient animated-gradient">
