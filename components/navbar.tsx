@@ -38,7 +38,7 @@ export function Navbar() {
           )}
         >
           <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-lg">
-            <Image src="/logo-icon.png" alt="" width={28} height={28} className="h-7 w-7" priority />
+            <Image src="/logo-icon.png" alt="" width={28} height={28} className="h-7 w-7" priority unoptimized />
             {siteConfig.name}
           </Link>
 
