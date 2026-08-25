@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { siteConfig, navLinks } from "@/lib/data";
-import { LogoMark } from "@/components/logo-mark";
 
 export function Footer() {
   return (
@@ -16,7 +16,7 @@ export function Footer() {
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
           <a href="/" className="flex items-center gap-2.5 text-2xl font-semibold tracking-tight">
-            <LogoMark className="h-8 w-8" />
+            <Image src="/logo-icon.png" alt="" width={32} height={32} className="h-8 w-8" />
             {siteConfig.name}
           </a>
           <nav aria-label="Navigation du pied de page" className="flex flex-wrap gap-6">

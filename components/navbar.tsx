@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
@@ -8,7 +9,6 @@ import { Menu, X } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
-import { LogoMark } from "@/components/logo-mark";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -38,7 +38,7 @@ export function Navbar() {
           )}
         >
           <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-lg">
-            <LogoMark className="h-7 w-7" />
+            <Image src="/logo-icon.png" alt="" width={28} height={28} className="h-7 w-7" priority />
             {siteConfig.name}
           </Link>
 
