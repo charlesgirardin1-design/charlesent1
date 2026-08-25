@@ -25,6 +25,8 @@ export default function MentionsLegales() {
             <br />
             Statut : développeur web freelance, entrepreneur individuel (micro-entreprise)
             <br />
+            <span className="text-white/40">Nom et prénom du dirigeant : [Prénom Nom] — à compléter</span>
+            <br />
             Email : {siteConfig.email}
             <br />
             <span className="text-white/40">
@@ -36,6 +38,17 @@ export default function MentionsLegales() {
         <section>
           <h2 className="text-lg font-semibold text-white mb-3">Directeur de la publication</h2>
           <p>{siteConfig.name}</p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-white mb-3">Médiation de la consommation</h2>
+          <p>
+            Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, en cas de
+            litige non résolu directement avec {siteConfig.name}, tout client consommateur peut
+            recourir gratuitement à un médiateur de la consommation. Les coordonnées du médiateur
+            compétent seront communiquées sur demande et précisées ici dès l&apos;adhésion à un
+            dispositif de médiation.
+          </p>
         </section>
 
         <section>
@@ -82,10 +95,12 @@ export default function MentionsLegales() {
         <section>
           <h2 className="text-lg font-semibold text-white mb-3">Cookies et mesure d&apos;audience</h2>
           <p>
-            Ce site utilise Vercel Analytics pour mesurer la fréquentation (pages vues,
-            provenance des visites). Cet outil ne dépose aucun cookie et ne collecte aucune
-            donnée personnelle identifiable : les statistiques sont anonymes et agrégées.
-            Aucun cookie de suivi publicitaire n&apos;est utilisé sur ce site.
+            Ce site n&apos;utilise aucun cookie. La mesure d&apos;audience (Vercel Analytics) est
+            anonyme et ne dépose aucun traceur. Détail complet dans la{" "}
+            <a href="/politique-de-cookies" className="text-accent-blue hover:underline">
+              politique de cookies
+            </a>
+            .
           </p>
         </section>
       </div>

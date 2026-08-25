@@ -49,6 +49,13 @@ export default function CGV() {
             puis le solde à la livraison. Les modalités précises (échéancier, moyens de
             paiement acceptés) sont détaillées dans chaque devis avant le début des travaux.
           </p>
+          <p className="mt-3">
+            Toute somme non réglée à l&apos;échéance prévue au devis pourra donner lieu à des
+            pénalités de retard, calculées au taux d&apos;intérêt légal en vigueur, ainsi
+            qu&apos;à une indemnité forfaitaire pour frais de recouvrement de 40€ (article
+            L.441-10 du Code de commerce), sans préjudice de la faculté de suspendre les
+            prestations en cours jusqu&apos;au complet règlement.
+          </p>
         </section>
 
         <section>
@@ -90,7 +97,25 @@ export default function CGV() {
 
         <section>
           <h2 className="text-lg font-semibold text-white mb-3">
-            Article 7 — Propriété intellectuelle
+            Article 7 — Droit de rétractation (clients particuliers)
+          </h2>
+          <p>
+            Conformément à l&apos;article L.221-18 du Code de la consommation, tout client
+            particulier dispose d&apos;un délai de 14 jours à compter de l&apos;acceptation du
+            devis pour exercer son droit de rétractation, sans avoir à justifier de motif.
+          </p>
+          <p className="mt-3">
+            Le client peut toutefois demander expressément, via une mention datée et signée sur le
+            devis ou par tout autre écrit, que la prestation commence avant l&apos;expiration de
+            ce délai. Dans ce cas, s&apos;il exerce ensuite son droit de rétractation, il devra
+            s&apos;acquitter du montant correspondant aux prestations déjà réalisées jusqu&apos;à
+            la communication de sa décision de se rétracter.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-white mb-3">
+            Article 8 — Propriété intellectuelle
           </h2>
           <p>
             Les droits d&apos;usage sur les livrables (code, visuels créés spécifiquement pour
@@ -101,7 +126,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Article 8 — Responsabilité</h2>
+          <h2 className="text-lg font-semibold text-white mb-3">Article 9 — Responsabilité</h2>
           <p>
             {siteConfig.name}
             {" "}
@@ -114,12 +139,16 @@ export default function CGV() {
 
         <section>
           <h2 className="text-lg font-semibold text-white mb-3">
-            Article 9 — Droit applicable et litiges
+            Article 10 — Droit applicable et litiges
           </h2>
           <p>
             Les présentes conditions sont soumises au droit français. En cas de litige, une
-            solution amiable sera recherchée en priorité avant toute action judiciaire, qui
-            relèvera des tribunaux compétents.
+            solution amiable sera recherchée en priorité. À défaut, tout client consommateur peut
+            recourir gratuitement à un médiateur de la consommation (voir les{" "}
+            <a href="/mentions-legales" className="text-accent-blue hover:underline">
+              mentions légales
+            </a>
+            ) avant toute action judiciaire, qui relèvera des tribunaux compétents.
           </p>
         </section>
 

@@ -55,6 +55,9 @@ export function Footer() {
             <a href="/politique-de-confidentialite" className="hover:text-white transition-colors">
               Confidentialité
             </a>
+            <a href="/politique-de-cookies" className="hover:text-white transition-colors">
+              Cookies
+            </a>
           </div>
         </div>
       </motion.div>
