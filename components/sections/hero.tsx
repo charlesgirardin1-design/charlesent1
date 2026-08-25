@@ -150,7 +150,7 @@ export function Hero() {
       {/* Terrain 3D fil de fer, défilement infini réactif au scroll et à la souris */}
       <ScrollTerrain className="absolute inset-0 z-0 bg-background" />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 grid lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] gap-16 items-center">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -165,7 +165,7 @@ export function Hero() {
             Disponible pour de nouveaux projets
           </motion.div>
 
-          <h1 className="font-semibold leading-[0.98] tracking-tight text-[clamp(1.7rem,7.5vw,6.5rem)]">
+          <h1 className="font-semibold leading-[0.98] tracking-tight text-[clamp(1.7rem,7.5vw,6.5rem)] lg:text-[clamp(2rem,3.4vw,3.75rem)]">
             <div className="block whitespace-nowrap"><AnimatedWords text={titleLines[0]} delayStart={0.15} /></div>
             <div className="block whitespace-nowrap"><AnimatedWords text={titleLines[1]} delayStart={0.3} /></div>
             <div className="block whitespace-nowrap text-gradient animated-gradient">
