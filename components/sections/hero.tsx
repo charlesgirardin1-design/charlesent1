@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -203,19 +204,19 @@ export function Hero() {
             className="mt-8 flex flex-wrap items-center gap-4"
           >
             <Magnetic>
-              <Button size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
-                Discutons de votre projet
-                <ArrowRight className="w-4 h-4" />
-              </Button>
+              <Link href="/contact">
+                <Button size="lg">
+                  Discutons de votre projet
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
             </Magnetic>
             <Magnetic strength={0.2}>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })}
-              >
-                Voir nos projets
-              </Button>
+              <Link href="/realisations">
+                <Button variant="outline" size="lg">
+                  Voir nos projets
+                </Button>
+              </Link>
             </Magnetic>
           </motion.div>
         </div>

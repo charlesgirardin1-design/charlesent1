@@ -11,12 +11,12 @@ export const siteConfig = {
 };
 
 export const navLinks = [
-  { label: "Services", href: "/#services" },
-  { label: "Réalisations", href: "/#portfolio" },
-  { label: "Processus", href: "/#processus" },
-  { label: "À propos", href: "/#apropos" },
+  { label: "Services", href: "/services" },
+  { label: "Réalisations", href: "/realisations" },
+  { label: "Processus", href: "/processus" },
+  { label: "À propos", href: "/a-propos" },
   { label: "Estimation de devis", href: "/devis" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const services = [

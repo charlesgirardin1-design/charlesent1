@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/data";
@@ -8,43 +10,15 @@ import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
 import { cn } from "@/lib/utils";
 
-function linkHash(href: string) {
-  const hashIndex = href.indexOf("#");
-  return hashIndex === -1 ? null : href.slice(hashIndex);
-}
-
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string | null>(null);
+  const pathname = usePathname();
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 24);
   });
-
-  useEffect(() => {
-    const sections = navLinks
-      .map((l) => {
-        const hashIndex = l.href.indexOf("#");
-        if (hashIndex === -1) return null;
-        return document.querySelector(l.href.slice(hashIndex));
-      })
-      .filter(Boolean) as Element[];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive("#" + entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
-    );
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
@@ -62,15 +36,15 @@ export function Navbar() {
               : "bg-transparent border border-transparent"
           )}
         >
-          <a href="/" className="font-semibold tracking-tight text-lg">
+          <Link href="/" className="font-semibold tracking-tight text-lg">
             {siteConfig.name}
-          </a>
+          </Link>
 
           <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
-              const isActive = linkHash(link.href) !== null && active === linkHash(link.href);
+              const isActive = pathname === link.href;
               return (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
@@ -86,16 +60,16 @@ export function Navbar() {
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
-                </a>
+                </Link>
               );
             })}
           </nav>
 
           <div className="hidden md:block">
             <Magnetic strength={0.25}>
-              <Button size="sm" onClick={() => (window.location.href = "/devis")}>
-                Estimer mon projet
-              </Button>
+              <Link href="/devis">
+                <Button size="sm">Estimer mon projet</Button>
+              </Link>
             </Magnetic>
           </div>
 
@@ -130,18 +104,17 @@ export function Navbar() {
               variants={{ show: { transition: { staggerChildren: 0.06 } } }}
             >
               {navLinks.map((link) => (
-                <motion.a
+                <motion.div
                   key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
                   variants={{
                     hidden: { opacity: 0, y: 16 },
                     show: { opacity: 1, y: 0 },
                   }}
-                  className="text-3xl font-semibold"
                 >
-                  {link.label}
-                </motion.a>
+                  <Link href={link.href} onClick={() => setOpen(false)} className="text-3xl font-semibold">
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
             </motion.nav>
           </motion.div>

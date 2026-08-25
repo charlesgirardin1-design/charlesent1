@@ -38,7 +38,7 @@ export default async function ServicePage({
   return (
     <div className="mx-auto max-w-3xl px-6 py-32 md:py-40">
       <Link
-        href="/#services"
+        href="/services"
         className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-10"
       >
         <ArrowLeft className="w-4 h-4" />
@@ -68,7 +68,7 @@ export default async function ServicePage({
               <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
-          <Link href="/#contact">
+          <Link href="/contact">
             <Button variant="outline" size="lg">
               Discuter du projet
             </Button>

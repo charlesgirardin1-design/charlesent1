@@ -39,7 +39,7 @@ export default async function ProjectPage({
   return (
     <div className="mx-auto max-w-3xl px-6 py-32 md:py-40">
       <Link
-        href="/#portfolio"
+        href="/realisations"
         className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-10"
       >
         <ArrowLeft className="w-4 h-4" />
