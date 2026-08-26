@@ -2,11 +2,11 @@ export const siteConfig = {
   name: "Kodarium",
   shortName: "Kodarium",
   initials: "K",
-  role: "Studio de développement web",
+  role: "Développeur web freelance",
   email: "contact@kodarium.fr",
-  tagline: "Nous concevons des sites web qui convertissent.",
+  tagline: "Je conçois des sites web qui convertissent.",
   description:
-    "Studio de développement web basé en France, nous concevons des sites vitrines, e-commerce et applications sur mesure : rapides, soignés et pensés pour convertir vos visiteurs en clients.",
+    "Développeur web freelance basé en France, je conçois des sites vitrines, e-commerce et applications sur mesure : rapides, soignés et pensés pour convertir vos visiteurs en clients.",
   url: "https://kodarium.fr",
 };
 
@@ -28,7 +28,7 @@ export const services = [
     description:
       "Un site rapide, clair et responsive qui présente votre activité et inspire confiance dès les premières secondes. Structure pensée pour guider le visiteur vers l'action, optimisée pour le référencement local.",
     longDescription:
-      "Un site vitrine, c'est souvent le premier contact entre votre activité et un client potentiel. Il doit charger vite, s'afficher parfaitement sur mobile et donner confiance en quelques secondes. Nous concevons chaque site vitrine autour d'un objectif clair : transformer la visite en appel, en message ou en prise de rendez-vous. Structure épurée, contenus hiérarchisés, référencement local travaillé dès le départ.",
+      "Un site vitrine, c'est souvent le premier contact entre votre activité et un client potentiel. Il doit charger vite, s'afficher parfaitement sur mobile et donner confiance en quelques secondes. Je conçois chaque site vitrine autour d'un objectif clair : transformer la visite en appel, en message ou en prise de rendez-vous. Structure épurée, contenus hiérarchisés, référencement local travaillé dès le départ.",
     includes: [
       "Design sur mesure, pas de thème générique",
       "Jusqu'à 6 pages (accueil, services, à propos, contact...)",
@@ -46,7 +46,7 @@ export const services = [
     description:
       "Boutique en ligne complète : catalogue produits, paiement sécurisé et tunnel d'achat fluide, du panier jusqu'à la confirmation de commande. Une base solide pour vendre dès le premier jour.",
     longDescription:
-      "Vendre en ligne demande plus qu'un catalogue : un tunnel d'achat fluide, un paiement sécurisé et une gestion des stocks qui ne vous complique pas la vie. Nous construisons des boutiques en ligne pensées pour réduire les abandons de panier, avec une expérience d'achat simple sur mobile comme sur desktop, et une interface d'administration que vous maîtrisez rapidement.",
+      "Vendre en ligne demande plus qu'un catalogue : un tunnel d'achat fluide, un paiement sécurisé et une gestion des stocks qui ne vous complique pas la vie. Je construis des boutiques en ligne pensées pour réduire les abandons de panier, avec une expérience d'achat simple sur mobile comme sur desktop, et une interface d'administration que vous maîtrisez rapidement.",
     includes: [
       "Catalogue produits avec variantes (taille, couleur...)",
       "Paiement sécurisé (carte bancaire, autres moyens sur demande)",
@@ -64,7 +64,7 @@ export const services = [
     description:
       "Shooting produit, portrait ou événementiel, retouche incluse. De quoi habiller votre site et vos réseaux avec des visuels cohérents plutôt que des photos de banque d'images.",
     longDescription:
-      "Un site bien construit avec des visuels génériques perd en crédibilité. Nous proposons des shootings photo (produit, portrait professionnel ou événementiel) pensés pour habiller votre site et vos réseaux avec une identité visuelle cohérente, loin des photos de banque d'images que tout le monde utilise. Retouche incluse, livraison dans des formats prêts à l'emploi pour le web.",
+      "Un site bien construit avec des visuels génériques perd en crédibilité. Je propose des shootings photo (produit, portrait professionnel ou événementiel) pensés pour habiller votre site et vos réseaux avec une identité visuelle cohérente, loin des photos de banque d'images que tout le monde utilise. Retouche incluse, livraison dans des formats prêts à l'emploi pour le web.",
     includes: [
       "Shooting produit, portrait ou événementiel",
       "Retouche photo incluse",
@@ -79,9 +79,9 @@ export const services = [
     slug: "suivi-maintenance",
     title: "Suivi & mises à jour",
     description:
-      "Après la mise en ligne, nous restons disponibles pour faire évoluer votre site : contenus, corrections, nouvelles fonctionnalités. Formule ponctuelle ou récurrente, ajustée à la fréquence réelle de vos demandes.",
+      "Après la mise en ligne, je reste disponible pour faire évoluer votre site : contenus, corrections, nouvelles fonctionnalités. Formule ponctuelle ou récurrente, ajustée à la fréquence réelle de vos demandes.",
     longDescription:
-      "Un site n'est jamais vraiment terminé : nouveaux contenus, corrections, ajout de fonctionnalités. Nous restons disponibles après la mise en ligne pour faire évoluer votre site, avec une formule ajustée à la fréquence réelle de vos demandes plutôt qu'un forfait figé qui ne correspond pas à votre usage. Ponctuel ou récurrent, vous ne payez que ce dont vous avez besoin.",
+      "Un site n'est jamais vraiment terminé : nouveaux contenus, corrections, ajout de fonctionnalités. Je reste disponible après la mise en ligne pour faire évoluer votre site, avec une formule ajustée à la fréquence réelle de vos demandes plutôt qu'un forfait figé qui ne correspond pas à votre usage. Ponctuel ou récurrent, vous ne payez que ce dont vous avez besoin.",
     includes: [
       "Corrections et ajustements post-lancement",
       "Ajout de contenus ou de nouvelles pages",
@@ -119,7 +119,7 @@ export const projects: {
     image: "/projects/danielbain-cover.jpg",
     logo: "/projects/danielbain-logo.png",
     description:
-      "Daniel Bain est plombier-couvreur indépendant en Île-de-France, spécialisé en plomberie, couverture, étanchéité et travaux à la corde. Nous avons conçu pour lui un site vitrine qui présente clairement son activité et ses domaines d'intervention, pour rassurer un client potentiel dès les premières secondes et faciliter la demande de devis.",
+      "Daniel Bain est plombier-couvreur indépendant en Île-de-France, spécialisé en plomberie, couverture, étanchéité et travaux à la corde. J'ai conçu pour lui un site vitrine qui présente clairement son activité et ses domaines d'intervention, pour rassurer un client potentiel dès les premières secondes et faciliter la demande de devis.",
     features: [
       "Présentation claire des domaines d'intervention",
       "Mise en avant de photos de chantier réelles",
@@ -139,7 +139,7 @@ export const projects: {
     image: "/projects/adebat-cover.jpg",
     logo: "/projects/adebat-logo.png",
     description:
-      "ADEBAT est une entreprise spécialisée en plomberie, étanchéité et chauffage en Île-de-France. Le site que nous avons réalisé présente l'équipe et les prestations, avec une identité visuelle reconnaissable, pour installer la confiance dès l'arrivée sur le site et donner une image professionnelle à l'entreprise.",
+      "ADEBAT est une entreprise spécialisée en plomberie, étanchéité et chauffage en Île-de-France. Le site que j'ai réalisé présente l'équipe et les prestations, avec une identité visuelle reconnaissable, pour installer la confiance dès l'arrivée sur le site et donner une image professionnelle à l'entreprise.",
     features: [
       "Présentation de l'équipe et des prestations",
       "Identité visuelle cohérente (logo, couleurs)",
@@ -173,13 +173,13 @@ export const processSteps = [
     number: "01",
     title: "Échange",
     description:
-      "On discute de votre projet lors d'un appel de 30 minutes, sans engagement : votre activité, vos objectifs, votre budget et vos contraintes de délai.",
+      "Je discute de votre projet lors d'un appel de 30 minutes, sans engagement : votre activité, vos objectifs, votre budget et vos contraintes de délai.",
   },
   {
     number: "02",
     title: "Devis",
     description:
-      "Nous vous envoyons une proposition détaillée sous 48h : périmètre exact, technologies, délais et tarif clairement posé, sans surprise.",
+      "Je vous envoie une proposition détaillée sous 48h : périmètre exact, technologies, délais et tarif clairement posé, sans surprise.",
   },
   {
     number: "03",
@@ -191,7 +191,7 @@ export const processSteps = [
     number: "04",
     title: "Livraison & suivi",
     description:
-      "Mise en ligne, vérifications techniques et courte formation à la prise en main. Nous restons disponibles pour les ajustements post-lancement.",
+      "Mise en ligne, vérifications techniques et courte formation à la prise en main. Je reste disponible pour les ajustements post-lancement.",
   },
 ];
 
@@ -227,7 +227,7 @@ export const faqs = [
   {
     question: "Que se passe-t-il après la mise en ligne ?",
     answer:
-      "Nous restons disponibles pour les ajustements et questions qui suivent le lancement. Des formules de maintenance (mises à jour, sauvegardes, petites modifications) peuvent aussi être mises en place si besoin.",
+      "Je reste disponible pour les ajustements et questions qui suivent le lancement. Des formules de maintenance (mises à jour, sauvegardes, petites modifications) peuvent aussi être mises en place si besoin.",
   },
   {
     question: "Le référencement (SEO) est-il inclus ?",

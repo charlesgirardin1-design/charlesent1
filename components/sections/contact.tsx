@@ -54,7 +54,7 @@ export function Contact() {
       }
 
       setState("success");
-      setMessage("Message envoyé ! Nous revenons vers vous sous 48h.");
+      setMessage("Message envoyé ! Je reviens vers vous sous 48h.");
       form.reset();
     } catch {
       setState("error");
@@ -70,7 +70,7 @@ export function Contact() {
         <SectionHeading
           eyebrow="Contact"
           title="Discutons de votre projet"
-          description="Décrivez-nous votre besoin, nous revenons vers vous sous 48h avec un premier retour."
+          description="Décrivez-moi votre besoin, je reviens vers vous sous 48h avec un premier retour."
         />
 
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12">
@@ -116,7 +116,7 @@ export function Contact() {
                 name="message"
                 required
                 rows={5}
-                placeholder="Parlez-nous de votre projet, vos délais, votre budget..."
+                placeholder="Parlez-moi de votre projet, vos délais, votre budget..."
                 className="w-full rounded-xl border border-surface-border bg-surface px-4 py-3 outline-none focus:border-accent-blue transition-colors resize-y"
               />
             </div>

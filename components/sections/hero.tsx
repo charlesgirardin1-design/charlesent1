@@ -15,7 +15,7 @@ const ScrollTerrain = dynamic(
   { ssr: false }
 );
 
-const titleLines = ["Nous concevons", "des sites web", "qui convertissent."];
+const titleLines = ["Je conçois", "des sites web", "qui convertissent."];
 
 const trustPoints = [
   "Un seul interlocuteur, pas de chef de projet",
@@ -179,7 +179,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.75 }}
             className="mt-8 max-w-xl text-lg text-muted"
           >
-            {siteConfig.role}, nous accompagnons indépendants et TPE dans la création de
+            {siteConfig.role}, j&apos;accompagne indépendants et TPE dans la création de
             sites qui inspirent confiance et transforment vos visiteurs en clients.
           </motion.p>
 
@@ -214,7 +214,7 @@ export function Hero() {
             <Magnetic strength={0.2}>
               <Link href="/realisations">
                 <Button variant="outline" size="lg">
-                  Voir nos projets
+                  Voir mes projets
                 </Button>
               </Link>
             </Magnetic>

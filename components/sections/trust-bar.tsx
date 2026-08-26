@@ -14,7 +14,7 @@ export function TrustBar() {
           transition={{ duration: 0.5 }}
           className="shrink-0 text-xs font-mono uppercase tracking-[0.2em] text-white/40"
         >
-          Ils nous font confiance
+          Ils me font confiance
         </motion.p>
         <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-10 gap-y-3">
           {projects.map((project, i) => (

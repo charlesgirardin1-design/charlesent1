@@ -5,7 +5,7 @@ import { DevisCTA } from "@/components/sections/devis-cta";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Sites vitrines, e-commerce, identité & photographie, suivi et maintenance : découvrez nos prestations de développement web.",
+    "Sites vitrines, e-commerce, identité & photographie, suivi et maintenance : découvrez mes prestations de développement web.",
 };
 
 export default function ServicesPage() {

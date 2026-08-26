@@ -36,7 +36,7 @@ export function Presentation() {
         <div>
           <SectionHeading
             eyebrow="À propos"
-            title="Une structure resserrée, une exigence d'agence"
+            title="Un seul développeur, une exigence d'agence"
           />
           <div className="space-y-5 text-white/70 text-lg leading-relaxed -mt-8">
             <motion.p
@@ -45,10 +45,10 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
-              Kodarium est le studio d&apos;un développeur web freelance indépendant. Notre
-              conviction : un site doit d&apos;abord servir un objectif business précis —
-              être rapide, clair, et pensé pour convertir — avant d&apos;être une vitrine
-              technique.
+              Kodarium est le nom sous lequel je développe des sites web en freelance
+              indépendant. Ma conviction : un site doit d&apos;abord servir un objectif
+              business précis — être rapide, clair, et pensé pour convertir — avant
+              d&apos;être une vitrine technique.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,7 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Nous travaillons en direct avec vous, sans compte client ni intermédiaire
+              Je travaille en direct avec vous, sans compte client ni intermédiaire
               qui dilue les échanges : vous savez toujours qui conçoit votre projet et où
               il en est.
             </motion.p>
@@ -66,8 +66,8 @@ export function Presentation() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Cette structure resserrée nous permet de rester exigeants sur chaque
-              livraison, à jour sur les pratiques du secteur, et disponibles quand vous en
+              Cette organisation resserrée me permet de rester exigeant sur chaque
+              livraison, à jour sur les pratiques du secteur, et disponible quand vous en
               avez besoin.
             </motion.p>
           </div>

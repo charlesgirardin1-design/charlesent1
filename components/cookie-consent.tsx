@@ -42,9 +42,9 @@ export function CookieConsent() {
         >
           <div className="mx-auto max-w-3xl rounded-2xl border border-surface-border bg-[#0a0a0a]/95 backdrop-blur-xl p-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center gap-5">
             <p className="text-sm text-white/70 leading-relaxed flex-1">
-              Nous utilisons Google Analytics pour mesurer la fréquentation du site. Ces
+              J&apos;utilise Google Analytics pour mesurer la fréquentation du site. Ces
               cookies ne sont déposés qu&apos;avec votre accord. Vous pouvez accepter,
-              refuser, ou en savoir plus dans notre{" "}
+              refuser, ou en savoir plus dans ma{" "}
               <a href="/politique-de-cookies" className="text-accent-blue hover:underline">
                 politique de cookies
               </a>
