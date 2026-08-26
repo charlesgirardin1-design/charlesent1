@@ -23,16 +23,22 @@ export function Footer() {
         className="mx-auto max-w-6xl px-6"
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
-          <a href="/" className="flex items-center">
-            <Image
-              src={logoSrc}
-              alt={siteConfig.name}
-              width={395}
-              height={281}
-              className="h-12 w-auto"
-              unoptimized
-            />
-          </a>
+          <div className="max-w-sm">
+            <a href="/" className="flex items-center">
+              <Image
+                src={logoSrc}
+                alt={siteConfig.name}
+                width={395}
+                height={281}
+                className="h-12 w-auto"
+                unoptimized
+              />
+            </a>
+            <p className="mt-3 text-sm text-foreground/50">
+              Kodarium (n.m.) — Atelier numérique dédié à la création de sites web
+              sur-mesure, rapides et sans artifice pour les indépendants et TPE.
+            </p>
+          </div>
           <nav aria-label="Navigation du pied de page" className="flex flex-wrap gap-6">
             {navLinks.map((link, i) => (
               <motion.a

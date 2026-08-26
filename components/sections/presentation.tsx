@@ -93,6 +93,35 @@ export function Presentation() {
               )
             )}
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="mt-12 rounded-2xl border border-surface-border bg-foreground/[0.02] p-8"
+          >
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-accent-blue mb-4">
+              Pourquoi Kodarium ?
+            </h3>
+            <div className="space-y-4 text-foreground/70 leading-relaxed">
+              <p>
+                Kodarium est né de la rencontre entre l&apos;exigence du code sur-mesure
+                et la recherche de simplicité.
+              </p>
+              <p>
+                Le suffixe <em>-rium</em> désigne un lieu dédié, un atelier. Chez
+                Kodarium, je façonne des sites web légers, rapides et durables, sans
+                templates surchargés ni intermédiaires inutilement complexes.
+              </p>
+              <p>
+                Chaque projet y est pensé comme une pièce d&apos;artisanat numérique :
+                une structure technique solide au service d&apos;un objectif business
+                précis, avec un interlocuteur unique du premier échange jusqu&apos;à la
+                mise en ligne.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
