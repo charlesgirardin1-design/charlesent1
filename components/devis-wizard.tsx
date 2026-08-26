@@ -18,31 +18,31 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+// Bases tarifaires : un montant pivot par formule (pas une fourchette en soi).
+// La fourchette affichée à l'utilisateur est dérivée de ce pivot via RANGE_SPREAD
+// ci-dessous, pour rester une estimation honnête sans jamais être une "boîte noire".
 const projectTypes = [
   {
     id: "vitrine-essentiel",
     label: "Vitrine Essentiel",
     hint: "1 à 3 pages",
     icon: Globe,
-    baseLow: 900,
-    baseHigh: 1400,
+    base: 1100,
   },
   {
     id: "vitrine-sur-mesure",
     label: "Vitrine Sur-mesure",
     hint: "4 à 8 pages",
     icon: Sparkles,
-    baseLow: 1500,
-    baseHigh: 2600,
+    base: 2000,
   },
   {
     id: "ecommerce",
     label: "E-commerce",
     hint: "Boutique en ligne, catalogue, fonctionnalités avancées",
     icon: ShoppingCart,
-    baseLow: 3000,
-    baseHigh: 4500,
-    openEnded: true,
+    base: 3500,
+    startingAt: true,
   },
   {
     id: "app",
@@ -63,31 +63,27 @@ const projectTypes = [
 const addonOptions = [
   {
     id: "branding",
-    label: "Identité visuelle / Branding",
+    label: "Identité visuelle / Logo",
     hint: "Pas encore de logo, de charte graphique ou de couleurs définies",
-    addLow: 300,
-    addHigh: 700,
+    add: 500,
   },
   {
     id: "copywriting",
     label: "Rédaction des contenus",
     hint: "Textes à rédiger ou réécrire pour maximiser la conversion",
-    addLow: 200,
-    addHigh: 600,
+    add: 400,
   },
   {
     id: "integration",
-    label: "Outil tiers / fonctionnalité complexe",
-    hint: "Réservation en ligne, espace membre, site multilingue...",
-    addLow: 250,
-    addHigh: 800,
+    label: "Fonctionnalité spécifique",
+    hint: "Réservation en ligne, espace membre, multilingue...",
+    add: 500,
   },
   {
     id: "photo",
     label: "Shooting photo professionnel",
     hint: "Visuels produit, portrait ou événementiel",
-    addLow: 150,
-    addHigh: 150,
+    add: 150,
   },
 ] as const;
 
@@ -95,13 +91,24 @@ const timelines = [
   {
     id: "urgent",
     label: "Le plus vite possible",
-    hint: "moins de 2 semaines · +20% à +30% sur le total",
-    multLow: 1.2,
-    multHigh: 1.3,
+    hint: "moins de 2 semaines · +25% sur le total",
+    mult: 1.25,
   },
-  { id: "normal", label: "Délai normal", hint: "2 à 6 semaines", multLow: 1, multHigh: 1 },
-  { id: "flexible", label: "Flexible", hint: "pas pressé", multLow: 1, multHigh: 1 },
+  { id: "normal", label: "Délai normal", hint: "2 à 6 semaines", mult: 1 },
+  { id: "flexible", label: "Flexible", hint: "pas pressé", mult: 1 },
 ] as const;
+
+// Marge appliquée autour du montant pivot pour obtenir une fourchette honnête
+// (le montant réel dépend toujours du contenu précis vu en échange).
+const RANGE_SPREAD_LOW = 0.9;
+const RANGE_SPREAD_HIGH = 1.15;
+const ROUND_STEP = 50;
+
+function roundTo(value: number, step: number) {
+  // Epsilon pour éviter qu'une imprécision flottante (ex: 1500 * 1.15 =
+  // 1724.9999999999998) ne fasse basculer un arrondi tout juste sous le seuil.
+  return Math.round(value / step + 1e-9) * step;
+}
 
 const stepLabels = ["Projet", "Besoins", "Délai", "Coordonnées"];
 
@@ -122,23 +129,21 @@ export function DevisWizard() {
   const selectedTimeline = timelines.find((t) => t.id === timeline);
   const isCustomQuote = !selectedType || "custom" in selectedType;
 
-  const addonsLow = addons.reduce((sum, id) => {
+  const addonsTotal = addons.reduce((sum, id) => {
     const opt = addonOptions.find((o) => o.id === id);
-    return sum + (opt?.addLow ?? 0);
-  }, 0);
-  const addonsHigh = addons.reduce((sum, id) => {
-    const opt = addonOptions.find((o) => o.id === id);
-    return sum + (opt?.addHigh ?? 0);
+    return sum + (opt?.add ?? 0);
   }, 0);
 
-  const baseLow = selectedType && "baseLow" in selectedType ? selectedType.baseLow : 0;
-  const baseHigh = selectedType && "baseHigh" in selectedType ? selectedType.baseHigh : 0;
-  const multLow = selectedTimeline?.multLow ?? 1;
-  const multHigh = selectedTimeline?.multHigh ?? 1;
+  const base = selectedType && "base" in selectedType ? selectedType.base : 0;
+  const mult = selectedTimeline?.mult ?? 1;
+  const pivot = (base + addonsTotal) * mult;
+  const isStartingAt = !!(selectedType && "startingAt" in selectedType && selectedType.startingAt);
 
-  const estimateLow = Math.round(((baseLow + addonsLow) * multLow) / 10) * 10;
-  const estimateHigh = Math.round(((baseHigh + addonsHigh) * multHigh) / 10) * 10;
-  const isOpenEnded = !!(selectedType && "openEnded" in selectedType && selectedType.openEnded);
+  // La fourchette basse ne descend jamais sous le pivot pour une formule
+  // "à partir de" (l'e-commerce) : c'est un plancher affiché tel quel, pas un
+  // point médian.
+  const estimateLow = isStartingAt ? roundTo(pivot, ROUND_STEP) : roundTo(pivot * RANGE_SPREAD_LOW, ROUND_STEP);
+  const estimateHigh = roundTo(pivot * RANGE_SPREAD_HIGH, ROUND_STEP);
 
   function toggleAddon(id: string) {
     setAddons((prev) => (prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]));
@@ -172,7 +177,7 @@ export function DevisWizard() {
           timeline: selectedTimeline?.label,
           estimate: isCustomQuote
             ? "Sur devis"
-            : `${estimateLow}€ - ${estimateHigh}€${isOpenEnded ? "+" : ""}`,
+            : `${estimateLow}€ - ${estimateHigh}€${isStartingAt ? "+" : ""}`,
         }),
       });
       const json = await res.json();
@@ -182,7 +187,9 @@ export function DevisWizard() {
         return;
       }
       setState("success");
-      setStatusMessage("Votre demande a bien été envoyée ! Je reviens vers vous sous 48h.");
+      setStatusMessage(
+        "Votre demande a bien été envoyée ! Vous recevrez le devis détaillé par email sous 48h."
+      );
     } catch {
       setState("error");
       setStatusMessage("L'envoi a échoué, vérifiez votre connexion.");
@@ -256,9 +263,9 @@ export function DevisWizard() {
                     <span>
                       <span className="font-medium block">{t.label}</span>
                       <span className="text-sm text-foreground/50 block mt-0.5">{t.hint}</span>
-                      {"baseLow" in t && (
+                      {"base" in t && (
                         <span className="text-sm font-mono text-accent-blue block mt-1">
-                          {t.baseLow}€ – {t.baseHigh}€{"openEnded" in t && t.openEnded ? "+" : ""}
+                          {"startingAt" in t && t.startingAt ? `À partir de ${t.base}€` : `~ ${t.base}€`}
                         </span>
                       )}
                     </span>
@@ -289,7 +296,7 @@ export function DevisWizard() {
                       <span className="font-medium block">{o.label}</span>
                       <span className="text-sm text-foreground/50 block mt-0.5">{o.hint}</span>
                       <span className="text-sm font-mono text-accent-blue block mt-1">
-                        {o.addLow === o.addHigh ? `+${o.addLow}€` : `+${o.addLow}€ à ${o.addHigh}€`}
+                        +{o.add}€
                       </span>
                     </span>
                     <span
@@ -330,7 +337,7 @@ export function DevisWizard() {
                 ))}
               </div>
 
-              {!isCustomQuote && (
+              {!isCustomQuote ? (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -338,10 +345,24 @@ export function DevisWizard() {
                 >
                   <p className="text-sm text-foreground/60 mb-1">Estimation indicative</p>
                   <p className="text-3xl font-semibold text-gradient">
-                    {estimateLow}€ – {estimateHigh}€{isOpenEnded ? "+" : ""}
+                    {estimateLow}€ – {estimateHigh}€{isStartingAt ? "+" : ""}
                   </p>
                   <p className="text-sm text-foreground/40 mt-2">
-                    Le tarif exact sera précisé dans le devis, selon le contenu réel du projet.
+                    Le tarif exact sera précisé dans le devis, selon le contenu réel du projet —
+                    laissez vos coordonnées à l&apos;étape suivante pour le recevoir par email
+                    sous 48h, sans engagement.
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-8 rounded-2xl border border-accent-blue/30 bg-accent-blue/10 p-6"
+                >
+                  <p className="text-sm text-foreground/60 mb-1">Votre projet mérite un vrai chiffrage</p>
+                  <p className="text-lg font-medium text-foreground">
+                    Décrivez-le-moi à l&apos;étape suivante, je reviens vers vous avec un devis
+                    détaillé sous 48h.
                   </p>
                 </motion.div>
               )}
@@ -350,7 +371,14 @@ export function DevisWizard() {
 
           {step === 3 && (
             <form onSubmit={handleSubmit}>
-              <h2 className="text-2xl font-semibold mb-6">Vos coordonnées</h2>
+              <h2 className="text-2xl font-semibold mb-2">Dernière étape</h2>
+              <p className="text-foreground/50 mb-6">
+                Vos coordonnées pour recevoir le devis détaillé — ou préférez-vous{" "}
+                <a href="/contact" className="text-accent-blue hover:underline">
+                  en discuter directement
+                </a>{" "}
+                ?
+              </p>
               <div className="space-y-5">
                 <div>
                   <label className="block text-sm font-medium mb-2 text-foreground/70">
