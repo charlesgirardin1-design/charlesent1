@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Mentions légales",
   description: "Mentions légales et informations sur l'éditeur du site.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/mentions-legales" },
 };
 
 export default function MentionsLegales() {

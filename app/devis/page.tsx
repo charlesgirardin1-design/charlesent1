@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Estimation de devis",
   description:
     "Obtenez une estimation indicative de votre projet de site web en quelques clics, sans engagement.",
+  alternates: { canonical: "/devis" },
 };
 
 export default function DevisPage() {

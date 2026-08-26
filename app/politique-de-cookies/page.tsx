@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Politique de cookies",
   description: "Détail des cookies et technologies de stockage utilisés sur ce site.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/politique-de-cookies" },
 };
 
 export default function PolitiqueCookies() {

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Sites vitrines, e-commerce, identité & photographie, suivi et maintenance : découvrez mes prestations de développement web.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {

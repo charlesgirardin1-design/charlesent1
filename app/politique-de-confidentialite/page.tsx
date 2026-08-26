@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Politique de confidentialité",
   description: "Comment vos données personnelles sont collectées, utilisées et protégées.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/politique-de-confidentialite" },
 };
 
 export default function PolitiqueConfidentialite() {

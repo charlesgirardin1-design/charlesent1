@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Conditions générales de vente",
   description: "Conditions générales de vente applicables aux prestations proposées.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/cgv" },
 };
 
 export default function CGV() {

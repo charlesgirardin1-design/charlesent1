@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { projects } from "@/lib/data";
+import { projects, siteConfig } from "@/lib/data";
 import { ProjectHero } from "@/components/sections/project-hero";
 import { AnimatedFeatureList } from "@/components/animated-feature-list";
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,7 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.description,
+    alternates: { canonical: `/realisations/${project.slug}` },
   };
 }
 
@@ -36,8 +37,37 @@ export default async function ProjectPage({
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    creator: { "@type": "ProfessionalService", name: siteConfig.name, url: siteConfig.url },
+    url: `${siteConfig.url}/realisations/${project.slug}`,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Réalisations", item: `${siteConfig.url}/realisations` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: `${siteConfig.url}/realisations/${project.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-32 md:py-40">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Link
         href="/realisations"
         className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors mb-10"

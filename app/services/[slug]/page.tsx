@@ -2,10 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { services } from "@/lib/data";
+import { services, siteConfig } from "@/lib/data";
 import { ServiceHero } from "@/components/sections/service-hero";
 import { AnimatedFeatureList } from "@/components/animated-feature-list";
 import { Button } from "@/components/ui/button";
+
+// Extrait le premier montant en euros d'un libellé de prix libre
+// (ex: "49€ à 99€ / mois" -> 49) pour l'exposer dans les données
+// structurées, sans réécrire le format d'affichage destiné aux humains.
+function extractPrice(price: string): number | null {
+  const match = price.replace(/\s/g, "").match(/(\d[\d.,]*)/);
+  if (!match) return null;
+  return Number(match[1].replace(/\./g, "").replace(",", "."));
+}
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -23,6 +32,7 @@ export async function generateMetadata({
   return {
     title: service.title,
     description: service.description,
+    alternates: { canonical: `/services/${service.slug}` },
   };
 }
 
@@ -35,8 +45,47 @@ export default async function ServicePage({
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
 
+  const price = extractPrice(service.price);
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: service.title,
+    name: service.title,
+    description: service.description,
+    provider: { "@type": "ProfessionalService", name: siteConfig.name, url: siteConfig.url },
+    areaServed: "FR",
+    url: `${siteConfig.url}/services/${service.slug}`,
+    ...(price !== null
+      ? { offers: { "@type": "Offer", price, priceCurrency: "EUR" } }
+      : {}),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${siteConfig.url}/services` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.title,
+        item: `${siteConfig.url}/services/${service.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-32 md:py-40">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Link
         href="/services"
         className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors mb-10"
