@@ -145,7 +145,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-28 md:pt-0"
     >
       {/* Terrain 3D fil de fer, défilement infini réactif au scroll et à la souris */}
       <ScrollTerrain className="absolute inset-0 z-0 bg-background" />
