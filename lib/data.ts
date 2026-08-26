@@ -28,7 +28,7 @@ export const services = [
     description:
       "Un site rapide, clair et responsive qui présente votre activité et inspire confiance dès les premières secondes. Structure pensée pour guider le visiteur vers l'action, optimisée pour le référencement local.",
     longDescription:
-      "Un site vitrine, c'est souvent le premier contact entre votre activité et un client potentiel. Il doit charger vite, s'afficher parfaitement sur mobile et donner confiance en quelques secondes. Je conçois chaque site vitrine autour d'un objectif clair : transformer la visite en appel, en message ou en prise de rendez-vous. Structure épurée, contenus hiérarchisés, référencement local travaillé dès le départ. Deux formules selon vos besoins : « Essentiel » (1 à 3 pages, 900€ à 1 400€) pour une présence propre et rapide, ou « Sur-mesure » (4 à 8 pages, 1 500€ à 2 600€) pour un vrai outil de conversion avec un design unique.",
+      "Un site vitrine, c'est souvent le premier contact entre votre activité et un client potentiel. Il doit charger vite, s'afficher parfaitement sur mobile et donner confiance en quelques secondes. Je conçois chaque site vitrine autour d'un objectif clair : transformer la visite en appel, en message ou en prise de rendez-vous. Structure épurée, contenus hiérarchisés, référencement local travaillé dès le départ. Deux formules selon vos besoins : « Essentiel » (1 à 3 pages, autour de 1 100€) pour une présence propre et rapide, ou « Sur-mesure » (4 à 8 pages, autour de 2 000€) pour un vrai outil de conversion avec un design unique.",
     includes: [
       "Design sur mesure, pas de thème générique",
       "De 1 à 8 pages selon la formule choisie",
@@ -37,7 +37,7 @@ export const services = [
       "Compatible mobile, tablette et desktop",
       "Formation à la prise en main incluse",
     ],
-    price: "De 900€ à 2 600€",
+    price: "À partir de 1 100€",
   },
   {
     number: "02",
@@ -46,7 +46,7 @@ export const services = [
     description:
       "Boutique en ligne complète : catalogue produits, paiement sécurisé et tunnel d'achat fluide, du panier jusqu'à la confirmation de commande. Une base solide pour vendre dès le premier jour.",
     longDescription:
-      "Vendre en ligne demande plus qu'un catalogue : un tunnel d'achat fluide, un paiement sécurisé et une gestion des stocks qui ne vous complique pas la vie. Je construis des boutiques en ligne pensées pour réduire les abandons de panier, avec une expérience d'achat simple sur mobile comme sur desktop, et une interface d'administration que vous maîtrisez rapidement. Le tarif dépend du catalogue et des fonctionnalités (espace client, réservations avancées...) : comptez de 3 000€ à 4 500€ et plus selon la complexité.",
+      "Vendre en ligne demande plus qu'un catalogue : un tunnel d'achat fluide, un paiement sécurisé et une gestion des stocks qui ne vous complique pas la vie. Je construis des boutiques en ligne pensées pour réduire les abandons de panier, avec une expérience d'achat simple sur mobile comme sur desktop, et une interface d'administration que vous maîtrisez rapidement. Le tarif dépend du catalogue et des fonctionnalités (espace client, réservations avancées...) : comptez à partir de 3 500€.",
     includes: [
       "Catalogue produits avec variantes (taille, couleur...)",
       "Paiement sécurisé (carte bancaire, autres moyens sur demande)",
@@ -55,7 +55,7 @@ export const services = [
       "Emails transactionnels (confirmation, expédition)",
       "Formation à la gestion quotidienne de la boutique",
     ],
-    price: "À partir de 3 000€",
+    price: "À partir de 3 500€",
   },
   {
     number: "03",

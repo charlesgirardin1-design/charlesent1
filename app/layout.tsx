@@ -72,7 +72,7 @@ const jsonLd = {
   url: siteConfig.url,
   email: siteConfig.email,
   areaServed: "FR",
-  priceRange: "150€ – 4500€",
+  priceRange: "150€ – 5000€",
 };
 
 export default function RootLayout({
