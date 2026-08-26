@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { siteConfig } from "@/lib/data";
+
+// Le compte Resend n'a pas encore de domaine vérifié (resend.com/domains) :
+// en mode test, il ne peut livrer qu'à l'adresse du titulaire du compte,
+// pas à contact@kodarium.fr. Une fois le domaine kodarium.fr vérifié dans
+// Resend, définir NOTIFICATION_EMAIL (ou remplacer directement la valeur
+// ci-dessous) pour recevoir sur l'adresse pro.
+const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || "charles.girardin1@gmail.com";
 
 export async function POST(request: Request) {
   const { name, email, message } = await request.json();
@@ -27,7 +33,7 @@ export async function POST(request: Request) {
 
   const { error } = await resend.emails.send({
     from: "Portfolio <onboarding@resend.dev>",
-    to: siteConfig.email,
+    to: NOTIFICATION_EMAIL,
     replyTo: email,
     subject: `Nouveau message de ${name}`,
     text: `Nom : ${name}\nEmail : ${email}\n\nMessage :\n${message}`,
