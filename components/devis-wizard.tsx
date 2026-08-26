@@ -125,7 +125,7 @@ export function DevisWizard() {
           <CheckCircle2 className="w-8 h-8 text-emerald-400" />
         </motion.div>
         <h2 className="text-2xl font-semibold mb-3">Demande envoyée !</h2>
-        <p className="text-white/60 max-w-md mx-auto">{statusMessage}</p>
+        <p className="text-foreground/60 max-w-md mx-auto">{statusMessage}</p>
       </div>
     );
   }
@@ -138,13 +138,13 @@ export function DevisWizard() {
             <div
               className={cn(
                 "h-1 rounded-full transition-colors duration-300",
-                i <= step ? "bg-accent-blue" : "bg-white/10"
+                i <= step ? "bg-accent-blue" : "bg-foreground/10"
               )}
             />
             <p
               className={cn(
                 "mt-2 text-xs font-mono uppercase tracking-wider hidden sm:block",
-                i === step ? "text-white" : "text-white/30"
+                i === step ? "text-foreground" : "text-foreground/30"
               )}
             >
               {label}
@@ -174,7 +174,7 @@ export function DevisWizard() {
                       "flex items-center gap-3 rounded-2xl border p-5 text-left transition-colors",
                       projectType === t.id
                         ? "border-accent-blue bg-accent-blue/10"
-                        : "border-surface-border bg-surface hover:border-white/20"
+                        : "border-surface-border bg-surface hover:border-foreground/20"
                     )}
                   >
                     <t.icon className="w-5 h-5 text-accent-blue flex-shrink-0" />
@@ -188,7 +188,7 @@ export function DevisWizard() {
           {step === 1 && (
             <div>
               <h2 className="text-2xl font-semibold mb-2">Des besoins spécifiques ?</h2>
-              <p className="text-white/50 mb-6">Optionnel — cochez ce qui s&apos;applique.</p>
+              <p className="text-foreground/50 mb-6">Optionnel — cochez ce qui s&apos;applique.</p>
               <div className="space-y-3">
                 {addonOptions.map((o) => (
                   <button
@@ -199,14 +199,14 @@ export function DevisWizard() {
                       "w-full flex items-center justify-between gap-3 rounded-xl border p-4 text-left transition-colors",
                       addons.includes(o.id)
                         ? "border-accent-blue bg-accent-blue/10"
-                        : "border-surface-border bg-surface hover:border-white/20"
+                        : "border-surface-border bg-surface hover:border-foreground/20"
                     )}
                   >
                     <span>{o.label}</span>
                     <span
                       className={cn(
                         "w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0",
-                        addons.includes(o.id) ? "border-accent-blue bg-accent-blue" : "border-white/20"
+                        addons.includes(o.id) ? "border-accent-blue bg-accent-blue" : "border-foreground/20"
                       )}
                     >
                       {addons.includes(o.id) && <Check className="w-3 h-3 text-black" />}
@@ -230,12 +230,12 @@ export function DevisWizard() {
                       "w-full flex items-center justify-between gap-3 rounded-xl border p-4 text-left transition-colors",
                       timeline === t.id
                         ? "border-accent-blue bg-accent-blue/10"
-                        : "border-surface-border bg-surface hover:border-white/20"
+                        : "border-surface-border bg-surface hover:border-foreground/20"
                     )}
                   >
                     <div>
                       <p className="font-medium">{t.label}</p>
-                      <p className="text-sm text-white/50">{t.hint}</p>
+                      <p className="text-sm text-foreground/50">{t.hint}</p>
                     </div>
                   </button>
                 ))}
@@ -247,11 +247,11 @@ export function DevisWizard() {
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-8 rounded-2xl border border-accent-blue/30 bg-accent-blue/10 p-6"
                 >
-                  <p className="text-sm text-white/60 mb-1">Estimation indicative</p>
+                  <p className="text-sm text-foreground/60 mb-1">Estimation indicative</p>
                   <p className="text-3xl font-semibold text-gradient">
                     {estimateLow}€ – {estimateHigh}€
                   </p>
-                  <p className="text-sm text-white/40 mt-2">
+                  <p className="text-sm text-foreground/40 mt-2">
                     Le tarif exact sera précisé dans le devis, selon le contenu réel du projet.
                   </p>
                 </motion.div>
@@ -264,7 +264,7 @@ export function DevisWizard() {
               <h2 className="text-2xl font-semibold mb-6">Vos coordonnées</h2>
               <div className="space-y-5">
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-white/70">
+                  <label className="block text-sm font-medium mb-2 text-foreground/70">
                     Nom complet
                   </label>
                   <input
@@ -275,7 +275,7 @@ export function DevisWizard() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-white/70">Email</label>
+                  <label className="block text-sm font-medium mb-2 text-foreground/70">Email</label>
                   <input
                     type="email"
                     value={email}
@@ -285,7 +285,7 @@ export function DevisWizard() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-white/70">
+                  <label className="block text-sm font-medium mb-2 text-foreground/70">
                     Précisions (optionnel)
                   </label>
                   <textarea
@@ -337,7 +337,7 @@ export function DevisWizard() {
             type="button"
             onClick={() => setStep((s) => Math.max(0, s - 1))}
             disabled={step === 0}
-            className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white disabled:opacity-0 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground disabled:opacity-0 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Précédent

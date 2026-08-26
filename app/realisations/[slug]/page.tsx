@@ -40,7 +40,7 @@ export default async function ProjectPage({
     <div className="mx-auto max-w-3xl px-6 py-32 md:py-40">
       <Link
         href="/realisations"
-        className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-10"
+        className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors mb-10"
       >
         <ArrowLeft className="w-4 h-4" />
         Retour aux réalisations
@@ -67,7 +67,7 @@ export default async function ProjectPage({
 
       <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-4 rounded-2xl border border-surface-border bg-surface p-8">
         <div className="flex-1">
-          <p className="text-sm text-white/50 mb-1">Un projet similaire en tête ?</p>
+          <p className="text-sm text-foreground/50 mb-1">Un projet similaire en tête ?</p>
           <p className="text-lg font-medium">Discutons-en, sans engagement.</p>
         </div>
         <div className="flex flex-wrap gap-3">

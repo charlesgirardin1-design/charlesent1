@@ -17,9 +17,9 @@ export default function PolitiqueConfidentialite() {
         Politique de confidentialité
       </h1>
 
-      <div className="space-y-10 text-white/70 leading-relaxed">
+      <div className="space-y-10 text-foreground/70 leading-relaxed">
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Responsable du traitement</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Responsable du traitement</h2>
           <p>
             {siteConfig.name} est responsable du traitement des données collectées sur ce site.
             Pour toute question, écrivez à{" "}
@@ -31,7 +31,7 @@ export default function PolitiqueConfidentialite() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Données collectées</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Données collectées</h2>
           <p>
             Ce site collecte des données personnelles uniquement lorsque vous remplissez
             volontairement l&apos;un des formulaires suivants :
@@ -50,7 +50,7 @@ export default function PolitiqueConfidentialite() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Finalité et base légale</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Finalité et base légale</h2>
           <p>
             Ces données sont utilisées exclusivement pour répondre à votre demande (devis,
             question, prise de contact). La base légale du traitement est l&apos;intérêt
@@ -59,7 +59,7 @@ export default function PolitiqueConfidentialite() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Destinataires des données</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Destinataires des données</h2>
           <p>
             Les messages envoyés via les formulaires sont transmis par email à {siteConfig.name}{" "}
             via Resend, un service tiers d&apos;envoi d&apos;email qui agit en tant que
@@ -69,7 +69,7 @@ export default function PolitiqueConfidentialite() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Durée de conservation</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Durée de conservation</h2>
           <p>
             Les données transmises via les formulaires sont conservées le temps nécessaire au
             traitement de votre demande, puis supprimées ou archivées de manière limitée dans le
@@ -78,7 +78,7 @@ export default function PolitiqueConfidentialite() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Mesure d&apos;audience</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Mesure d&apos;audience</h2>
           <p>
             Ce site utilise Vercel Analytics pour mesurer la fréquentation de manière anonyme et
             agrégée (pages vues, provenance des visites), sans cookie ni identifiant permettant
@@ -96,7 +96,7 @@ export default function PolitiqueConfidentialite() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Vos droits</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Vos droits</h2>
           <p>
             Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez
             d&apos;un droit d&apos;accès, de rectification et de suppression de vos données
@@ -109,7 +109,7 @@ export default function PolitiqueConfidentialite() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Hébergement</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Hébergement</h2>
           <p>
             Ce site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789,
             États-Unis.

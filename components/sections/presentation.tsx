@@ -38,7 +38,7 @@ export function Presentation() {
             eyebrow="À propos"
             title="Un seul développeur, une exigence d'agence"
           />
-          <div className="space-y-5 text-white/70 text-lg leading-relaxed -mt-8">
+          <div className="space-y-5 text-foreground/70 text-lg leading-relaxed -mt-8">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ export function Presentation() {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="rounded-full border border-surface-border bg-white/[0.02] px-4 py-1.5 text-sm text-white/70 hover:border-accent-blue/50 hover:text-white transition-colors"
+                  className="rounded-full border border-surface-border bg-foreground/[0.02] px-4 py-1.5 text-sm text-foreground/70 hover:border-accent-blue/50 hover:text-foreground transition-colors"
                 >
                   {skill}
                 </motion.span>

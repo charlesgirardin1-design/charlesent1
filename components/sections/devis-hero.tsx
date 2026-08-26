@@ -14,7 +14,7 @@ export function DevisHero() {
         <h1 className="text-[clamp(1.8rem,4vw,2.75rem)] font-semibold tracking-tight mb-4">
           Estimez votre projet
         </h1>
-        <p className="text-white/60 text-lg">
+        <p className="text-foreground/60 text-lg">
           Quatre étapes rapides pour une première estimation. Le tarif définitif sera confirmé
           dans un devis détaillé, sans engagement de votre part.
         </p>

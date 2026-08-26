@@ -10,6 +10,7 @@ import { AmbientBackground } from "@/components/ambient-background";
 import { Preloader } from "@/components/preloader";
 import { CookieConsent } from "@/components/cookie-consent";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/data";
 
 const geistSans = Geist({
@@ -83,26 +84,29 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
+      suppressHydrationWarning
     >
       <body className="min-h-screen antialiased selection:bg-accent-blue selection:text-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <div className="noise-overlay" aria-hidden="true" />
-        <Preloader />
-        <SmoothScroll>
-          <ScrollProgress />
-          <Navbar />
-          <main className="relative">
-            <AmbientBackground />
-            {children}
-          </main>
-          <Footer />
-        </SmoothScroll>
-        <CookieConsent />
-        <GoogleAnalytics />
-        <Analytics />
+        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
+          <div className="noise-overlay" aria-hidden="true" />
+          <Preloader />
+          <SmoothScroll>
+            <ScrollProgress />
+            <Navbar />
+            <main className="relative">
+              <AmbientBackground />
+              {children}
+            </main>
+            <Footer />
+          </SmoothScroll>
+          <CookieConsent />
+          <GoogleAnalytics />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -84,7 +84,7 @@ export function Contact() {
           >
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2 text-white/70">
+                <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground/70">
                   Nom complet
                 </label>
                 <input
@@ -95,7 +95,7 @@ export function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2 text-white/70">
+                <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground/70">
                   Email
                 </label>
                 <input
@@ -108,7 +108,7 @@ export function Contact() {
               </div>
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2 text-white/70">
+              <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground/70">
                 Votre message
               </label>
               <textarea
@@ -193,12 +193,12 @@ export function Contact() {
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: -4 }}
                   transition={{ duration: 0.25 }}
-                  className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0"
+                  className="w-11 h-11 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center flex-shrink-0"
                 >
                   <item.icon className="w-4 h-4 text-accent-blue" />
                 </motion.div>
                 <div>
-                  <p className="text-sm text-white/50">{item.label}</p>
+                  <p className="text-sm text-foreground/50">{item.label}</p>
                   <p className="font-medium">{item.value}</p>
                 </div>
               </motion.div>

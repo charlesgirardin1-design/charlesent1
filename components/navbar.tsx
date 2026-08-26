@@ -1,25 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const { scrollY } = useScroll();
+  const { resolvedTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 24);
   });
+
+  const logoSrc = mounted && resolvedTheme === "light" ? "/logo-full.png" : "/logo-full-dark.png";
 
   return (
     <>
@@ -33,13 +41,13 @@ export function Navbar() {
           className={cn(
             "flex w-full max-w-6xl items-center justify-between rounded-full px-5 py-2.5 transition-all duration-500",
             scrolled
-              ? "bg-black/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+              ? "bg-background/60 backdrop-blur-xl border border-foreground/10 shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
               : "bg-transparent border border-transparent"
           )}
         >
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo-full-dark.png"
+              src={logoSrc}
               alt={siteConfig.name}
               width={395}
               height={281}
@@ -58,7 +66,7 @@ export function Navbar() {
                   href={link.href}
                   className={cn(
                     "relative text-sm font-medium py-1 transition-colors",
-                    isActive ? "text-white" : "text-white/60 hover:text-white"
+                    isActive ? "text-foreground" : "text-foreground/60 hover:text-foreground"
                   )}
                 >
                   {link.label}
@@ -74,7 +82,8 @@ export function Navbar() {
             })}
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
             <Magnetic strength={0.25}>
               <Link href="/devis">
                 <Button size="sm">Estimer mon projet</Button>
@@ -82,13 +91,16 @@ export function Navbar() {
             </Magnetic>
           </div>
 
-          <button
-            aria-label="Ouvrir le menu"
-            className="md:hidden p-2 -mr-2"
-            onClick={() => setOpen(true)}
-          >
-            <Menu className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-1 md:hidden">
+            <ThemeToggle />
+            <button
+              aria-label="Ouvrir le menu"
+              className="p-2 -mr-2"
+              onClick={() => setOpen(true)}
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </motion.header>
 
@@ -98,9 +110,10 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[95] bg-black/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-[95] bg-background/95 backdrop-blur-xl md:hidden"
           >
-            <div className="flex justify-end p-6">
+            <div className="flex justify-between items-center p-6">
+              <ThemeToggle />
               <button aria-label="Fermer le menu" onClick={() => setOpen(false)}>
                 <X className="w-6 h-6" />
               </button>

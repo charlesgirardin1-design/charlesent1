@@ -34,13 +34,13 @@ export function Portfolio() {
               onClick={() => setActive(f.value)}
               className={cn(
                 "relative rounded-full px-5 py-3 text-sm font-semibold transition-colors",
-                active === f.value ? "text-black" : "text-white/60 hover:text-white border border-surface-border"
+                active === f.value ? "text-background" : "text-foreground/60 hover:text-foreground border border-surface-border"
               )}
             >
               {active === f.value && (
                 <motion.span
                   layoutId="filter-pill"
-                  className="absolute inset-0 rounded-full bg-white"
+                  className="absolute inset-0 rounded-full bg-foreground"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -103,12 +103,12 @@ export function Portfolio() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <span className="text-xs font-mono uppercase tracking-wider text-white/70 mb-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-foreground/70 mb-2">
                     {project.categoryLabel}
                   </span>
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold">{project.title}</h3>
-                    <span className="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <span className="w-9 h-9 rounded-full bg-foreground/10 border border-foreground/20 flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                       <ArrowUpRight className="w-4 h-4" />
                     </span>
                   </div>

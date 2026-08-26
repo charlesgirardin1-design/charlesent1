@@ -17,9 +17,9 @@ export default function CGV() {
         Conditions générales de vente
       </h1>
 
-      <div className="space-y-10 text-white/70 leading-relaxed">
+      <div className="space-y-10 text-foreground/70 leading-relaxed">
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Article 1 — Objet</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Article 1 — Objet</h2>
           <p>
             Les présentes conditions générales de vente régissent les prestations de
             développement web, de conception de sites internet et de photographie proposées
@@ -30,7 +30,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Article 2 — Devis et commande</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Article 2 — Devis et commande</h2>
           <p>
             Chaque prestation fait l&apos;objet d&apos;un devis détaillé (périmètre, délais,
             tarif) établi après échange avec le client. La commande est considérée comme ferme
@@ -40,7 +40,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">
+          <h2 className="text-lg font-semibold text-foreground mb-3">
             Article 3 — Prix et modalités de paiement
           </h2>
           <p>
@@ -59,7 +59,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">
+          <h2 className="text-lg font-semibold text-foreground mb-3">
             Article 4 — Délais de réalisation
           </h2>
           <p>
@@ -71,7 +71,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">
+          <h2 className="text-lg font-semibold text-foreground mb-3">
             Article 5 — Obligations du prestataire
           </h2>
           <p>
@@ -84,7 +84,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">
+          <h2 className="text-lg font-semibold text-foreground mb-3">
             Article 6 — Obligations du client
           </h2>
           <p>
@@ -96,7 +96,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">
+          <h2 className="text-lg font-semibold text-foreground mb-3">
             Article 7 — Droit de rétractation (clients particuliers)
           </h2>
           <p>
@@ -114,7 +114,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">
+          <h2 className="text-lg font-semibold text-foreground mb-3">
             Article 8 — Propriété intellectuelle
           </h2>
           <p>
@@ -126,7 +126,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Article 9 — Responsabilité</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Article 9 — Responsabilité</h2>
           <p>
             {siteConfig.name}
             {" "}
@@ -138,7 +138,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">
+          <h2 className="text-lg font-semibold text-foreground mb-3">
             Article 10 — Droit applicable et litiges
           </h2>
           <p>
@@ -153,7 +153,7 @@ export default function CGV() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Contact</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Contact</h2>
           <p>
             Pour toute question relative à ces conditions, écrivez à{" "}
             <a href={`mailto:${siteConfig.email}`} className="text-accent-blue hover:underline">

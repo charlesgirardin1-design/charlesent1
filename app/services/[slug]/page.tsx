@@ -39,7 +39,7 @@ export default async function ServicePage({
     <div className="mx-auto max-w-3xl px-6 py-32 md:py-40">
       <Link
         href="/services"
-        className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-10"
+        className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors mb-10"
       >
         <ArrowLeft className="w-4 h-4" />
         Retour aux services
@@ -47,7 +47,7 @@ export default async function ServicePage({
 
       <ServiceHero service={service} />
 
-      <div className="mt-12 space-y-5 text-white/70 text-lg leading-relaxed">
+      <div className="mt-12 space-y-5 text-foreground/70 text-lg leading-relaxed">
         <p>{service.longDescription}</p>
       </div>
 
@@ -58,7 +58,7 @@ export default async function ServicePage({
 
       <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-4 rounded-2xl border border-surface-border bg-surface p-8">
         <div className="flex-1">
-          <p className="text-sm text-white/50 mb-1">Tarif</p>
+          <p className="text-sm text-foreground/50 mb-1">Tarif</p>
           <p className="text-2xl font-semibold">{service.price}</p>
         </div>
         <div className="flex flex-wrap gap-3">

@@ -17,26 +17,26 @@ export default function PolitiqueCookies() {
         Politique de cookies
       </h1>
 
-      <div className="space-y-10 text-white/70 leading-relaxed">
+      <div className="space-y-10 text-foreground/70 leading-relaxed">
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">En résumé</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">En résumé</h2>
           <p>
             Ce site dépose un cookie de mesure d&apos;audience (Google Analytics) uniquement
             après avoir obtenu votre consentement via le bandeau affiché lors de votre première
             visite. Vous pouvez accepter ou refuser ce cookie, et changer d&apos;avis à tout
             moment via le lien{" "}
-            <strong className="text-white">« Gérer les cookies »</strong> en bas de page. Sans
+            <strong className="text-foreground">« Gérer les cookies »</strong> en bas de page. Sans
             votre accord, aucun cookie de ce type n&apos;est déposé.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Cookies de mesure d&apos;audience</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Cookies de mesure d&apos;audience</h2>
           <p>
             Avec votre consentement, ce site utilise Google Analytics pour mesurer la
             fréquentation (pages vues, provenance des visites, appareil utilisé). Ce service
-            dépose des cookies (notamment <code className="text-white/90">_ga</code> et{" "}
-            <code className="text-white/90">_ga_*</code>) d&apos;une durée de conservation
+            dépose des cookies (notamment <code className="text-foreground/90">_ga</code> et{" "}
+            <code className="text-foreground/90">_ga_*</code>) d&apos;une durée de conservation
             maximale de 13 mois, conformément aux recommandations de la CNIL. Les données
             collectées sont traitées par Google Ireland Limited et peuvent être transférées hors
             de l&apos;Union européenne dans le cadre des garanties prévues par Google.
@@ -50,20 +50,20 @@ export default function PolitiqueCookies() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Gérer votre consentement</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Gérer votre consentement</h2>
           <p>
             Lors de votre première visite, un bandeau vous permet d&apos;accepter ou de refuser
             le dépôt du cookie Google Analytics. Votre choix est mémorisé dans votre navigateur.
             Vous pouvez le modifier à tout moment en cliquant sur{" "}
-            <strong className="text-white">« Gérer les cookies »</strong> dans le pied de page de
+            <strong className="text-foreground">« Gérer les cookies »</strong> dans le pied de page de
             n&apos;importe quelle page du site, ce qui réaffiche le bandeau de consentement.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Stockage technique local</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Stockage technique local</h2>
           <p>
-            Le site utilise le stockage local de votre navigateur (<code className="text-white/90">sessionStorage</code>)
+            Le site utilise le stockage local de votre navigateur (<code className="text-foreground/90">sessionStorage</code>)
             pour une seule chose : mémoriser que l&apos;écran de chargement animé a déjà été vu au
             cours de votre visite, afin de ne pas le rejouer à chaque page. Cette information reste
             uniquement sur votre appareil, est effacée à la fermeture de l&apos;onglet et
@@ -73,7 +73,7 @@ export default function PolitiqueCookies() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Aucun cookie publicitaire</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Aucun cookie publicitaire</h2>
           <p>
             Aucun cookie de reciblage publicitaire ou de réseau social n&apos;est déposé sur ce
             site. Les formulaires (contact, estimation de devis) envoient vos données directement
@@ -82,7 +82,7 @@ export default function PolitiqueCookies() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Questions</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Questions</h2>
           <p>
             Pour toute question sur cette politique, écrivez à{" "}
             <a href={`mailto:${siteConfig.email}`} className="text-accent-blue hover:underline">

@@ -23,15 +23,15 @@ export function Testimonials() {
               whileHover={{ y: -6, borderColor: "rgba(59,130,246,0.4)" }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className={cn(
-                "w-[380px] flex-shrink-0 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8",
+                "w-[380px] flex-shrink-0 rounded-2xl border border-foreground/10 bg-foreground/[0.03] backdrop-blur-xl p-8",
                 i >= testimonials.length && "motion-reduce:hidden"
               )}
             >
               <motion.div whileHover={{ rotate: -8, scale: 1.1 }} transition={{ duration: 0.3 }}>
                 <Quote className="w-6 h-6 text-accent-blue mb-4" />
               </motion.div>
-              <p className="text-lg leading-relaxed text-white/85">{t.quote}</p>
-              <p className="mt-6 text-sm font-mono uppercase tracking-wider text-white/40">
+              <p className="text-lg leading-relaxed text-foreground/85">{t.quote}</p>
+              <p className="mt-6 text-sm font-mono uppercase tracking-wider text-foreground/40">
                 {t.author}
               </p>
             </motion.div>

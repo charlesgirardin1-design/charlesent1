@@ -34,7 +34,7 @@ export default function NotFound() {
         initial={{ opacity: 0, y: 24, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-xl rounded-3xl border border-white/15 bg-white/[0.04] backdrop-blur-xl shadow-2xl shadow-accent-blue/10 p-3"
+        className="relative w-full max-w-xl rounded-3xl border border-foreground/15 bg-foreground/[0.04] backdrop-blur-xl shadow-2xl shadow-accent-blue/10 p-3"
       >
         <video
           ref={videoRef}
@@ -49,7 +49,7 @@ export default function NotFound() {
           type="button"
           onClick={toggleSound}
           aria-label={muted ? "Activer le son" : "Couper le son"}
-          className="absolute bottom-6 right-6 flex items-center justify-center w-10 h-10 rounded-full border border-white/15 bg-black/50 backdrop-blur-md text-white/80 hover:text-white hover:border-white/30 transition-colors"
+          className="absolute bottom-6 right-6 flex items-center justify-center w-10 h-10 rounded-full border border-foreground/15 bg-black/50 backdrop-blur-md text-foreground/80 hover:text-foreground hover:border-foreground/30 transition-colors"
         >
           {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
         </button>
@@ -81,7 +81,7 @@ export default function NotFound() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="mt-6 text-lg text-white/60 max-w-md"
+        className="mt-6 text-lg text-foreground/60 max-w-md"
       >
         Cette page n&apos;existe pas, ou a été déplacée. Comme un lien mort, ça arrive même sur
         les meilleurs sites.

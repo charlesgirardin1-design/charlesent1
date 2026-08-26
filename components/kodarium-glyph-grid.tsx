@@ -3,9 +3,9 @@
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
-// Palette Kodarium (dark theme)
-const COLOR_BG = "#0a0a0a";
-const COLOR_BORDER = "rgba(243,244,246,0.08)";
+// Palette Kodarium — les couleurs des glyphes restent identiques dans les deux
+// thèmes (accents violet/cyan visibles sur fond clair comme sur fond sombre) ;
+// seul le fond du conteneur suit le thème actif via --background-alt.
 const IDLE_RGB = { r: 0x2a, g: 0x24, b: 0x38 }; // anthracite violet
 const VIOLET_RGB = { r: 0x8b, g: 0x5c, b: 0xf6 }; // violet néon
 const CYAN_RGB = { r: 0x06, g: 0xb6, b: 0xd4 }; // cyan électrique
@@ -196,8 +196,10 @@ export function KodariumGlyphGrid({ className }: { className?: string }) {
   return (
     <div
       ref={containerRef}
-      className={cn("relative overflow-hidden rounded-2xl border", className)}
-      style={{ background: COLOR_BG, borderColor: COLOR_BORDER }}
+      className={cn(
+        "relative overflow-hidden rounded-2xl border bg-background-alt border-surface-border",
+        className
+      )}
       aria-hidden="true"
     >
       {/* Grain très subtil, statique (pas redessiné par le canvas, donc gratuit en perf) */}

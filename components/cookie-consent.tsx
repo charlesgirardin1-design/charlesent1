@@ -40,8 +40,8 @@ export function CookieConsent() {
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="fixed inset-x-0 bottom-0 z-[100] px-4 pb-4 sm:px-6 sm:pb-6"
         >
-          <div className="mx-auto max-w-3xl rounded-2xl border border-surface-border bg-[#0a0a0a]/95 backdrop-blur-xl p-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center gap-5">
-            <p className="text-sm text-white/70 leading-relaxed flex-1">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-surface-border bg-background-alt/95 backdrop-blur-xl p-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center gap-5">
+            <p className="text-sm text-foreground/70 leading-relaxed flex-1">
               J&apos;utilise Google Analytics pour mesurer la fréquentation du site. Ces
               cookies ne sont déposés qu&apos;avec votre accord. Vous pouvez accepter,
               refuser, ou en savoir plus dans ma{" "}

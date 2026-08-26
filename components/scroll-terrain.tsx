@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
+import { useTheme } from "next-themes";
 import * as THREE from "three";
 import { createNoise2D } from "simplex-noise";
 
@@ -85,13 +86,17 @@ function CameraRig() {
 
 export function ScrollTerrain({
   className,
-  color = "#4f7dff",
+  color,
 }: {
   className?: string;
   color?: string;
 }) {
   const scrollBoost = useRef(0);
   const lastScrollY = useRef(0);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     lastScrollY.current = window.scrollY;
@@ -105,6 +110,13 @@ export function ScrollTerrain({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Le fond du canvas est transparent (alpha:true) et laisse voir le fond CSS
+  // du conteneur (déjà thémé). Le fog doit tout de même correspondre à ce
+  // fond pour que les lignes lointaines s'y fondent proprement.
+  const isLight = mounted && resolvedTheme === "light";
+  const fogColor = isLight ? "#f7f7f8" : "#050505";
+  const lineColor = color ?? (isLight ? "#2f5fd6" : "#4f7dff");
+
   return (
     <div className={className} aria-hidden="true">
       <Canvas
@@ -112,8 +124,8 @@ export function ScrollTerrain({
         dpr={[1, 1.5]}
       >
         <PerspectiveCamera makeDefault position={[0, 5, 12]} fov={55} near={0.1} far={160} />
-        <fog attach="fog" args={["#050505", 18, 75]} />
-        <Terrain scrollBoost={scrollBoost} color={color} />
+        <fog attach="fog" args={[fogColor, 18, 75]} />
+        <Terrain scrollBoost={scrollBoost} color={lineColor} />
         <CameraRig />
       </Canvas>
     </div>

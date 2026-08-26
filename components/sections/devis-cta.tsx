@@ -25,7 +25,7 @@ export function DevisCTA() {
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-3">
               Estimez votre projet en 2 minutes
             </h2>
-            <p className="text-white/60 max-w-lg mx-auto md:mx-0">
+            <p className="text-foreground/60 max-w-lg mx-auto md:mx-0">
               Type de projet, besoins, délai : quatre questions rapides pour une première
               fourchette de prix, sans engagement de votre part.
             </p>

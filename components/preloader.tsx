@@ -51,14 +51,14 @@ export function Preloader() {
           className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-8 bg-background"
         >
           <div className="flex flex-col items-center gap-3">
-            <span className="font-mono text-xs tracking-[0.35em] text-white/40 uppercase">
+            <span className="font-mono text-xs tracking-[0.35em] text-foreground/40 uppercase">
               {siteConfig.name}
             </span>
             <span className="font-mono text-6xl font-semibold tabular-nums text-gradient">
               {percent}%
             </span>
           </div>
-          <div className="w-52 h-px bg-white/10 overflow-hidden">
+          <div className="w-52 h-px bg-foreground/10 overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-accent-blue via-accent-violet to-accent-cyan"
               style={{ width: `${percent}%` }}

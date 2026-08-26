@@ -42,12 +42,12 @@ export function Services() {
                 />
 
                 <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-accent-blue/50 transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center mb-6 group-hover:border-accent-blue/50 transition-colors">
                     <Icon className="w-5 h-5 text-accent-blue" />
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-white/60 leading-relaxed mb-6">{service.description}</p>
-                  <span className="inline-block font-mono text-sm text-white/50 bg-white/5 rounded-full px-3 py-1">
+                  <p className="text-foreground/60 leading-relaxed mb-6">{service.description}</p>
+                  <span className="inline-block font-mono text-sm text-foreground/50 bg-foreground/5 rounded-full px-3 py-1">
                     {service.price}
                   </span>
                   <Link

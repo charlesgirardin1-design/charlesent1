@@ -94,18 +94,18 @@ function GlassShowcase() {
           scale: { duration: 0.9, delay: 0.55, ease: [0.22, 1, 0.36, 1] },
           y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.4 },
         }}
-        className="absolute inset-x-6 top-4 rounded-3xl border border-white/15 bg-white/[0.06] backdrop-blur-2xl shadow-2xl shadow-accent-blue/10 p-6"
+        className="absolute inset-x-6 top-4 rounded-3xl border border-foreground/15 bg-foreground/[0.06] backdrop-blur-2xl shadow-2xl shadow-accent-blue/10 p-6"
       >
         <div className="flex items-center gap-1.5 mb-5">
-          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+          <span className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
+          <span className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
+          <span className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
         </div>
         <div className="space-y-3">
-          <div className="h-3 w-3/4 rounded-full bg-white/15" />
-          <div className="h-3 w-1/2 rounded-full bg-white/10" />
-          <div className="h-24 rounded-xl bg-gradient-to-br from-accent-blue/30 via-accent-violet/20 to-accent-cyan/20 border border-white/10" />
-          <div className="h-3 w-2/3 rounded-full bg-white/10" />
+          <div className="h-3 w-3/4 rounded-full bg-foreground/15" />
+          <div className="h-3 w-1/2 rounded-full bg-foreground/10" />
+          <div className="h-24 rounded-xl bg-gradient-to-br from-accent-blue/30 via-accent-violet/20 to-accent-cyan/20 border border-foreground/10" />
+          <div className="h-3 w-2/3 rounded-full bg-foreground/10" />
         </div>
       </motion.div>
 
@@ -116,9 +116,9 @@ function GlassShowcase() {
           opacity: { duration: 0.8, delay: 1.1 },
           y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.9 },
         }}
-        className="absolute -bottom-4 -left-10 w-48 rounded-2xl border border-white/15 bg-white/[0.08] backdrop-blur-xl shadow-xl shadow-black/20 p-4"
+        className="absolute -bottom-4 -left-10 w-48 rounded-2xl border border-foreground/15 bg-foreground/[0.08] backdrop-blur-xl shadow-xl shadow-black/20 p-4"
       >
-        <p className="text-xs text-white/50 mb-1">Taux de conversion</p>
+        <p className="text-xs text-foreground/50 mb-1">Taux de conversion</p>
         <p className="text-2xl font-semibold text-gradient">+38%</p>
       </motion.div>
 
@@ -129,13 +129,13 @@ function GlassShowcase() {
           opacity: { duration: 0.8, delay: 1.3 },
           y: { duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2.2 },
         }}
-        className="absolute -top-2 -right-6 flex items-center gap-2 rounded-2xl border border-white/15 bg-white/[0.08] backdrop-blur-xl shadow-xl shadow-black/20 px-4 py-3"
+        className="absolute -top-2 -right-6 flex items-center gap-2 rounded-2xl border border-foreground/15 bg-foreground/[0.08] backdrop-blur-xl shadow-xl shadow-black/20 px-4 py-3"
       >
         <span className="relative flex h-2 w-2 flex-shrink-0">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan opacity-75" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
         </span>
-        <span className="text-xs text-white/70">Site en ligne</span>
+        <span className="text-xs text-foreground/70">Site en ligne</span>
       </motion.div>
     </div>
   );
@@ -156,7 +156,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] backdrop-blur-md px-4 py-1.5 text-sm text-white/70 mb-8 shadow-lg shadow-black/20"
+            className="inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.06] backdrop-blur-md px-4 py-1.5 text-sm text-foreground/70 mb-8 shadow-lg shadow-black/20"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-blue opacity-75" />
@@ -187,10 +187,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.85 }}
-            className="mt-6 flex flex-col gap-y-2 w-fit rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md px-5 py-4 shadow-lg shadow-black/10"
+            className="mt-6 flex flex-col gap-y-2 w-fit rounded-2xl border border-foreground/10 bg-foreground/[0.04] backdrop-blur-md px-5 py-4 shadow-lg shadow-black/10"
           >
             {trustPoints.map((point) => (
-              <li key={point} className="flex items-center gap-2 text-sm text-white/60">
+              <li key={point} className="flex items-center gap-2 text-sm text-foreground/60">
                 <Check className="w-4 h-4 text-accent-blue flex-shrink-0" />
                 {point}
               </li>
@@ -228,7 +228,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-foreground/40"
       >
         <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
         <motion.div

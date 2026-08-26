@@ -13,7 +13,7 @@ export function AnimatedFeatureList({ items }: { items: string[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.4, delay: i * 0.06 }}
-          className="flex items-start gap-3 text-white/70"
+          className="flex items-start gap-3 text-foreground/70"
         >
           <motion.span
             whileHover={{ scale: 1.15, rotate: -6 }}

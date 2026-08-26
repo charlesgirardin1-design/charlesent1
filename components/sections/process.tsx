@@ -23,7 +23,7 @@ export function Process() {
         />
 
         <div ref={ref} className="relative">
-          <div className="absolute left-[27px] top-2 bottom-2 w-px bg-white/10" />
+          <div className="absolute left-[27px] top-2 bottom-2 w-px bg-foreground/10" />
           <motion.div
             style={{ scaleY }}
             className="absolute left-[27px] top-2 bottom-2 w-px bg-gradient-to-b from-accent-blue via-accent-violet to-accent-cyan origin-top"
@@ -44,7 +44,7 @@ export function Process() {
                 </div>
                 <div className="pt-2">
                   <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                  <p className="text-white/60 leading-relaxed max-w-md">{step.description}</p>
+                  <p className="text-foreground/60 leading-relaxed max-w-md">{step.description}</p>
                 </div>
               </motion.div>
             ))}

@@ -17,31 +17,31 @@ export default function MentionsLegales() {
         Mentions légales
       </h1>
 
-      <div className="space-y-10 text-white/70 leading-relaxed">
+      <div className="space-y-10 text-foreground/70 leading-relaxed">
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Éditeur du site</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Éditeur du site</h2>
           <p>
             {siteConfig.name} — {siteConfig.role}
             <br />
             Statut : entrepreneur individuel (micro-entreprise)
             <br />
-            <span className="text-white/40">Nom et prénom du dirigeant : [Prénom Nom] — à compléter</span>
+            <span className="text-foreground/40">Nom et prénom du dirigeant : [Prénom Nom] — à compléter</span>
             <br />
             Email : {siteConfig.email}
             <br />
-            <span className="text-white/40">
+            <span className="text-foreground/40">
               N° SIRET et adresse professionnelle : en cours de complément.
             </span>
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Directeur de la publication</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Directeur de la publication</h2>
           <p>{siteConfig.name}</p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Médiation de la consommation</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Médiation de la consommation</h2>
           <p>
             Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, en cas de
             litige non résolu directement avec {siteConfig.name}, tout client consommateur peut
@@ -52,7 +52,7 @@ export default function MentionsLegales() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Hébergement</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Hébergement</h2>
           <p>
             Vercel Inc.
             <br />
@@ -70,7 +70,7 @@ export default function MentionsLegales() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Propriété intellectuelle</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Propriété intellectuelle</h2>
           <p>
             L&apos;ensemble des contenus présents sur ce site (textes, visuels, code) est la
             propriété de {siteConfig.name}, sauf mention contraire. Toute reproduction sans
@@ -79,7 +79,7 @@ export default function MentionsLegales() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Données personnelles</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Données personnelles</h2>
           <p>
             Les informations transmises via les formulaires du site (contact, estimation de
             devis) sont utilisées uniquement pour répondre à votre demande et ne sont ni
@@ -93,7 +93,7 @@ export default function MentionsLegales() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Cookies et mesure d&apos;audience</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">Cookies et mesure d&apos;audience</h2>
           <p>
             Ce site utilise un cookie de mesure d&apos;audience (Google Analytics) uniquement
             après recueil de votre consentement via le bandeau prévu à cet effet. Vercel

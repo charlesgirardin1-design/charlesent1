@@ -58,7 +58,7 @@ export function FAQ() {
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     className={cn(
                       "flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center",
-                      isOpen ? "border-accent-blue text-accent-blue" : "border-white/15 text-white/50"
+                      isOpen ? "border-accent-blue text-accent-blue" : "border-foreground/15 text-foreground/50"
                     )}
                   >
                     <Plus className="w-4 h-4" />
@@ -73,7 +73,7 @@ export function FAQ() {
                       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 pb-5 text-white/60 leading-relaxed">{faq.answer}</p>
+                      <p className="px-6 pb-5 text-foreground/60 leading-relaxed">{faq.answer}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

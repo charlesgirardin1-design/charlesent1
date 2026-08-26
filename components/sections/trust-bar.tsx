@@ -12,7 +12,7 @@ export function TrustBar() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="shrink-0 text-xs font-mono uppercase tracking-[0.2em] text-white/40"
+          className="shrink-0 text-xs font-mono uppercase tracking-[0.2em] text-foreground/40"
         >
           Ils me font confiance
         </motion.p>
@@ -27,7 +27,7 @@ export function TrustBar() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="text-lg font-semibold text-white/35 hover:text-white/80 transition-colors"
+              className="text-lg font-semibold text-foreground/35 hover:text-foreground/80 transition-colors"
             >
               {project.title}
             </motion.a>
