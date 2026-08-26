@@ -53,7 +53,7 @@ export default function CGV() {
           <p className="mt-3">
             Toute somme non réglée à l&apos;échéance prévue au devis pourra donner lieu à des
             pénalités de retard, calculées au taux d&apos;intérêt légal en vigueur, ainsi
-            qu&apos;à une indemnité forfaitaire pour frais de recouvrement de 40€ (article
+            qu&apos;à une indemnité forfaitaire pour frais de recouvrement de 40 € (article
             L.441-10 du Code de commerce), sans préjudice de la faculté de suspendre les
             prestations en cours jusqu&apos;au complet règlement.
           </p>

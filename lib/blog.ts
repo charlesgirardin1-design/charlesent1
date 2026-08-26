@@ -25,7 +25,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: "p",
-        text: "C'est la première question que pose quasiment tout le monde, et c'est normal : sans repère, un devis de 800€ ou de 4 000€ semble aussi arbitraire l'un que l'autre. Voici comment se construit réellement le prix d'un site vitrine, pour que vous puissiez évaluer un devis (le mien ou celui de quelqu'un d'autre) en connaissance de cause.",
+        text: "C'est la première question que pose quasiment tout le monde, et c'est normal : sans repère, un devis de 800 € ou de 4 000 € semble aussi arbitraire l'un que l'autre. Voici comment se construit réellement le prix d'un site vitrine, pour que vous puissiez évaluer un devis (le mien ou celui de quelqu'un d'autre) en connaissance de cause.",
       },
       { type: "h2", text: "Ce qui fait varier le prix" },
       {
@@ -49,10 +49,10 @@ export const blogPosts: BlogPost[] = [
         type: "p",
         text: "Au-delà de la base, certains besoins s'ajoutent en options : la création d'une identité visuelle (logo, charte graphique) si vous n'en avez pas encore, la rédaction des textes si vous préférez déléguer plutôt que fournir vos propres contenus, ou l'intégration d'une fonctionnalité spécifique comme un système de réservation en ligne. Rien de tout cela n'est obligatoire — ce sont des briques que vous ajoutez selon vos besoins réels, pas un forfait figé.",
       },
-      { type: "h2", text: "Le piège du prix \"trop beau\"" },
+      { type: "h2", text: "Le piège du prix « trop beau »" },
       {
         type: "p",
-        text: "Un site à 200€ existe, généralement construit sur un thème générique préconfiguré, sans réflexion sur votre activité ni sur le référencement. Ce n'est pas nécessairement un mauvais choix pour tester une idée sans budget, mais ce n'est pas comparable à un site conçu pour convertir des visiteurs en clients. Le bon réflexe : demandez toujours ce qui est concrètement inclus (design sur mesure ou thème, formation à la prise en main, optimisation SEO de base) avant de comparer deux devis sur le seul critère du prix.",
+        text: "Un site à 200 € existe, généralement construit sur un thème générique préconfiguré, sans réflexion sur votre activité ni sur le référencement. Ce n'est pas nécessairement un mauvais choix pour tester une idée sans budget, mais ce n'est pas comparable à un site conçu pour convertir des visiteurs en clients. Le bon réflexe : demandez toujours ce qui est concrètement inclus (design sur mesure ou thème, formation à la prise en main, optimisation SEO de base) avant de comparer deux devis sur le seul critère du prix.",
       },
       { type: "h2", text: "Comment obtenir un chiffrage fiable" },
       {
@@ -128,7 +128,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           "Mentionnez votre zone d'intervention explicitement, page par page, pas seulement sur la page Contact.",
-          "Donnez à chaque prestation sa propre page plutôt que de tout regrouper sur une seule page \"Services\" trop dense.",
+          "Donnez à chaque prestation sa propre page plutôt que de tout regrouper sur une seule page « Services » trop dense.",
           "Ajoutez de vraies photos de vos réalisations plutôt que des visuels de banque d'images — Google et les visiteurs valorisent tous les deux le contenu original.",
         ],
       },

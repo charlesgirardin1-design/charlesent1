@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "studio de développement web",
+    "développeur web freelance",
     "création site internet",
     "site vitrine",
     "site e-commerce",
@@ -72,7 +72,7 @@ const jsonLd = {
   url: siteConfig.url,
   email: siteConfig.email,
   areaServed: "FR",
-  priceRange: "150€ – 5000€",
+  priceRange: "150 € – 5 000 €",
 };
 
 export default function RootLayout({

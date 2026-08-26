@@ -97,7 +97,7 @@ export function DevisWizard() {
           projectType: selectedType?.label,
           addons: addons.map((id) => addonOptions.find((o) => o.id === id)?.label),
           timeline: selectedTimeline?.label,
-          estimate: isCustomQuote ? "Sur devis" : `${estimateLow}€ - ${estimateHigh}€`,
+          estimate: isCustomQuote ? "Sur devis" : `${estimateLow} € – ${estimateHigh} €`,
         }),
       });
       const json = await res.json();
@@ -249,7 +249,7 @@ export function DevisWizard() {
                 >
                   <p className="text-sm text-foreground/60 mb-1">Estimation indicative</p>
                   <p className="text-3xl font-semibold text-gradient">
-                    {estimateLow}€ – {estimateHigh}€
+                    {estimateLow} € – {estimateHigh} €
                   </p>
                   <p className="text-sm text-foreground/40 mt-2">
                     Le tarif exact sera précisé dans le devis, selon le contenu réel du projet.
