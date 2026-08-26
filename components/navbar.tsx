@@ -57,7 +57,7 @@ export function Navbar() {
             />
           </Link>
 
-          <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-8">
+          <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-5 lg:gap-8">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
