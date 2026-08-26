@@ -91,8 +91,13 @@ export function Navbar() {
             </Magnetic>
           </div>
 
-          <div className="flex items-center gap-1 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
+            <Link href="/devis">
+              <Button size="sm" className="px-4">
+                Devis
+              </Button>
+            </Link>
             <button
               aria-label="Ouvrir le menu"
               className="p-2 -mr-2"
