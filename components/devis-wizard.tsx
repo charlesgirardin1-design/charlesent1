@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   AlertCircle,
   Globe,
-  Sparkles,
   ShoppingCart,
   LayoutGrid,
   HelpCircle,
@@ -18,97 +17,26 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-// Bases tarifaires : un montant pivot par formule (pas une fourchette en soi).
-// La fourchette affichée à l'utilisateur est dérivée de ce pivot via RANGE_SPREAD
-// ci-dessous, pour rester une estimation honnête sans jamais être une "boîte noire".
 const projectTypes = [
-  {
-    id: "vitrine-essentiel",
-    label: "Vitrine Essentiel",
-    hint: "1 à 3 pages",
-    icon: Globe,
-    base: 1100,
-  },
-  {
-    id: "vitrine-sur-mesure",
-    label: "Vitrine Sur-mesure",
-    hint: "4 à 8 pages",
-    icon: Sparkles,
-    base: 2000,
-  },
-  {
-    id: "ecommerce",
-    label: "E-commerce",
-    hint: "Boutique en ligne, catalogue, fonctionnalités avancées",
-    icon: ShoppingCart,
-    base: 3500,
-    startingAt: true,
-  },
-  {
-    id: "app",
-    label: "Application web",
-    hint: "Sur devis, selon le périmètre",
-    icon: LayoutGrid,
-    custom: true,
-  },
-  {
-    id: "autre",
-    label: "Autre / je ne sais pas",
-    hint: "On en discute ensemble",
-    icon: HelpCircle,
-    custom: true,
-  },
+  { id: "vitrine", label: "Site vitrine", icon: Globe, base: 800 },
+  { id: "ecommerce", label: "E-commerce", icon: ShoppingCart, base: 1800 },
+  { id: "app", label: "Application web", icon: LayoutGrid, base: 2500 },
+  { id: "autre", label: "Autre / je ne sais pas", icon: HelpCircle, base: 0 },
 ] as const;
 
 const addonOptions = [
-  {
-    id: "branding",
-    label: "Identité visuelle / Logo",
-    hint: "Pas encore de logo, de charte graphique ou de couleurs définies",
-    add: 500,
-  },
-  {
-    id: "copywriting",
-    label: "Rédaction des contenus",
-    hint: "Textes à rédiger ou réécrire pour maximiser la conversion",
-    add: 400,
-  },
-  {
-    id: "integration",
-    label: "Fonctionnalité spécifique",
-    hint: "Réservation en ligne, espace membre, multilingue...",
-    add: 500,
-  },
-  {
-    id: "photo",
-    label: "Shooting photo professionnel",
-    hint: "Visuels produit, portrait ou événementiel",
-    add: 150,
-  },
+  { id: "pages-plus", label: "Plus de 6 pages", add: 300 },
+  { id: "multilingue", label: "Site multilingue", add: 400 },
+  { id: "blog", label: "Blog intégré", add: 250 },
+  { id: "rdv", label: "Prise de rendez-vous en ligne", add: 300 },
+  { id: "photo", label: "Shooting photo professionnel", add: 150 },
 ] as const;
 
 const timelines = [
-  {
-    id: "urgent",
-    label: "Le plus vite possible",
-    hint: "moins de 2 semaines · +25% sur le total",
-    mult: 1.25,
-  },
-  { id: "normal", label: "Délai normal", hint: "2 à 6 semaines", mult: 1 },
-  { id: "flexible", label: "Flexible", hint: "pas pressé", mult: 1 },
+  { id: "urgent", label: "Le plus vite possible", hint: "moins de 2 semaines", multiplier: 1.15 },
+  { id: "normal", label: "Délai normal", hint: "2 à 6 semaines", multiplier: 1 },
+  { id: "flexible", label: "Flexible", hint: "pas pressé", multiplier: 0.95 },
 ] as const;
-
-// Marge appliquée autour du montant pivot pour obtenir une fourchette honnête
-// (le montant réel dépend toujours du contenu précis vu en échange).
-const RANGE_SPREAD_LOW = 0.9;
-const RANGE_SPREAD_HIGH = 1.15;
-const ROUND_STEP = 50;
-
-function roundTo(value: number, step: number) {
-  // Epsilon pour éviter qu'une imprécision flottante (ex: 1500 * 1.15 =
-  // 1724.9999999999998) ne fasse basculer un arrondi tout juste sous le seuil.
-  return Math.round(value / step + 1e-9) * step;
-}
 
 const stepLabels = ["Projet", "Besoins", "Délai", "Coordonnées"];
 
@@ -127,23 +55,17 @@ export function DevisWizard() {
 
   const selectedType = projectTypes.find((t) => t.id === projectType);
   const selectedTimeline = timelines.find((t) => t.id === timeline);
-  const isCustomQuote = !selectedType || "custom" in selectedType;
 
   const addonsTotal = addons.reduce((sum, id) => {
     const opt = addonOptions.find((o) => o.id === id);
     return sum + (opt?.add ?? 0);
   }, 0);
 
-  const base = selectedType && "base" in selectedType ? selectedType.base : 0;
-  const mult = selectedTimeline?.mult ?? 1;
-  const pivot = (base + addonsTotal) * mult;
-  const isStartingAt = !!(selectedType && "startingAt" in selectedType && selectedType.startingAt);
-
-  // La fourchette basse ne descend jamais sous le pivot pour une formule
-  // "à partir de" (l'e-commerce) : c'est un plancher affiché tel quel, pas un
-  // point médian.
-  const estimateLow = isStartingAt ? roundTo(pivot, ROUND_STEP) : roundTo(pivot * RANGE_SPREAD_LOW, ROUND_STEP);
-  const estimateHigh = roundTo(pivot * RANGE_SPREAD_HIGH, ROUND_STEP);
+  const baseEstimate = selectedType ? selectedType.base + addonsTotal : 0;
+  const multiplier = selectedTimeline?.multiplier ?? 1;
+  const estimateLow = Math.round((baseEstimate * multiplier * 0.9) / 10) * 10;
+  const estimateHigh = Math.round((baseEstimate * multiplier * 1.15) / 10) * 10;
+  const isCustomQuote = projectType === "autre" || baseEstimate === 0;
 
   function toggleAddon(id: string) {
     setAddons((prev) => (prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]));
@@ -175,9 +97,7 @@ export function DevisWizard() {
           projectType: selectedType?.label,
           addons: addons.map((id) => addonOptions.find((o) => o.id === id)?.label),
           timeline: selectedTimeline?.label,
-          estimate: isCustomQuote
-            ? "Sur devis"
-            : `${estimateLow}€ - ${estimateHigh}€${isStartingAt ? "+" : ""}`,
+          estimate: isCustomQuote ? "Sur devis" : `${estimateLow}€ - ${estimateHigh}€`,
         }),
       });
       const json = await res.json();
@@ -187,9 +107,7 @@ export function DevisWizard() {
         return;
       }
       setState("success");
-      setStatusMessage(
-        "Votre demande a bien été envoyée ! Vous recevrez le devis détaillé par email sous 48h."
-      );
+      setStatusMessage("Votre demande a bien été envoyée ! Je reviens vers vous sous 48h.");
     } catch {
       setState("error");
       setStatusMessage("L'envoi a échoué, vérifiez votre connexion.");
@@ -253,22 +171,14 @@ export function DevisWizard() {
                     type="button"
                     onClick={() => setProjectType(t.id)}
                     className={cn(
-                      "flex items-start gap-3 rounded-2xl border p-5 text-left transition-colors",
+                      "flex items-center gap-3 rounded-2xl border p-5 text-left transition-colors",
                       projectType === t.id
                         ? "border-accent-blue bg-accent-blue/10"
                         : "border-surface-border bg-surface hover:border-foreground/20"
                     )}
                   >
-                    <t.icon className="w-5 h-5 text-accent-blue flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-medium block">{t.label}</span>
-                      <span className="text-sm text-foreground/50 block mt-0.5">{t.hint}</span>
-                      {"base" in t && (
-                        <span className="text-sm font-mono text-accent-blue block mt-1">
-                          {"startingAt" in t && t.startingAt ? `À partir de ${t.base}€` : `~ ${t.base}€`}
-                        </span>
-                      )}
-                    </span>
+                    <t.icon className="w-5 h-5 text-accent-blue flex-shrink-0" />
+                    <span className="font-medium">{t.label}</span>
                   </button>
                 ))}
               </div>
@@ -286,22 +196,16 @@ export function DevisWizard() {
                     type="button"
                     onClick={() => toggleAddon(o.id)}
                     className={cn(
-                      "w-full flex items-start justify-between gap-3 rounded-xl border p-4 text-left transition-colors",
+                      "w-full flex items-center justify-between gap-3 rounded-xl border p-4 text-left transition-colors",
                       addons.includes(o.id)
                         ? "border-accent-blue bg-accent-blue/10"
                         : "border-surface-border bg-surface hover:border-foreground/20"
                     )}
                   >
-                    <span>
-                      <span className="font-medium block">{o.label}</span>
-                      <span className="text-sm text-foreground/50 block mt-0.5">{o.hint}</span>
-                      <span className="text-sm font-mono text-accent-blue block mt-1">
-                        +{o.add}€
-                      </span>
-                    </span>
+                    <span>{o.label}</span>
                     <span
                       className={cn(
-                        "w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0 mt-0.5",
+                        "w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0",
                         addons.includes(o.id) ? "border-accent-blue bg-accent-blue" : "border-foreground/20"
                       )}
                     >
@@ -337,7 +241,7 @@ export function DevisWizard() {
                 ))}
               </div>
 
-              {!isCustomQuote ? (
+              {!isCustomQuote && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -345,24 +249,10 @@ export function DevisWizard() {
                 >
                   <p className="text-sm text-foreground/60 mb-1">Estimation indicative</p>
                   <p className="text-3xl font-semibold text-gradient">
-                    {estimateLow}€ – {estimateHigh}€{isStartingAt ? "+" : ""}
+                    {estimateLow}€ – {estimateHigh}€
                   </p>
                   <p className="text-sm text-foreground/40 mt-2">
-                    Le tarif exact sera précisé dans le devis, selon le contenu réel du projet —
-                    laissez vos coordonnées à l&apos;étape suivante pour le recevoir par email
-                    sous 48h, sans engagement.
-                  </p>
-                </motion.div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-8 rounded-2xl border border-accent-blue/30 bg-accent-blue/10 p-6"
-                >
-                  <p className="text-sm text-foreground/60 mb-1">Votre projet mérite un vrai chiffrage</p>
-                  <p className="text-lg font-medium text-foreground">
-                    Décrivez-le-moi à l&apos;étape suivante, je reviens vers vous avec un devis
-                    détaillé sous 48h.
+                    Le tarif exact sera précisé dans le devis, selon le contenu réel du projet.
                   </p>
                 </motion.div>
               )}
@@ -371,14 +261,7 @@ export function DevisWizard() {
 
           {step === 3 && (
             <form onSubmit={handleSubmit}>
-              <h2 className="text-2xl font-semibold mb-2">Dernière étape</h2>
-              <p className="text-foreground/50 mb-6">
-                Vos coordonnées pour recevoir le devis détaillé — ou préférez-vous{" "}
-                <a href="/contact" className="text-accent-blue hover:underline">
-                  en discuter directement
-                </a>{" "}
-                ?
-              </p>
+              <h2 className="text-2xl font-semibold mb-6">Vos coordonnées</h2>
               <div className="space-y-5">
                 <div>
                   <label className="block text-sm font-medium mb-2 text-foreground/70">
