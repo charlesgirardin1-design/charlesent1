@@ -48,6 +48,7 @@ export async function POST(request: Request) {
   });
 
   if (error) {
+    console.error("Resend error (devis):", JSON.stringify(error));
     return NextResponse.json({ error: "L'envoi a échoué, réessayez plus tard." }, { status: 502 });
   }
 
