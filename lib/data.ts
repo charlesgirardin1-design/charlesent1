@@ -28,16 +28,16 @@ export const services = [
     description:
       "Un site rapide, clair et responsive qui présente votre activité et inspire confiance dès les premières secondes. Structure pensée pour guider le visiteur vers l'action, optimisée pour le référencement local.",
     longDescription:
-      "Un site vitrine, c'est souvent le premier contact entre votre activité et un client potentiel. Il doit charger vite, s'afficher parfaitement sur mobile et donner confiance en quelques secondes. Je conçois chaque site vitrine autour d'un objectif clair : transformer la visite en appel, en message ou en prise de rendez-vous. Structure épurée, contenus hiérarchisés, référencement local travaillé dès le départ.",
+      "Un site vitrine, c'est souvent le premier contact entre votre activité et un client potentiel. Il doit charger vite, s'afficher parfaitement sur mobile et donner confiance en quelques secondes. Je conçois chaque site vitrine autour d'un objectif clair : transformer la visite en appel, en message ou en prise de rendez-vous. Structure épurée, contenus hiérarchisés, référencement local travaillé dès le départ. Deux formules selon vos besoins : « Essentiel » (1 à 3 pages, 900€ à 1 400€) pour une présence propre et rapide, ou « Sur-mesure » (4 à 8 pages, 1 500€ à 2 600€) pour un vrai outil de conversion avec un design unique.",
     includes: [
       "Design sur mesure, pas de thème générique",
-      "Jusqu'à 6 pages (accueil, services, à propos, contact...)",
+      "De 1 à 8 pages selon la formule choisie",
       "Formulaire de contact fonctionnel",
       "Optimisation SEO de base et vitesse de chargement",
       "Compatible mobile, tablette et desktop",
       "Formation à la prise en main incluse",
     ],
-    price: "À partir de 800€",
+    price: "De 900€ à 2 600€",
   },
   {
     number: "02",
@@ -46,7 +46,7 @@ export const services = [
     description:
       "Boutique en ligne complète : catalogue produits, paiement sécurisé et tunnel d'achat fluide, du panier jusqu'à la confirmation de commande. Une base solide pour vendre dès le premier jour.",
     longDescription:
-      "Vendre en ligne demande plus qu'un catalogue : un tunnel d'achat fluide, un paiement sécurisé et une gestion des stocks qui ne vous complique pas la vie. Je construis des boutiques en ligne pensées pour réduire les abandons de panier, avec une expérience d'achat simple sur mobile comme sur desktop, et une interface d'administration que vous maîtrisez rapidement.",
+      "Vendre en ligne demande plus qu'un catalogue : un tunnel d'achat fluide, un paiement sécurisé et une gestion des stocks qui ne vous complique pas la vie. Je construis des boutiques en ligne pensées pour réduire les abandons de panier, avec une expérience d'achat simple sur mobile comme sur desktop, et une interface d'administration que vous maîtrisez rapidement. Le tarif dépend du catalogue et des fonctionnalités (espace client, réservations avancées...) : comptez de 3 000€ à 4 500€ et plus selon la complexité.",
     includes: [
       "Catalogue produits avec variantes (taille, couleur...)",
       "Paiement sécurisé (carte bancaire, autres moyens sur demande)",
@@ -55,7 +55,7 @@ export const services = [
       "Emails transactionnels (confirmation, expédition)",
       "Formation à la gestion quotidienne de la boutique",
     ],
-    price: "À partir de 1 800€",
+    price: "À partir de 3 000€",
   },
   {
     number: "03",
@@ -79,17 +79,17 @@ export const services = [
     slug: "suivi-maintenance",
     title: "Suivi & mises à jour",
     description:
-      "Après la mise en ligne, je reste disponible pour faire évoluer votre site : contenus, corrections, nouvelles fonctionnalités. Formule ponctuelle ou récurrente, ajustée à la fréquence réelle de vos demandes.",
+      "Après la mise en ligne, je reste disponible pour faire évoluer votre site : contenus, corrections, nouvelles fonctionnalités. Formule ponctuelle, ou Pack Sérénité en abonnement mensuel pour sécuriser votre site au quotidien.",
     longDescription:
-      "Un site n'est jamais vraiment terminé : nouveaux contenus, corrections, ajout de fonctionnalités. Je reste disponible après la mise en ligne pour faire évoluer votre site, avec une formule ajustée à la fréquence réelle de vos demandes plutôt qu'un forfait figé qui ne correspond pas à votre usage. Ponctuel ou récurrent, vous ne payez que ce dont vous avez besoin.",
+      "Un site n'est jamais vraiment terminé : nouveaux contenus, corrections, ajout de fonctionnalités. Je reste disponible après la mise en ligne pour faire évoluer votre site, au coup par coup, ou via le Pack Sérénité : une formule mensuelle qui sécurise votre site (hébergement, sauvegardes, mises à jour) et inclut 1 à 2 petites modifications de contenu par mois, plutôt qu'un forfait figé qui ne correspond pas à votre usage.",
     includes: [
-      "Corrections et ajustements post-lancement",
-      "Ajout de contenus ou de nouvelles pages",
-      "Petites évolutions fonctionnelles",
-      "Surveillance technique (sécurité, mises à jour)",
-      "Facturation à l'usage, sans engagement figé",
+      "Hébergement sécurisé et sauvegardes régulières",
+      "Mises à jour techniques",
+      "1 à 2 petites modifications de textes par mois",
+      "Corrections et ajustements ponctuels hors abonnement",
+      "Surveillance technique (sécurité, disponibilité)",
     ],
-    price: "Tarif variable selon vos besoins",
+    price: "49€ à 99€ / mois",
   },
 ];
 

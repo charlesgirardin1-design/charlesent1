@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   AlertCircle,
   Globe,
+  Sparkles,
   ShoppingCart,
   LayoutGrid,
   HelpCircle,
@@ -18,24 +19,88 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const projectTypes = [
-  { id: "vitrine", label: "Site vitrine", icon: Globe, base: 800 },
-  { id: "ecommerce", label: "E-commerce", icon: ShoppingCart, base: 1800 },
-  { id: "app", label: "Application web", icon: LayoutGrid, base: 2500 },
-  { id: "autre", label: "Autre / je ne sais pas", icon: HelpCircle, base: 0 },
+  {
+    id: "vitrine-essentiel",
+    label: "Vitrine Essentiel",
+    hint: "1 à 3 pages",
+    icon: Globe,
+    baseLow: 900,
+    baseHigh: 1400,
+  },
+  {
+    id: "vitrine-sur-mesure",
+    label: "Vitrine Sur-mesure",
+    hint: "4 à 8 pages",
+    icon: Sparkles,
+    baseLow: 1500,
+    baseHigh: 2600,
+  },
+  {
+    id: "ecommerce",
+    label: "E-commerce",
+    hint: "Boutique en ligne, catalogue, fonctionnalités avancées",
+    icon: ShoppingCart,
+    baseLow: 3000,
+    baseHigh: 4500,
+    openEnded: true,
+  },
+  {
+    id: "app",
+    label: "Application web",
+    hint: "Sur devis, selon le périmètre",
+    icon: LayoutGrid,
+    custom: true,
+  },
+  {
+    id: "autre",
+    label: "Autre / je ne sais pas",
+    hint: "On en discute ensemble",
+    icon: HelpCircle,
+    custom: true,
+  },
 ] as const;
 
 const addonOptions = [
-  { id: "pages-plus", label: "Plus de 6 pages", add: 300 },
-  { id: "multilingue", label: "Site multilingue", add: 400 },
-  { id: "blog", label: "Blog intégré", add: 250 },
-  { id: "rdv", label: "Prise de rendez-vous en ligne", add: 300 },
-  { id: "photo", label: "Shooting photo professionnel", add: 150 },
+  {
+    id: "branding",
+    label: "Identité visuelle / Branding",
+    hint: "Pas encore de logo, de charte graphique ou de couleurs définies",
+    addLow: 300,
+    addHigh: 700,
+  },
+  {
+    id: "copywriting",
+    label: "Rédaction des contenus",
+    hint: "Textes à rédiger ou réécrire pour maximiser la conversion",
+    addLow: 200,
+    addHigh: 600,
+  },
+  {
+    id: "integration",
+    label: "Outil tiers / fonctionnalité complexe",
+    hint: "Réservation en ligne, espace membre, site multilingue...",
+    addLow: 250,
+    addHigh: 800,
+  },
+  {
+    id: "photo",
+    label: "Shooting photo professionnel",
+    hint: "Visuels produit, portrait ou événementiel",
+    addLow: 150,
+    addHigh: 150,
+  },
 ] as const;
 
 const timelines = [
-  { id: "urgent", label: "Le plus vite possible", hint: "moins de 2 semaines", multiplier: 1.15 },
-  { id: "normal", label: "Délai normal", hint: "2 à 6 semaines", multiplier: 1 },
-  { id: "flexible", label: "Flexible", hint: "pas pressé", multiplier: 0.95 },
+  {
+    id: "urgent",
+    label: "Le plus vite possible",
+    hint: "moins de 2 semaines · +20% à +30% sur le total",
+    multLow: 1.2,
+    multHigh: 1.3,
+  },
+  { id: "normal", label: "Délai normal", hint: "2 à 6 semaines", multLow: 1, multHigh: 1 },
+  { id: "flexible", label: "Flexible", hint: "pas pressé", multLow: 1, multHigh: 1 },
 ] as const;
 
 const stepLabels = ["Projet", "Besoins", "Délai", "Coordonnées"];
@@ -55,17 +120,25 @@ export function DevisWizard() {
 
   const selectedType = projectTypes.find((t) => t.id === projectType);
   const selectedTimeline = timelines.find((t) => t.id === timeline);
+  const isCustomQuote = !selectedType || "custom" in selectedType;
 
-  const addonsTotal = addons.reduce((sum, id) => {
+  const addonsLow = addons.reduce((sum, id) => {
     const opt = addonOptions.find((o) => o.id === id);
-    return sum + (opt?.add ?? 0);
+    return sum + (opt?.addLow ?? 0);
+  }, 0);
+  const addonsHigh = addons.reduce((sum, id) => {
+    const opt = addonOptions.find((o) => o.id === id);
+    return sum + (opt?.addHigh ?? 0);
   }, 0);
 
-  const baseEstimate = selectedType ? selectedType.base + addonsTotal : 0;
-  const multiplier = selectedTimeline?.multiplier ?? 1;
-  const estimateLow = Math.round((baseEstimate * multiplier * 0.9) / 10) * 10;
-  const estimateHigh = Math.round((baseEstimate * multiplier * 1.15) / 10) * 10;
-  const isCustomQuote = projectType === "autre" || baseEstimate === 0;
+  const baseLow = selectedType && "baseLow" in selectedType ? selectedType.baseLow : 0;
+  const baseHigh = selectedType && "baseHigh" in selectedType ? selectedType.baseHigh : 0;
+  const multLow = selectedTimeline?.multLow ?? 1;
+  const multHigh = selectedTimeline?.multHigh ?? 1;
+
+  const estimateLow = Math.round(((baseLow + addonsLow) * multLow) / 10) * 10;
+  const estimateHigh = Math.round(((baseHigh + addonsHigh) * multHigh) / 10) * 10;
+  const isOpenEnded = !!(selectedType && "openEnded" in selectedType && selectedType.openEnded);
 
   function toggleAddon(id: string) {
     setAddons((prev) => (prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]));
@@ -97,7 +170,9 @@ export function DevisWizard() {
           projectType: selectedType?.label,
           addons: addons.map((id) => addonOptions.find((o) => o.id === id)?.label),
           timeline: selectedTimeline?.label,
-          estimate: isCustomQuote ? "Sur devis" : `${estimateLow}€ - ${estimateHigh}€`,
+          estimate: isCustomQuote
+            ? "Sur devis"
+            : `${estimateLow}€ - ${estimateHigh}€${isOpenEnded ? "+" : ""}`,
         }),
       });
       const json = await res.json();
@@ -171,14 +246,22 @@ export function DevisWizard() {
                     type="button"
                     onClick={() => setProjectType(t.id)}
                     className={cn(
-                      "flex items-center gap-3 rounded-2xl border p-5 text-left transition-colors",
+                      "flex items-start gap-3 rounded-2xl border p-5 text-left transition-colors",
                       projectType === t.id
                         ? "border-accent-blue bg-accent-blue/10"
                         : "border-surface-border bg-surface hover:border-foreground/20"
                     )}
                   >
-                    <t.icon className="w-5 h-5 text-accent-blue flex-shrink-0" />
-                    <span className="font-medium">{t.label}</span>
+                    <t.icon className="w-5 h-5 text-accent-blue flex-shrink-0 mt-0.5" />
+                    <span>
+                      <span className="font-medium block">{t.label}</span>
+                      <span className="text-sm text-foreground/50 block mt-0.5">{t.hint}</span>
+                      {"baseLow" in t && (
+                        <span className="text-sm font-mono text-accent-blue block mt-1">
+                          {t.baseLow}€ – {t.baseHigh}€{"openEnded" in t && t.openEnded ? "+" : ""}
+                        </span>
+                      )}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -196,16 +279,22 @@ export function DevisWizard() {
                     type="button"
                     onClick={() => toggleAddon(o.id)}
                     className={cn(
-                      "w-full flex items-center justify-between gap-3 rounded-xl border p-4 text-left transition-colors",
+                      "w-full flex items-start justify-between gap-3 rounded-xl border p-4 text-left transition-colors",
                       addons.includes(o.id)
                         ? "border-accent-blue bg-accent-blue/10"
                         : "border-surface-border bg-surface hover:border-foreground/20"
                     )}
                   >
-                    <span>{o.label}</span>
+                    <span>
+                      <span className="font-medium block">{o.label}</span>
+                      <span className="text-sm text-foreground/50 block mt-0.5">{o.hint}</span>
+                      <span className="text-sm font-mono text-accent-blue block mt-1">
+                        {o.addLow === o.addHigh ? `+${o.addLow}€` : `+${o.addLow}€ à ${o.addHigh}€`}
+                      </span>
+                    </span>
                     <span
                       className={cn(
-                        "w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0",
+                        "w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0 mt-0.5",
                         addons.includes(o.id) ? "border-accent-blue bg-accent-blue" : "border-foreground/20"
                       )}
                     >
@@ -249,7 +338,7 @@ export function DevisWizard() {
                 >
                   <p className="text-sm text-foreground/60 mb-1">Estimation indicative</p>
                   <p className="text-3xl font-semibold text-gradient">
-                    {estimateLow}€ – {estimateHigh}€
+                    {estimateLow}€ – {estimateHigh}€{isOpenEnded ? "+" : ""}
                   </p>
                   <p className="text-sm text-foreground/40 mt-2">
                     Le tarif exact sera précisé dans le devis, selon le contenu réel du projet.
