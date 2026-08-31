@@ -1,5 +1,8 @@
 import { Hero } from "@/components/sections/hero";
 import { TrustBar } from "@/components/sections/trust-bar";
+import { Services } from "@/components/sections/services";
+import { Portfolio } from "@/components/sections/portfolio";
+import { Process } from "@/components/sections/process";
 import { DevisCTA } from "@/components/sections/devis-cta";
 import { Stats } from "@/components/sections/stats";
 import { Testimonials } from "@/components/sections/testimonials";
@@ -10,6 +13,9 @@ export default function Home() {
     <>
       <Hero />
       <TrustBar />
+      <Services />
+      <Portfolio />
+      <Process />
       <DevisCTA />
       <Stats />
       <Testimonials />

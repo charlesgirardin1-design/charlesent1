@@ -174,25 +174,25 @@ export const processSteps = [
     number: "01",
     title: "Échange",
     description:
-      "Je discute de votre projet lors d'un appel de 30 minutes, sans engagement : votre activité, vos objectifs, votre budget et vos contraintes de délai.",
+      "Je discute de votre projet lors d'un appel de 30 minutes, sans engagement : votre activité, vos objectifs, votre budget et vos contraintes de délai. Cet échange me permet de cerner précisément ce dont vous avez besoin avant de vous proposer quoi que ce soit.",
   },
   {
     number: "02",
     title: "Devis",
     description:
-      "Je vous envoie une proposition détaillée sous 48h : périmètre exact, technologies, délais et tarif clairement posé, sans surprise.",
+      "Je vous envoie une proposition détaillée sous 48h : périmètre exact des pages et fonctionnalités, technologies utilisées, délai de réalisation et tarif clairement posé. Rien n'est engageant, vous êtes libre d'accepter, de demander des ajustements ou de ne pas donner suite.",
   },
   {
     number: "03",
     title: "Réalisation",
     description:
-      "Maquette avant tout développement pour valider la direction, puis intégration par étapes avec des points réguliers pour suivre l'avancement.",
+      "Je commence toujours par une maquette pour valider ensemble la direction visuelle avant d'écrire la moindre ligne de code. Le développement avance ensuite par étapes, avec des points réguliers pour que vous suiviez l'avancement et puissiez ajuster en cours de route.",
   },
   {
     number: "04",
     title: "Livraison & suivi",
     description:
-      "Mise en ligne, vérifications techniques et courte formation à la prise en main. Je reste disponible pour les ajustements post-lancement.",
+      "Mise en ligne, vérifications techniques (vitesse, mobile, formulaires) et courte formation à la prise en main pour que vous soyez autonome sur les contenus courants. Je reste disponible ensuite pour les ajustements post-lancement et les questions qui suivent.",
   },
 ];
 
@@ -239,5 +239,20 @@ export const faqs = [
     question: "Comment se passe le paiement ?",
     answer:
       "En général, un acompte au démarrage puis le solde à la livraison. Les modalités précises (échéancier, moyens de paiement) sont détaillées dans le devis avant de commencer.",
+  },
+  {
+    question: "Quelles technologies utilisez-vous ?",
+    answer:
+      "Je développe avec des technologies modernes (React, Next.js) plutôt qu'avec des constructeurs de sites génériques : le site est plus rapide, plus flexible et plus facile à faire évoluer dans le temps. Le choix technique précis dépend toujours des besoins réels du projet, pas d'une préférence personnelle.",
+  },
+  {
+    question: "Le site et le nom de domaine m'appartiennent-ils ?",
+    answer:
+      "Oui. Une fois le projet livré et soldé, le code, le contenu et le nom de domaine vous appartiennent intégralement. Vous n'êtes lié à aucun abonnement obligatoire ni dépendant de moi pour héberger ou faire évoluer votre site ailleurs si vous le souhaitez.",
+  },
+  {
+    question: "Travaillez-vous avec des clients partout en France ?",
+    answer:
+      "Oui, je travaille à distance avec des clients dans toute la France (appels visio, échanges par email et messagerie). Un rendez-vous en présentiel reste possible ponctuellement selon les projets et la localisation.",
   },
 ];
