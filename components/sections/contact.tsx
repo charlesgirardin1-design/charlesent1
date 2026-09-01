@@ -73,6 +73,18 @@ export function Contact() {
           description="Décrivez-moi votre besoin, je reviens vers vous sous 48h avec un premier retour."
         />
 
+        <p className="max-w-2xl -mt-10 mb-16 text-foreground/60 leading-relaxed">
+          Que vous ayez déjà un cahier des charges précis ou seulement une idée à
+          explorer, décrivez-moi votre projet avec le niveau de détail dont vous
+          disposez. Je reviens vers vous avec des questions si besoin, ou directement
+          avec un premier retour sur la faisabilité et le budget. Vous pouvez aussi
+          passer par le{" "}
+          <a href="/devis" className="text-accent-blue hover:underline">
+            simulateur de devis
+          </a>{" "}
+          si vous préférez une première estimation chiffrée avant d&apos;échanger.
+        </p>
+
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12">
           <motion.form
             onSubmit={handleSubmit}

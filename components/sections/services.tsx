@@ -18,6 +18,14 @@ export function Services() {
           description="Quatre prestations, un seul objectif : un résultat propre, livré dans les temps."
         />
 
+        <p className="max-w-2xl -mt-10 mb-16 text-foreground/60 leading-relaxed">
+          Chaque prestation peut être prise indépendamment ou combinée selon votre
+          projet : un site vitrine aujourd&apos;hui, une boutique en ligne demain, des
+          photos pour habiller le tout. Les tarifs affichés sont des points de départ
+          réalistes ; le montant définitif dépend toujours de vos besoins précis et
+          vous est confirmé dans un devis détaillé, sans surprise.
+        </p>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => {
             const Icon = icons[i];

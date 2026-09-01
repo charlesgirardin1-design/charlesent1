@@ -22,6 +22,13 @@ export function Process() {
           description="Un processus simple en 4 étapes, pensé pour avancer vite sans perdre en qualité."
         />
 
+        <p className="max-w-2xl -mt-10 mb-14 text-foreground/60 leading-relaxed">
+          Cette méthode s&apos;applique à tous les projets, du site vitrine le plus
+          simple à l&apos;application la plus complexe. Elle vise avant tout la
+          transparence : vous savez toujours où en est votre projet, ce qu&apos;il
+          reste à faire, et pourquoi.
+        </p>
+
         <div ref={ref} className="relative">
           <div className="absolute left-[27px] top-2 bottom-2 w-px bg-foreground/10" />
           <motion.div

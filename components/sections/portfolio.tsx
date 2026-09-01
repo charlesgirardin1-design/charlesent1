@@ -27,6 +27,13 @@ export function Portfolio() {
           description="Une sélection de sites réalisés, filtrables par type de projet."
         />
 
+        <p className="max-w-2xl -mt-10 mb-12 text-foreground/60 leading-relaxed">
+          Des secteurs différents (artisanat, bâtiment, application mobile-first), mais
+          la même exigence à chaque fois : un site rapide à charger, agréable à
+          utiliser et pensé pour parler directement à son public. Cliquez sur un
+          projet pour voir le détail de ce qui a été mis en place.
+        </p>
+
         <div className="flex flex-wrap gap-3 mb-12">
           {filters.map((f) => (
             <button
